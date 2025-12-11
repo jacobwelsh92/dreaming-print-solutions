@@ -34,6 +34,7 @@ export const hpE78625dn: ProductDetail = {
     "HP FutureSmart firmware for continuous improvements",
   ],
   hasDetailPage: true,
+  image: "/images/products/hp-e78625dn.jpg",
   productNumber: "5QK18A",
 
   // SEO & Marketing

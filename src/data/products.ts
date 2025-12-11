@@ -59,6 +59,7 @@ export const products: Product[] = [
       "1,140-sheet input (expandable to 3,140)",
     ],
     hasDetailPage: true,
+    image: "/images/products/hp-e78625dn.jpg",
   },
   {
     id: "hp-e78630dn",

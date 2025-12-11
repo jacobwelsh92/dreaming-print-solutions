@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Printer,
   Zap,
@@ -193,8 +194,19 @@ export default async function ProductDetailPage({ params }: PageProps) {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Product Image */}
             <div className="order-2 lg:order-1">
-              <div className="aspect-square rounded-2xl bg-white shadow-card flex items-center justify-center">
-                <Printer className="h-48 w-48 text-charcoal-300" />
+              <div className="aspect-square rounded-2xl bg-white shadow-card flex items-center justify-center overflow-hidden">
+                {product.image ? (
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    width={600}
+                    height={600}
+                    className="object-contain p-4"
+                    priority
+                  />
+                ) : (
+                  <Printer className="h-48 w-48 text-charcoal-300" />
+                )}
               </div>
             </div>
 

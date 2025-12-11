@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Printer, Zap, ArrowRight, CheckCircle } from "lucide-react";
 import {
   Section,
@@ -60,8 +61,18 @@ export default function ProductsPage() {
               <Card key={product.id} className="overflow-hidden">
                 <div className="grid lg:grid-cols-3 gap-6 p-6 lg:p-8">
                   {/* Product Image */}
-                  <div className="aspect-[4/3] lg:aspect-square rounded-xl bg-cream-100 flex items-center justify-center">
-                    <Printer className="h-20 w-20 text-charcoal-300" />
+                  <div className="aspect-[4/3] lg:aspect-square rounded-xl bg-cream-100 flex items-center justify-center overflow-hidden">
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        width={400}
+                        height={400}
+                        className="object-contain p-4"
+                      />
+                    ) : (
+                      <Printer className="h-20 w-20 text-charcoal-300" />
+                    )}
                   </div>
 
                   {/* Product Info */}
