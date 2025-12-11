@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Award, Users, Heart, Target } from "lucide-react";
+import Image from "next/image";
+import { Award, Users, Heart, Target, Linkedin } from "lucide-react";
 import {
   Section,
   SectionHeader,
@@ -11,6 +12,24 @@ import { Card, CardContent } from "@/components/ui/card";
 import { DotPattern, ConcentricDotPattern } from "@/components/ui/dot-pattern";
 import { AboutPageSchemas } from "@/components/seo/structured-data";
 import { siteConfig } from "@/data/site-config";
+
+// Team member data - photos go in /public/images/team/
+const teamMembers = [
+  {
+    name: "Zac O'Brien",
+    role: "Co-Founder & Director",
+    image: "/images/team/zac-obrien.jpg", // Add photo here
+    bio: "With extensive experience in enterprise sales and a passion for Indigenous business development, Zac leads client relationships and strategic growth initiatives.",
+    linkedin: "#", // Add LinkedIn URL when available
+  },
+  {
+    name: "Ben Long",
+    role: "Co-Founder & Director",
+    image: "/images/team/ben-long.jpg", // Add photo here
+    bio: "Ben brings deep technical expertise in print infrastructure and managed services, ensuring clients receive best-in-class solutions and ongoing support.",
+    linkedin: "#", // Add LinkedIn URL when available
+  },
+];
 
 export const metadata: Metadata = {
   title: "About Us | Australia's First Indigenous Printer Dealer",
@@ -170,30 +189,72 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Team Section Placeholder */}
+      {/* Team Section */}
       <Section background="white">
         <Container>
           <SectionHeader>
             <SectionTitle>Our Team</SectionTitle>
             <SectionDescription>
-              Meet the people behind Dreaming Print Solutions.
+              Meet the founders behind Dreaming Print Solutions.
             </SectionDescription>
           </SectionHeader>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            {[
-              { name: "Zac O'Brien", role: "Co-Founder" },
-              { name: "Ben Long", role: "Co-Founder" },
-            ].map((member) => (
-              <Card key={member.name} className="text-center">
-                <CardContent>
-                  <div className="h-24 w-24 mx-auto rounded-full bg-cream-200 flex items-center justify-center mb-4">
-                    <Users className="h-10 w-10 text-charcoal-400" />
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+            {teamMembers.map((member) => (
+              <Card key={member.name} className="overflow-hidden">
+                <CardContent className="p-0">
+                  {/* Photo Container */}
+                  <div className="relative aspect-[4/3] bg-gradient-to-br from-cream-100 to-cream-200">
+                    {/*
+                      To add photos:
+                      1. Add photo to /public/images/team/zac-obrien.jpg (or .png)
+                      2. Add photo to /public/images/team/ben-long.jpg (or .png)
+                      3. Recommended size: 800x600px or similar 4:3 ratio
+                      4. The Image component below will automatically show once files exist
+                    */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="h-20 w-20 mx-auto rounded-full bg-white/80 flex items-center justify-center mb-3">
+                          <Users className="h-10 w-10 text-charcoal-400" />
+                        </div>
+                        <p className="text-sm text-charcoal-500">Photo coming soon</p>
+                      </div>
+                    </div>
+                    {/* Uncomment when photos are added:
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
+                    */}
                   </div>
-                  <h3 className="font-display text-xl text-charcoal-950">
-                    {member.name}
-                  </h3>
-                  <p className="text-charcoal-600">{member.role}</p>
+
+                  {/* Info */}
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h3 className="font-display text-xl text-charcoal-950">
+                          {member.name}
+                        </h3>
+                        <p className="text-ochre-600 font-medium">{member.role}</p>
+                      </div>
+                      {member.linkedin && member.linkedin !== "#" && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg text-charcoal-400 hover:text-ochre-600 hover:bg-ochre-50 transition-colors"
+                          aria-label={`${member.name} on LinkedIn`}
+                        >
+                          <Linkedin className="h-5 w-5" />
+                        </a>
+                      )}
+                    </div>
+                    <p className="text-charcoal-600 text-sm leading-relaxed">
+                      {member.bio}
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             ))}
