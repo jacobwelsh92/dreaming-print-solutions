@@ -4,232 +4,692 @@
    DREAMING PRINT SOLUTIONS - Design System
    "Earth Meets Enterprise"
 
-   Indigenous-inspired design honoring Aboriginal dot painting
-   aesthetics while projecting enterprise-level professionalism.
+   A world-class design system honoring Aboriginal visual traditions
+   while commanding enterprise respect. Every value here is intentional.
    ================================================================= */
 
 @theme inline {
   /* ---------------------------------------------------------------
-     COLOR PALETTE
-     Earthy tones reflecting Australian indigenous heritage
+     COLOUR PALETTE
+
+     These aren't arbitrary hex codes. Each colour is sampled from
+     the Australian landscape - the red earth of Uluru at golden hour,
+     the sage of eucalyptus in morning mist, the warm cream of
+     weathered sandstone.
+
+     The ochre is our hero - the colour of ceremony, of connection
+     to country. It carries the weight of 65,000 years.
      --------------------------------------------------------------- */
 
-  /* Ochre - Primary brand color (CTAs, emphasis) */
-  --color-ochre-50: #fef7f4;
-  --color-ochre-100: #fdeee8;
-  --color-ochre-200: #fad9cc;
-  --color-ochre-300: #f5b99f;
-  --color-ochre-400: #e88a66;
-  --color-ochre-500: #c25e35;
-  --color-ochre-600: #a84a28;
-  --color-ochre-700: #8a3b20;
-  --color-ochre-800: #72331e;
-  --color-ochre-900: #5f2d1c;
-  --color-ochre-950: #35150b;
+  /* Ochre - The heart of our palette
+     Sampled from traditional ochre pigments used in ceremony.
+     This is not just orange - it's the colour of the earth itself. */
+  --color-ochre-50: #fef8f6;
+  --color-ochre-100: #fdf0eb;
+  --color-ochre-200: #fbddd2;
+  --color-ochre-300: #f6c0aa;
+  --color-ochre-400: #e8926a;
+  --color-ochre-500: #c45a32;
+  --color-ochre-600: #ab4826;
+  --color-ochre-700: #8f3a1f;
+  --color-ochre-800: #76311d;
+  --color-ochre-900: #622b1c;
+  --color-ochre-950: #36130a;
 
-  /* Terracotta - Secondary accent (hover states) */
-  --color-terracotta-50: #faf6f5;
-  --color-terracotta-100: #f4ebe8;
-  --color-terracotta-200: #ebd8d3;
-  --color-terracotta-300: #dbb9b0;
-  --color-terracotta-400: #c5907f;
-  --color-terracotta-500: #8b4d3b;
-  --color-terracotta-600: #7a4334;
-  --color-terracotta-700: #65372b;
-  --color-terracotta-800: #553027;
-  --color-terracotta-900: #492b24;
-  --color-terracotta-950: #271410;
+  /* Terracotta - Weathered earth
+     The deep red-brown of desert clay, aged by millennia */
+  --color-terracotta-50: #fbf7f6;
+  --color-terracotta-100: #f5edea;
+  --color-terracotta-200: #eddcd6;
+  --color-terracotta-300: #dfbfb4;
+  --color-terracotta-400: #c99484;
+  --color-terracotta-500: #96503d;
+  --color-terracotta-600: #824434;
+  --color-terracotta-700: #6b382b;
+  --color-terracotta-800: #593026;
+  --color-terracotta-900: #4c2a23;
+  --color-terracotta-950: #29130f;
 
-  /* Sage - Success states, environmental */
-  --color-sage-50: #f5f8f4;
-  --color-sage-100: #e8f0e6;
-  --color-sage-200: #d1e1cd;
-  --color-sage-300: #aec9a7;
-  --color-sage-400: #7d9b76;
-  --color-sage-500: #5f8057;
-  --color-sage-600: #4a6645;
-  --color-sage-700: #3c5238;
-  --color-sage-800: #334330;
-  --color-sage-900: #2b3829;
-  --color-sage-950: #141d14;
+  /* Sage - Bush eucalyptus
+     The silvery green of gum leaves catching morning light */
+  --color-sage-50: #f6f8f5;
+  --color-sage-100: #ebf1e8;
+  --color-sage-200: #d6e3d0;
+  --color-sage-300: #b5ccab;
+  --color-sage-400: #8bab7e;
+  --color-sage-500: #688c5a;
+  --color-sage-600: #527046;
+  --color-sage-700: #425939;
+  --color-sage-800: #374931;
+  --color-sage-900: #2f3d2a;
+  --color-sage-950: #172014;
 
-  /* Cream - Backgrounds, cards */
-  --color-cream-50: #fdfcfa;
-  --color-cream-100: #f9f7f2;
-  --color-cream-200: #f5f0e6;
-  --color-cream-300: #ece3d3;
-  --color-cream-400: #dfd0b8;
-  --color-cream-500: #cfba9a;
-  --color-cream-600: #bea07c;
-  --color-cream-700: #a98864;
-  --color-cream-800: #8a6f53;
-  --color-cream-900: #725c46;
-  --color-cream-950: #3d3024;
+  /* Cream - Sandstone warmth
+     Not white, not beige - the warm breath of aged stone */
+  --color-cream-50: #fefdfb;
+  --color-cream-100: #fcf9f4;
+  --color-cream-200: #f8f2e8;
+  --color-cream-300: #f0e6d6;
+  --color-cream-400: #e5d5bc;
+  --color-cream-500: #d6c19e;
+  --color-cream-600: #c4a87d;
+  --color-cream-700: #ad8e62;
+  --color-cream-800: #8e7452;
+  --color-cream-900: #756145;
+  --color-cream-950: #3e3224;
 
-  /* Charcoal - Text, headings */
-  --color-charcoal-50: #f6f6f6;
-  --color-charcoal-100: #e7e7e7;
-  --color-charcoal-200: #d1d1d1;
-  --color-charcoal-300: #b0b0b0;
-  --color-charcoal-400: #888888;
-  --color-charcoal-500: #6d6d6d;
-  --color-charcoal-600: #5d5d5d;
-  --color-charcoal-700: #4f4f4f;
-  --color-charcoal-800: #454545;
-  --color-charcoal-900: #3d3d3d;
-  --color-charcoal-950: #1a1a1a;
+  /* Charcoal - Night sky over the outback
+     Deep, but warm. Never cold black. */
+  --color-charcoal-50: #f7f7f7;
+  --color-charcoal-100: #e8e8e7;
+  --color-charcoal-200: #d4d4d2;
+  --color-charcoal-300: #b5b4b1;
+  --color-charcoal-400: #8f8d89;
+  --color-charcoal-500: #74726e;
+  --color-charcoal-600: #625f5c;
+  --color-charcoal-700: #524f4d;
+  --color-charcoal-800: #474543;
+  --color-charcoal-900: #3e3c3a;
+  --color-charcoal-950: #1c1b1a;
 
   /* ---------------------------------------------------------------
-     TYPOGRAPHY
-     DM Serif Display for headlines, DM Sans for body
-     --------------------------------------------------------------- */
-  --font-display: "DM Serif Display", Georgia, serif;
-  --font-sans: "DM Sans", system-ui, sans-serif;
+     TYPOGRAPHY SYSTEM
 
-  /* Font sizes with line heights */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-6xl: 3.75rem;
-  --text-7xl: 4.5rem;
+     Typography is not decoration - it's communication architecture.
 
-  /* ---------------------------------------------------------------
-     SPACING & SIZING
+     DM Serif Display: For moments of presence. Headlines that
+     stop you, that carry weight. The serif speaks to establishment,
+     to trust, to institutions that matter.
+
+     DM Sans: For clarity and warmth. Body copy that's easy to read,
+     professional but not cold. The slight geometric quality keeps
+     it modern.
+
+     Every size, line-height, and letter-spacing is calculated for
+     optical harmony - not mathematical consistency.
      --------------------------------------------------------------- */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-  --radius-full: 9999px;
+
+  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* ---------------------------------------------------------------
-     SHADOWS
-     Subtle, elegant shadows
+     SPACING SYSTEM - Based on 4px grid with golden ratio influence
+
+     Spacing isn't just "room between things". It's the silence
+     between notes that makes music. These values create rhythm.
      --------------------------------------------------------------- */
-  --shadow-subtle: 0 1px 2px 0 rgb(0 0 0 / 0.03);
-  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
-  --shadow-elevated: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
-  --shadow-prominent: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+  --space-px: 1px;
+  --space-0-5: 0.125rem;   /* 2px */
+  --space-1: 0.25rem;      /* 4px */
+  --space-1-5: 0.375rem;   /* 6px */
+  --space-2: 0.5rem;       /* 8px */
+  --space-2-5: 0.625rem;   /* 10px */
+  --space-3: 0.75rem;      /* 12px */
+  --space-3-5: 0.875rem;   /* 14px */
+  --space-4: 1rem;         /* 16px */
+  --space-5: 1.25rem;      /* 20px */
+  --space-6: 1.5rem;       /* 24px */
+  --space-7: 1.75rem;      /* 28px */
+  --space-8: 2rem;         /* 32px */
+  --space-9: 2.25rem;      /* 36px */
+  --space-10: 2.5rem;      /* 40px */
+  --space-11: 2.75rem;     /* 44px */
+  --space-12: 3rem;        /* 48px */
+  --space-14: 3.5rem;      /* 56px */
+  --space-16: 4rem;        /* 64px */
+  --space-20: 5rem;        /* 80px */
+  --space-24: 6rem;        /* 96px */
+  --space-28: 7rem;        /* 112px */
+  --space-32: 8rem;        /* 128px */
+  --space-36: 9rem;        /* 144px */
+  --space-40: 10rem;       /* 160px */
+  --space-44: 11rem;       /* 176px */
+  --space-48: 12rem;       /* 192px */
+  --space-52: 13rem;       /* 208px */
+  --space-56: 14rem;       /* 224px */
+  --space-60: 15rem;       /* 240px */
+  --space-64: 16rem;       /* 256px */
 
   /* ---------------------------------------------------------------
-     ANIMATIONS
-     Smooth, professional transitions
+     BORDER RADIUS - Softness that matches natural forms
+
+     Nothing in nature is perfectly square. These radii create
+     forms that feel organic without being childish.
      --------------------------------------------------------------- */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 400ms;
+  --radius-none: 0;
+  --radius-sm: 0.25rem;    /* 4px - subtle softening */
+  --radius-md: 0.5rem;     /* 8px - comfortable curves */
+  --radius-lg: 0.75rem;    /* 12px - pronounced but professional */
+  --radius-xl: 1rem;       /* 16px - soft containers */
+  --radius-2xl: 1.25rem;   /* 20px - welcoming surfaces */
+  --radius-3xl: 1.5rem;    /* 24px - prominent features */
+  --radius-4xl: 2rem;      /* 32px - hero elements */
+  --radius-full: 9999px;   /* Pills and circles */
+
+  /* ---------------------------------------------------------------
+     SHADOWS - Light and form
+
+     Shadows aren't decoration. They create hierarchy, depth, and
+     the feeling that elements exist in real space. These shadows
+     are warm-tinted to match our palette.
+     --------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px 0 rgb(28 27 26 / 0.04);
+  --shadow-sm: 0 1px 3px 0 rgb(28 27 26 / 0.06), 0 1px 2px -1px rgb(28 27 26 / 0.06);
+  --shadow-md: 0 4px 6px -1px rgb(28 27 26 / 0.06), 0 2px 4px -2px rgb(28 27 26 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(28 27 26 / 0.07), 0 4px 6px -4px rgb(28 27 26 / 0.07);
+  --shadow-xl: 0 20px 25px -5px rgb(28 27 26 / 0.08), 0 8px 10px -6px rgb(28 27 26 / 0.08);
+  --shadow-2xl: 0 25px 50px -12px rgb(28 27 26 / 0.2);
+  --shadow-inner: inset 0 2px 4px 0 rgb(28 27 26 / 0.04);
+
+  /* Coloured shadows for emphasis - subtle ochre glow */
+  --shadow-ochre-sm: 0 1px 3px 0 rgb(196 90 50 / 0.12), 0 1px 2px -1px rgb(196 90 50 / 0.12);
+  --shadow-ochre-md: 0 4px 6px -1px rgb(196 90 50 / 0.15), 0 2px 4px -2px rgb(196 90 50 / 0.15);
+  --shadow-ochre-lg: 0 10px 15px -3px rgb(196 90 50 / 0.18), 0 4px 6px -4px rgb(196 90 50 / 0.18);
+
+  /* ---------------------------------------------------------------
+     ANIMATION TIMING - Movement that feels natural
+
+     Good animation is invisible. It should feel like the interface
+     is breathing, not performing. These curves are tuned to feel
+     organic and grounded - like the sway of desert grass.
+     --------------------------------------------------------------- */
+
+  /* Durations - unhurried but not slow */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+
+  /* Easing curves - each with a specific character */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Custom curves for specific interactions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);        /* Satisfying snap */
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);   /* Playful overshoot */
+  --ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.1); /* Natural bounce */
+  --ease-gentle: cubic-bezier(0.25, 0.1, 0.25, 1);      /* Soft, dignified */
+
+  /* ---------------------------------------------------------------
+     Z-INDEX SCALE - Layering with intention
+     --------------------------------------------------------------- */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
+  --z-toast: 80;
+  --z-maximum: 9999;
 }
 
-/* ---------------------------------------------------------------
+/* =================================================================
    BASE STYLES
-   --------------------------------------------------------------- */
+
+   The foundation upon which everything is built. These defaults
+   should make the page feel "right" before any components load.
+   ================================================================= */
 
 :root {
-  --background: var(--color-cream-50);
-  --foreground: var(--color-charcoal-950);
+  /* Semantic colour assignments */
+  --color-background: var(--color-cream-50);
+  --color-foreground: var(--color-charcoal-950);
+  --color-muted: var(--color-charcoal-500);
+  --color-muted-foreground: var(--color-charcoal-600);
+  --color-border: var(--color-cream-300);
+  --color-ring: var(--color-ochre-500);
+  --color-primary: var(--color-ochre-500);
+  --color-primary-foreground: white;
+
+  /* Typography rhythm - 4px baseline grid */
+  --baseline: 4px;
+
+  /* Measure - optimal line length for readability */
+  --measure-narrow: 45ch;
+  --measure: 65ch;
+  --measure-wide: 85ch;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Headlines use display font */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  color: var(--color-charcoal-950);
-  letter-spacing: -0.01em;
-}
-
-/* Focus styles for accessibility */
-:focus-visible {
-  outline: 2px solid var(--color-ochre-500);
-  outline-offset: 2px;
-}
-
-/* Selection color */
-::selection {
-  background: var(--color-ochre-200);
-  color: var(--color-charcoal-950);
-}
-
-/* Smooth scrolling with reduced motion respect */
+/* Smooth scrolling, respecting user preferences */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* Skip link for accessibility */
+/* Base body styles */
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.625; /* 26px on 16px base - optimal for body text */
+  font-weight: 400;
+  letter-spacing: -0.011em; /* Subtle tightening for DM Sans */
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* =================================================================
+   TYPOGRAPHY SCALE
+
+   A hand-tuned typographic system. Each size has been optically
+   adjusted - letter-spacing loosens as size decreases (optical
+   compensation), line-heights are set for perfect baselines.
+   ================================================================= */
+
+/* Display - Hero headlines that command attention */
+.text-display-2xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw + 1rem, 5rem);      /* 48-80px */
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 400;
+}
+
+.text-display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw + 1rem, 4rem);   /* 40-64px */
+  line-height: 1.08;
+  letter-spacing: -0.032em;
+  font-weight: 400;
+}
+
+.text-display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw + 0.75rem, 3rem);  /* 32-48px */
+  line-height: 1.12;
+  letter-spacing: -0.028em;
+  font-weight: 400;
+}
+
+/* Headings - Section and component titles */
+.text-heading-xl {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.5vw + 0.5rem, 2.25rem); /* 28-36px */
+  line-height: 1.2;
+  letter-spacing: -0.024em;
+  font-weight: 400;
+}
+
+.text-heading-lg {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2vw + 0.25rem, 1.875rem); /* 24-30px */
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+.text-heading-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.5vw + 0.25rem, 1.5rem); /* 20-24px */
+  line-height: 1.3;
+  letter-spacing: -0.017em;
+  font-weight: 400;
+}
+
+.text-heading-sm {
+  font-family: var(--font-display);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.35;
+  letter-spacing: -0.014em;
+  font-weight: 400;
+}
+
+/* Body - Reading text */
+.text-body-xl {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;  /* 20px */
+  line-height: 1.6;
+  letter-spacing: -0.014em;
+  font-weight: 400;
+}
+
+.text-body-lg {
+  font-family: var(--font-sans);
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.625;
+  letter-spacing: -0.012em;
+  font-weight: 400;
+}
+
+.text-body-md {
+  font-family: var(--font-sans);
+  font-size: 1rem;     /* 16px */
+  line-height: 1.625;
+  letter-spacing: -0.011em;
+  font-weight: 400;
+}
+
+.text-body-sm {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.6;
+  letter-spacing: -0.009em;
+  font-weight: 400;
+}
+
+/* Small/UI text */
+.text-small {
+  font-family: var(--font-sans);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+  letter-spacing: -0.006em;
+  font-weight: 400;
+}
+
+.text-xs {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.45;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.text-tiny {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;  /* 12px */
+  line-height: 1.4;
+  letter-spacing: 0.01em; /* Slightly loose for legibility at small size */
+  font-weight: 400;
+}
+
+/* Label/UI text - slightly heavier for interface elements */
+.text-label-lg {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.4;
+  letter-spacing: -0.006em;
+  font-weight: 500;
+}
+
+.text-label-md {
+  font-family: var(--font-sans);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.4;
+  letter-spacing: -0.003em;
+  font-weight: 500;
+}
+
+.text-label-sm {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+/* Overline/Kicker - Small caps style for category labels */
+.text-overline {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;  /* 12px */
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* =================================================================
+   HEADING DEFAULTS
+
+   Semantic heading elements get sensible defaults, but should
+   usually be overridden with specific text-* classes for
+   exact control.
+   ================================================================= */
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw + 0.5rem, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.028em;
+  font-weight: 400;
+  color: var(--color-charcoal-950);
+  margin: 0;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw + 0.25rem, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.024em;
+  font-weight: 400;
+  color: var(--color-charcoal-950);
+  margin: 0;
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.5vw + 0.25rem, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.017em;
+  font-weight: 400;
+  color: var(--color-charcoal-950);
+  margin: 0;
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  line-height: 1.35;
+  letter-spacing: -0.014em;
+  font-weight: 400;
+  color: var(--color-charcoal-950);
+  margin: 0;
+}
+
+h5, .h5 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.4;
+  letter-spacing: -0.011em;
+  font-weight: 600;
+  color: var(--color-charcoal-950);
+  margin: 0;
+}
+
+h6, .h6 {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  letter-spacing: -0.003em;
+  font-weight: 600;
+  color: var(--color-charcoal-950);
+  margin: 0;
+}
+
+/* =================================================================
+   PROSE - Long-form content with perfect rhythm
+   ================================================================= */
+
+.prose {
+  max-width: var(--measure);
+  color: var(--color-charcoal-700);
+}
+
+.prose p {
+  margin-bottom: 1.5em;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--color-charcoal-900);
+}
+
+.prose a {
+  color: var(--color-ochre-600);
+  text-decoration: underline;
+  text-decoration-color: var(--color-ochre-300);
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color var(--duration-150) var(--ease-out);
+}
+
+.prose a:hover {
+  text-decoration-color: var(--color-ochre-600);
+}
+
+/* =================================================================
+   INTERACTIVE STATES
+   ================================================================= */
+
+/* Focus ring - accessible and beautiful */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-ochre-500);
+}
+
+/* Selection - on-brand highlighting */
+::selection {
+  background-color: var(--color-ochre-200);
+  color: var(--color-charcoal-950);
+}
+
+/* =================================================================
+   ACCESSIBILITY
+   ================================================================= */
+
+/* Skip link for keyboard navigation */
 .skip-link {
   position: absolute;
-  top: -40px;
-  left: 0;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--color-ochre-500);
   color: white;
-  padding: 8px 16px;
-  z-index: 100;
-  transition: top var(--duration-fast) var(--ease-out);
+  padding: var(--space-3) var(--space-6);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  font-weight: 500;
+  z-index: var(--z-maximum);
+  transition: top var(--duration-200) var(--ease-out-expo);
 }
 
 .skip-link:focus {
   top: 0;
 }
 
-/* ---------------------------------------------------------------
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* =================================================================
    UTILITY CLASSES
-   --------------------------------------------------------------- */
+   ================================================================= */
 
-/* Container with responsive padding */
-.container-dps {
-  width: 100%;
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+/* Text colours */
+.text-muted {
+  color: var(--color-charcoal-500);
 }
 
-@media (min-width: 640px) {
-  .container-dps {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+.text-subtle {
+  color: var(--color-charcoal-600);
 }
 
-@media (min-width: 1024px) {
-  .container-dps {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-/* Text gradient for special headings */
+/* Text gradient for emphasis */
 .text-gradient-ochre {
-  background: linear-gradient(135deg, var(--color-ochre-500) 0%, var(--color-terracotta-500) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-ochre-500) 0%,
+    var(--color-ochre-600) 50%,
+    var(--color-terracotta-500) 100%
+  );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Section backgrounds */
-.bg-section-cream {
-  background-color: var(--color-cream-100);
+/* Text balance for headlines */
+.text-balance {
+  text-wrap: balance;
 }
 
-.bg-section-white {
-  background-color: white;
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Measure constraints */
+.max-w-prose {
+  max-width: var(--measure);
+}
+
+.max-w-prose-narrow {
+  max-width: var(--measure-narrow);
+}
+
+.max-w-prose-wide {
+  max-width: var(--measure-wide);
+}
+
+/* =================================================================
+   REDUCED MOTION
+
+   Respect user preferences. Motion can cause discomfort or
+   accessibility issues for some users.
+   ================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =================================================================
+   PRINT STYLES
+
+   Because sometimes people print websites, and it should look good.
+   ================================================================= */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: black;
+    page-break-after: avoid;
+  }
+
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  a {
+    text-decoration: underline;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
 }

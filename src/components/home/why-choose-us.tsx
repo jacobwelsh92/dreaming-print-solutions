@@ -1,115 +1,191 @@
 "use client";
 
+/**
+ * =================================================================
+ * WHY CHOOSE US
+ * =================================================================
+ *
+ * This section establishes credibility and differentiation.
+ * The Indigenous ownership isn't just a checkbox - it's a
+ * genuine advantage that benefits buyers and community.
+ *
+ * Key messaging:
+ * - IPP advantages are concrete and actionable
+ * - Enterprise capability is established
+ * - Values alignment matters to modern procurement
+ */
+
 import { motion } from "framer-motion";
-import { CheckCircle, Shield, Users, Landmark } from "lucide-react";
+import { CheckCircle2, Shield, Users, Landmark, Building2, Award } from "lucide-react";
 import {
   Section,
   SectionHeader,
   SectionTitle,
   SectionDescription,
+  SectionEyebrow,
 } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
-import { ConcentricDotPattern } from "@/components/ui/dot-pattern";
-import { fadeInUp } from "@/lib/animations";
+import { ScatterPattern, FlowPattern } from "@/components/ui/dot-pattern";
+import { fadeInUp, staggerContainer, staggerContainerFast } from "@/lib/animations";
 
-const reasons = [
+const advantages = [
   {
     icon: Landmark,
-    title: "Indigenous Procurement Policy",
+    title: "Streamlined Government Procurement",
     description:
-      "As a registered IPP supplier, government buyers can directly approach us for contracts valued $80,000-$200,000. Streamlined procurement that meets policy requirements.",
+      "IPP-registered suppliers enable direct approaches for contracts $80K–$200K. Skip lengthy tender processes while meeting Indigenous procurement targets.",
+    highlight: "$80K–$200K",
+    highlightLabel: "Direct approach threshold",
   },
   {
     icon: Shield,
-    title: "Supply Nation Certified",
+    title: "Verified Indigenous Ownership",
     description:
-      "Our Supply Nation certification provides assurance of genuine Indigenous ownership. Verified credentials you can trust for reconciliation goals.",
+      "Supply Nation certification provides independent verification of genuine Indigenous ownership. Confidence for your reconciliation commitments.",
+    highlight: "100%",
+    highlightLabel: "Indigenous owned",
   },
   {
-    icon: Users,
-    title: "Enterprise Expertise",
+    icon: Building2,
+    title: "Enterprise-Grade Capability",
     description:
-      "Deep experience in government and corporate environments. We understand compliance requirements, security needs, and enterprise workflows.",
+      "Deep understanding of government compliance, security requirements, and enterprise workflows. We speak your language and understand your constraints.",
+    highlight: "Enterprise",
+    highlightLabel: "Ready from day one",
   },
   {
-    icon: CheckCircle,
+    icon: Award,
     title: "HP Partner Excellence",
     description:
-      "Authorised HP partner with direct access to enterprise products, technical support, and competitive pricing. Industry-leading technology backed by reliable support.",
+      "Authorised HP partner status means direct access to the full enterprise product line, technical expertise, and competitive pricing.",
+    highlight: "Authorised",
+    highlightLabel: "HP Partner",
   },
-];
+] as const;
+
+const stats = [
+  { value: "$12.9B+", label: "IPP contracts awarded since 2015" },
+  { value: "83,500+", label: "Indigenous contracts nationally" },
+  { value: "3%", label: "Government procurement target" },
+  { value: "100%", label: "Indigenous ownership" },
+] as const;
 
 export function WhyChooseUs() {
   return (
-    <Section background="charcoal" className="relative overflow-hidden">
-      {/* Decorative pattern */}
-      <ConcentricDotPattern variant="ochre" opacity={0.05} />
+    <Section background="charcoal" size="xl" className="relative overflow-hidden">
+      {/* Background patterns - subtle, not distracting */}
+      <ScatterPattern
+        variant="ochre"
+        opacity={0.03}
+        density={3}
+        seed={99}
+        animated={false}
+      />
+      <div className="absolute inset-y-0 left-0 w-1/2">
+        <FlowPattern
+          variant="terracotta"
+          opacity={0.02}
+          direction="diagonal"
+          density="sparse"
+          animated={false}
+        />
+      </div>
 
       <Container className="relative z-10">
         <SectionHeader>
+          <SectionEyebrow className="text-ochre-400">
+            Why Partner With Us
+          </SectionEyebrow>
           <SectionTitle className="text-white">
-            Why Partner With Dreaming Print Solutions
+            Indigenous Excellence Meets Enterprise Capability
           </SectionTitle>
           <SectionDescription className="text-charcoal-300">
-            The intersection of Indigenous business excellence, government
-            procurement advantages, and enterprise-grade technology.
+            The strategic advantage of working with Australia&apos;s first
+            Indigenous-owned enterprise printer dealer.
           </SectionDescription>
         </SectionHeader>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {reasons.map((reason, index) => (
+        {/* Advantages grid */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-8 lg:gap-10"
+          variants={staggerContainer}
+        >
+          {advantages.map((advantage) => (
             <motion.div
-              key={reason.title}
-              className="flex gap-4"
+              key={advantage.title}
+              className="group relative"
               variants={fadeInUp}
-              custom={index}
             >
-              <div className="shrink-0">
-                <div className="h-12 w-12 rounded-xl bg-ochre-500/20 flex items-center justify-center">
-                  <reason.icon className="h-6 w-6 text-ochre-400" />
+              {/* Card with subtle border */}
+              <div className="relative p-6 lg:p-8 rounded-2xl bg-charcoal-900/50 border border-charcoal-800 hover:border-charcoal-700 transition-colors duration-300">
+                {/* Icon */}
+                <div className="h-14 w-14 rounded-2xl bg-ochre-500/15 flex items-center justify-center mb-6 group-hover:bg-ochre-500/20 transition-colors duration-300">
+                  <advantage.icon
+                    className="h-7 w-7 text-ochre-400"
+                    strokeWidth={1.5}
+                  />
                 </div>
-              </div>
-              <div>
-                <h3 className="font-display text-lg text-white mb-2">
-                  {reason.title}
+
+                {/* Content */}
+                <h3 className="font-display text-xl text-white mb-3">
+                  {advantage.title}
                 </h3>
-                <p className="text-charcoal-300 text-sm leading-relaxed">
-                  {reason.description}
+                <p className="text-charcoal-300 text-base leading-relaxed mb-6">
+                  {advantage.description}
                 </p>
+
+                {/* Highlight stat */}
+                <div className="pt-4 border-t border-charcoal-800">
+                  <span className="text-ochre-400 font-display text-2xl">
+                    {advantage.highlight}
+                  </span>
+                  <span className="ml-3 text-charcoal-400 text-sm">
+                    {advantage.highlightLabel}
+                  </span>
+                </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Stats */}
+        {/* Stats bar */}
         <motion.div
-          className="mt-16 pt-12 border-t border-charcoal-800 grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="mt-20"
           variants={fadeInUp}
         >
-          <div className="text-center">
-            <p className="font-display text-4xl text-ochre-400 mb-1">$12.9B+</p>
-            <p className="text-sm text-charcoal-400">
-              IPP Contracts Since 2015
-            </p>
+          <div className="p-8 lg:p-10 rounded-2xl bg-gradient-to-r from-ochre-600/20 via-ochre-500/10 to-transparent border border-ochre-500/20">
+            <motion.div
+              className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12"
+              variants={staggerContainerFast}
+            >
+              {stats.map((stat) => (
+                <motion.div
+                  key={stat.label}
+                  className="text-center lg:text-left"
+                  variants={fadeInUp}
+                >
+                  <p className="font-display text-3xl lg:text-4xl text-white mb-2 tabular-nums">
+                    {stat.value}
+                  </p>
+                  <p className="text-sm text-charcoal-300 leading-snug">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-          <div className="text-center">
-            <p className="font-display text-4xl text-ochre-400 mb-1">83,500+</p>
-            <p className="text-sm text-charcoal-400">
-              Indigenous Contracts Awarded
-            </p>
-          </div>
-          <div className="text-center">
-            <p className="font-display text-4xl text-ochre-400 mb-1">5</p>
-            <p className="text-sm text-charcoal-400">
-              HP Enterprise Models
-            </p>
-          </div>
-          <div className="text-center">
-            <p className="font-display text-4xl text-ochre-400 mb-1">100%</p>
-            <p className="text-sm text-charcoal-400">
-              Indigenous Owned
-            </p>
-          </div>
+        </motion.div>
+
+        {/* Government callout */}
+        <motion.div
+          className="mt-12 text-center"
+          variants={fadeInUp}
+        >
+          <p className="text-charcoal-400 text-sm max-w-2xl mx-auto">
+            The Commonwealth Indigenous Procurement Policy targets 3% of contract
+            value going to Indigenous businesses. Partner with Dreaming Print
+            Solutions to achieve your targets while accessing premium enterprise print.
+          </p>
         </motion.div>
       </Container>
     </Section>
