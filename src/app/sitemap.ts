@@ -18,6 +18,7 @@
 
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site-config";
+import { blogPosts } from "@/data/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
@@ -54,6 +55,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    // Content pages
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/resources`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
     // Legal pages (lower priority but required)
     {
       url: `${baseUrl}/privacy-policy`,
@@ -69,26 +89,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Future: Add dynamic pages when they exist
-  // const blogPosts = await getBlogPosts();
-  // const blogPages = blogPosts.map((post) => ({
-  //   url: `${baseUrl}/blog/${post.slug}`,
-  //   lastModified: new Date(post.updatedAt || post.publishedAt),
-  //   changeFrequency: "monthly" as const,
-  //   priority: 0.7,
-  // }));
-
-  // const caseStudies = await getCaseStudies();
-  // const caseStudyPages = caseStudies.map((study) => ({
-  //   url: `${baseUrl}/case-studies/${study.slug}`,
-  //   lastModified: new Date(study.publishedDate),
-  //   changeFrequency: "monthly" as const,
-  //   priority: 0.7,
-  // }));
+  // Blog post pages
+  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt || post.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   return [
     ...staticPages,
-    // ...blogPages,
-    // ...caseStudyPages,
+    ...blogPages,
   ];
 }

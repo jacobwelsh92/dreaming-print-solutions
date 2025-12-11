@@ -54,6 +54,9 @@ export const footerNavItems: NavItem[] = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Products", href: "/products" },
+  { label: "Blog", href: "/blog" },
+  { label: "Resources", href: "/resources" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 

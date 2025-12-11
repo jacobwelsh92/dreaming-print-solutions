@@ -3,6 +3,7 @@ import {
   ServicesOverview,
   ProductsPreview,
   WhyChooseUs,
+  FAQPreview,
   CTASection,
 } from "@/components/home";
 
@@ -13,6 +14,7 @@ export default function HomePage() {
       <ServicesOverview />
       <ProductsPreview />
       <WhyChooseUs />
+      <FAQPreview />
       <CTASection />
     </>
   );
