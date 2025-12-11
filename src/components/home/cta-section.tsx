@@ -68,8 +68,8 @@ export function CTASection() {
             className="text-body-lg md:text-body-xl text-charcoal-700 mb-10 max-w-2xl mx-auto"
             variants={fadeInUp}
           >
-            Whether you need a single device or a complete fleet, we&apos;ll
-            help you find the right solution for your organisation.
+            Whether you&apos;re an Indigenous business, government department,
+            or corporate organisation — we&apos;re here to help with your printing needs.
           </motion.p>
 
           {/* Primary CTAs */}
@@ -124,12 +124,12 @@ export function CTASection() {
           >
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-charcoal-600">
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-sage-500" />
-                IPP Registered
+                <span className="w-2 h-2 rounded-full bg-ochre-600" />
+                100% Indigenous Owned
               </span>
               <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-ochre-600" />
-                HP Authorised
+                <span className="w-2 h-2 rounded-full bg-sage-500" />
+                IPP Registered
               </span>
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-terracotta-500" />

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { Award, Users, Heart, Target, Linkedin } from "lucide-react";
+import Link from "next/link";
+import { Award, Users, Heart, Target, Linkedin, ArrowRight, Building2, Handshake } from "lucide-react";
 import {
   Section,
   SectionHeader,
@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { DotPattern, ConcentricDotPattern } from "@/components/ui/dot-pattern";
 import { AboutPageSchemas } from "@/components/seo/structured-data";
 import { siteConfig } from "@/data/site-config";
@@ -18,30 +19,30 @@ const teamMembers = [
   {
     name: "Zac O'Brien",
     role: "Co-Founder & Director",
-    image: "/images/team/zac-obrien.jpg", // Add photo here
+    image: "/images/team/zac-obrien.jpg",
     bio: "With extensive experience in enterprise sales and a passion for Indigenous business development, Zac leads client relationships and strategic growth initiatives.",
-    linkedin: "#", // Add LinkedIn URL when available
+    linkedin: "#",
   },
   {
     name: "Ben Long",
     role: "Co-Founder & Director",
-    image: "/images/team/ben-long.jpg", // Add photo here
+    image: "/images/team/ben-long.jpg",
     bio: "Ben brings deep technical expertise in print infrastructure and managed services, ensuring clients receive best-in-class solutions and ongoing support.",
-    linkedin: "#", // Add LinkedIn URL when available
+    linkedin: "#",
   },
 ];
 
 export const metadata: Metadata = {
-  title: "About Us | Australia's First Indigenous Printer Dealer",
+  title: "About Us | Proudly Indigenous Owned & Operated",
   description:
-    "Meet Australia's first indigenous-owned enterprise printer dealer. Founded by Zac O'Brien & Ben Long. Supply Nation certified. Serving government since 2024.",
+    "Dreaming Print Solutions is a proudly owned and operated indigenous company delivering high quality copiers, printers, and MFDs. Affordable printing solutions Australia wide.",
   alternates: {
     canonical: `${siteConfig.url}/about`,
   },
   openGraph: {
-    title: "About Dreaming Print Solutions | Indigenous-Owned Enterprise",
+    title: "About Dreaming Print Solutions | Proudly Indigenous Owned",
     description:
-      "Australia's first indigenous-owned enterprise printer dealer. 100% Indigenous owned. Supply Nation certified. IPP registered.",
+      "A proudly owned and operated indigenous company delivering high quality printing solutions Australia wide. Supply Nation certified.",
     url: `${siteConfig.url}/about`,
   },
 };
@@ -60,7 +61,7 @@ const values = [
       "We deliver enterprise-grade solutions with the highest standards of quality, reliability, and customer service.",
   },
   {
-    icon: Users,
+    icon: Handshake,
     title: "Partnership",
     description:
       "We build lasting relationships with our clients, understanding their needs and growing together.",
@@ -71,6 +72,20 @@ const values = [
     description:
       "We operate with transparency and honesty, ensuring our clients can trust us completely.",
   },
+];
+
+// What we supply - full capabilities
+const capabilities = [
+  "Copiers, Printers & MFDs",
+  "A4 and A3 Multifunction Printers",
+  "Production Printers",
+  "Secure Printing Solutions",
+  "Workflow Solutions",
+  "Cost Allocation & Recovery Software",
+  "Colour Management Systems",
+  "Document Management Automation",
+  "Cloud-Based Technology Solutions",
+  "Business Solution Integration",
 ];
 
 export default function AboutPage() {
@@ -85,42 +100,37 @@ export default function AboutPage() {
         <Container className="relative z-10">
           <SectionHeader centered={false} className="max-w-3xl">
             <SectionTitle as="h1">
-              Proudly Indigenous-Owned. Truly Enterprise-Ready.
+              Proudly Indigenous Owned & Operated
             </SectionTitle>
             <SectionDescription>
-              Dreaming Print Solutions represents a pioneering step in Australian
-              business — the nation&apos;s first indigenous-owned enterprise printer
-              and MFD hardware dealer.
+              Delivering high quality, affordable printing solutions Australia wide.
             </SectionDescription>
           </SectionHeader>
         </Container>
       </Section>
 
-      {/* Our Story */}
+      {/* About Us - Main Copy */}
       <Section background="white">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <h2 className="font-display text-3xl md:text-4xl text-charcoal-950 mb-6">
-                Our Story
+                About Us
               </h2>
               <div className="prose prose-lg text-charcoal-600">
                 <p>
-                  Founded by Zac O&apos;Brien and Ben Long, Dreaming Print Solutions
-                  was born from a vision to create meaningful opportunities for
-                  Indigenous Australians in the enterprise technology space.
+                  Here at Dreaming Print Solutions, we are a <strong>proudly owned and
+                  operated indigenous company</strong> delivering high quality, Copiers,
+                  Printers, and Multi-Functional Devices (MFDs), affordable printing
+                  solutions Australia wide.
                 </p>
                 <p>
-                  We identified a unique gap in the market — while Indigenous
-                  businesses thrive in print services like design and brochures,
-                  no Indigenous-owned company was providing enterprise printer
-                  hardware to government and corporate Australia.
-                </p>
-                <p>
-                  Through the Indigenous Procurement Policy (IPP), we&apos;re now
-                  positioned to serve Commonwealth government buyers who are
-                  required to approach Indigenous businesses first for contracts
-                  in our range.
+                  We supply HP machines suited to your volume and workflow, including
+                  A4 and A3 multifunction printers and production printers along with
+                  Secure Printing Solutions, Workflow Solutions, Cost Allocation, Cost
+                  Recovery Software, Colour Management Systems, Document Management
+                  Automation, Cloud-Based Technology Solutions, and full Business
+                  Solution Integration.
                 </p>
               </div>
             </div>
@@ -129,7 +139,7 @@ export default function AboutPage() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <p className="font-display text-6xl text-ochre-500 mb-2">100%</p>
-                  <p className="text-charcoal-600">Indigenous Owned</p>
+                  <p className="text-charcoal-600 font-medium">Indigenous Owned</p>
                 </div>
               </div>
             </div>
@@ -137,8 +147,72 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Values */}
+      {/* Supporting Indigenous Business */}
+      <Section background="charcoal" className="relative overflow-hidden">
+        <ConcentricDotPattern variant="ochre" opacity={0.05} />
+        <Container className="relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-12 w-12 rounded-xl bg-ochre-500/20 flex items-center justify-center">
+                <Building2 className="h-6 w-6 text-ochre-400" />
+              </div>
+              <h2 className="font-display text-3xl md:text-4xl text-white">
+                Supporting Indigenous Business
+              </h2>
+            </div>
+            <p className="text-xl text-charcoal-300 mb-8 leading-relaxed">
+              We believe there is an untapped market in the print industry for
+              connecting with and supporting other indigenous owned and operated
+              businesses across Australia.
+            </p>
+            <p className="text-lg text-charcoal-300 mb-8">
+              While we serve all businesses Australia-wide, we are particularly
+              passionate about supporting fellow Indigenous enterprises. When you
+              choose Dreaming Print Solutions, you&apos;re not just getting premium
+              printing equipment — you&apos;re supporting Indigenous economic empowerment
+              and business growth.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button asChild className="bg-ochre-500 hover:bg-ochre-600">
+                <Link href="/contact" className="inline-flex items-center gap-2">
+                  Get in Touch
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="border-charcoal-600 text-white hover:bg-charcoal-800">
+                <Link href="/products">View Our Products</Link>
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* What We Supply */}
       <Section background="cream">
+        <Container>
+          <SectionHeader>
+            <SectionTitle>What We Supply</SectionTitle>
+            <SectionDescription>
+              Comprehensive printing solutions for businesses of all sizes.
+            </SectionDescription>
+          </SectionHeader>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {capabilities.map((capability) => (
+              <div
+                key={capability}
+                className="flex items-center gap-3 p-4 bg-white rounded-xl border border-cream-200"
+              >
+                <div className="h-2 w-2 rounded-full bg-ochre-500 shrink-0" />
+                <span className="text-charcoal-700">{capability}</span>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Values */}
+      <Section background="white">
         <Container>
           <SectionHeader>
             <SectionTitle>Our Values</SectionTitle>
@@ -167,24 +241,47 @@ export default function AboutPage() {
       </Section>
 
       {/* IPP Advantage */}
-      <Section background="charcoal" className="relative overflow-hidden">
-        <ConcentricDotPattern variant="ochre" opacity={0.05} />
-        <Container className="relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-3xl md:text-4xl text-white mb-6">
-              Indigenous Procurement Policy Advantage
-            </h2>
-            <p className="text-lg text-charcoal-300 mb-8">
-              Under the IPP, Commonwealth government buyers are legally required to
-              approach Indigenous businesses first for contracts valued between
-              $80,000 and $200,000 (GST inclusive), and for all work delivered in
-              remote areas regardless of value.
-            </p>
-            <p className="text-lg text-charcoal-300">
-              Since 2015, the IPP has generated over{" "}
-              <span className="text-ochre-400 font-semibold">$12.9 billion</span> in
-              contracts for Indigenous businesses across 83,500+ contracts.
-            </p>
+      <Section background="cream">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="font-display text-3xl md:text-4xl text-charcoal-950 mb-6">
+                Indigenous Procurement Policy
+              </h2>
+              <div className="prose prose-lg text-charcoal-600">
+                <p>
+                  Under the IPP, Commonwealth government buyers are required to
+                  approach Indigenous businesses first for contracts valued between
+                  $80,000 and $200,000 (GST inclusive), and for all work delivered in
+                  remote areas regardless of value.
+                </p>
+                <p>
+                  Since 2015, the IPP has generated over{" "}
+                  <strong className="text-ochre-600">$12.9 billion</strong> in
+                  contracts for Indigenous businesses across 83,500+ contracts.
+                </p>
+                <p>
+                  As a Supply Nation certified business, we are verified and ready
+                  to serve government departments seeking to meet their IPP targets.
+                </p>
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl p-8 border border-cream-200">
+              <div className="space-y-6">
+                <div className="text-center pb-6 border-b border-cream-200">
+                  <p className="text-4xl font-display text-ochre-500 mb-1">$80K - $200K</p>
+                  <p className="text-charcoal-600">IPP Direct Sourcing Threshold</p>
+                </div>
+                <div className="text-center pb-6 border-b border-cream-200">
+                  <p className="text-4xl font-display text-ochre-500 mb-1">$12.9B+</p>
+                  <p className="text-charcoal-600">Contracted to Indigenous Business Since 2015</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-4xl font-display text-ochre-500 mb-1">83,500+</p>
+                  <p className="text-charcoal-600">Contracts Awarded</p>
+                </div>
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
@@ -205,13 +302,6 @@ export default function AboutPage() {
                 <CardContent className="p-0">
                   {/* Photo Container */}
                   <div className="relative aspect-[4/3] bg-gradient-to-br from-cream-100 to-cream-200">
-                    {/*
-                      To add photos:
-                      1. Add photo to /public/images/team/zac-obrien.jpg (or .png)
-                      2. Add photo to /public/images/team/ben-long.jpg (or .png)
-                      3. Recommended size: 800x600px or similar 4:3 ratio
-                      4. The Image component below will automatically show once files exist
-                    */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
                         <div className="h-20 w-20 mx-auto rounded-full bg-white/80 flex items-center justify-center mb-3">
@@ -220,14 +310,6 @@ export default function AboutPage() {
                         <p className="text-sm text-charcoal-500">Photo coming soon</p>
                       </div>
                     </div>
-                    {/* Uncomment when photos are added:
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                    />
-                    */}
                   </div>
 
                   {/* Info */}
@@ -258,6 +340,27 @@ export default function AboutPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* CTA */}
+      <Section background="charcoal">
+        <Container>
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="font-display text-3xl md:text-4xl text-white mb-4">
+              Ready to Get Started?
+            </h2>
+            <p className="text-lg text-charcoal-300 mb-8">
+              Whether you&apos;re an Indigenous business, government department, or
+              corporate organisation, we&apos;re here to help with your printing needs.
+            </p>
+            <Button asChild size="lg" className="bg-ochre-500 hover:bg-ochre-600">
+              <Link href="/contact" className="inline-flex items-center gap-2">
+                Contact Us Today
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </Container>
       </Section>

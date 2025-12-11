@@ -141,20 +141,29 @@ export function Hero() {
             className="text-body-lg md:text-body-xl text-charcoal-600 leading-relaxed max-w-2xl mb-10"
             variants={fadeInUp}
           >
-            We combine HP&apos;s leading enterprise technology with the values
-            of Indigenous business excellence. Premium managed print services
-            for government and corporate Australia.
+            A proudly owned and operated Indigenous company delivering high quality,
+            affordable printing solutions Australia wide. HP machines suited to your
+            volume and workflow — for Indigenous businesses, government, and corporate.
           </motion.p>
 
-          {/* IPP highlight - a key differentiator */}
+          {/* Indigenous Business highlight - key target market */}
           <motion.div
-            className="mb-10 p-4 md:p-5 rounded-xl bg-sage-50/80 border border-sage-200/50 max-w-lg"
+            className="mb-10 space-y-3"
             variants={fadeInUp}
           >
-            <p className="text-sm md:text-base text-sage-800">
-              <span className="font-semibold">Government buyers:</span> As an IPP-registered
-              supplier, we can be directly approached for contracts $80K–$200K.
-            </p>
+            <div className="p-4 md:p-5 rounded-xl bg-ochre-50/80 border border-ochre-200/50 max-w-lg">
+              <p className="text-sm md:text-base text-ochre-800">
+                <span className="font-semibold">Indigenous Businesses:</span> We believe there
+                is an untapped market for connecting with and supporting other Indigenous-owned
+                businesses across Australia.
+              </p>
+            </div>
+            <div className="p-4 md:p-5 rounded-xl bg-sage-50/80 border border-sage-200/50 max-w-lg">
+              <p className="text-sm md:text-base text-sage-800">
+                <span className="font-semibold">Government Buyers:</span> As an IPP-registered
+                supplier, we can be directly approached for contracts $80K–$200K.
+              </p>
+            </div>
           </motion.div>
 
           {/* CTAs - primary and secondary with clear hierarchy */}

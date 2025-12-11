@@ -30,20 +30,20 @@ import { fadeInUp, staggerContainer, staggerContainerFast } from "@/lib/animatio
 
 const advantages = [
   {
+    icon: Users,
+    title: "Supporting Indigenous Business",
+    description:
+      "We believe there is an untapped market in the print industry for connecting with and supporting other Indigenous-owned businesses. When you choose us, you support Indigenous economic empowerment.",
+    highlight: "100%",
+    highlightLabel: "Indigenous owned & operated",
+  },
+  {
     icon: Landmark,
     title: "Streamlined Government Procurement",
     description:
       "IPP-registered suppliers enable direct approaches for contracts $80K–$200K. Skip lengthy tender processes while meeting Indigenous procurement targets.",
     highlight: "$80K–$200K",
     highlightLabel: "Direct approach threshold",
-  },
-  {
-    icon: Shield,
-    title: "Verified Indigenous Ownership",
-    description:
-      "Supply Nation certification provides independent verification of genuine Indigenous ownership. Confidence for your reconciliation commitments.",
-    highlight: "100%",
-    highlightLabel: "Indigenous owned",
   },
   {
     icon: Building2,
@@ -176,15 +176,15 @@ export function WhyChooseUs() {
           </div>
         </motion.div>
 
-        {/* Government callout */}
+        {/* Callout for all target markets */}
         <motion.div
           className="mt-12 text-center"
           variants={fadeInUp}
         >
           <p className="text-charcoal-400 text-sm max-w-2xl mx-auto">
-            The Commonwealth Indigenous Procurement Policy targets 3% of contract
-            value going to Indigenous businesses. Partner with Dreaming Print
-            Solutions to achieve your targets while accessing premium enterprise print.
+            Whether you&apos;re an Indigenous business, government department meeting
+            IPP targets, or a corporate organisation — we deliver high quality,
+            affordable printing solutions tailored to your needs.
           </p>
         </motion.div>
       </Container>

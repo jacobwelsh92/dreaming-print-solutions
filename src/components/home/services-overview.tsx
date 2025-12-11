@@ -29,9 +29,9 @@ import { fadeInUp, staggerContainerFast } from "@/lib/animations";
 const services = [
   {
     icon: Printer,
-    title: "Enterprise Hardware",
+    title: "Business Printers & MFDs",
     description:
-      "Premium HP multifunction printers designed for Australian government and corporate environments. A3 and A4 colour devices from small teams to production print.",
+      "HP machines suited to your volume and workflow — A4 and A3 multifunction printers, production printers, and colour management systems. Enterprise-grade quality at competitive prices.",
     href: "/products",
     accent: "ochre" as const,
   },
@@ -39,16 +39,16 @@ const services = [
     icon: Settings,
     title: "Managed Print Services",
     description:
-      "Proactive supply monitoring, preventative maintenance, and responsive support. We keep your fleet running while you focus on your work.",
-    href: "/services",
+      "Complete print management including monitoring, maintenance, supplies, and support. Predictable costs with maximum uptime — we take care of everything so you can focus on your business.",
+    href: "/services#managed-print-services",
     accent: "sage" as const,
   },
   {
     icon: FileText,
-    title: "Document Workflows",
+    title: "Document Management",
     description:
-      "Streamline document capture, digital archiving, and secure information management. Transform paper processes into digital efficiency.",
-    href: "/services",
+      "Streamline document workflows with scanning, digital archiving, workflow automation, and secure document handling tailored to your business needs.",
+    href: "/services#document-management",
     accent: "terracotta" as const,
   },
 ] as const;

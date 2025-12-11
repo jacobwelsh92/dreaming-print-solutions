@@ -19,11 +19,11 @@ export const siteConfig = {
   // =================================================================
   name: "Dreaming Print Solutions",
   legalName: "Dreaming Print Solutions Pty Ltd",
-  tagline: "Enterprise Print. Indigenous Heart.",
+  tagline: "Proudly Indigenous. Enterprise Ready.",
   description:
-    "Australia's first indigenous-owned enterprise printer and MFD hardware dealer. HP enterprise solutions for government and corporate clients. Supply Nation certified. IPP registered supplier.",
+    "A proudly owned and operated indigenous company delivering high quality Copiers, Printers, and Multi-Functional Devices (MFDs), affordable printing solutions Australia wide. HP machines suited to your volume and workflow. Supply Nation certified. IPP registered supplier.",
   shortDescription:
-    "Indigenous-owned enterprise printer dealer serving Australian government and corporate clients.",
+    "Proudly indigenous owned and operated, delivering high quality printing solutions Australia wide.",
 
   // =================================================================
   // URLS
@@ -37,7 +37,7 @@ export const siteConfig = {
   // =================================================================
   // ⚠️ UPDATE BEFORE LAUNCH - These are real business details
   contact: {
-    email: "info@dreamingprintsolutions.com.au",
+    email: "benlong@dreamingprintsolutions.com.au",
     phone: "+61 7 3186 8299", // UPDATE: Real phone number
     phoneDisplay: "07 3186 8299", // Display format
     address: {
@@ -179,16 +179,21 @@ export const siteConfig = {
   // =================================================================
   features: {
     services: [
-      "Enterprise Printer Sales",
+      "Business Printers & MFDs",
       "Managed Print Services",
-      "Document Solutions",
-      "Print Fleet Management",
-      "Consumables Supply",
-      "Maintenance & Support",
+      "Document Management",
+      "Secure Printing Solutions",
+      "Workflow Solutions",
+      "Cost Allocation & Recovery Software",
+      "Colour Management Systems",
+      "Document Management Automation",
+      "Cloud-Based Technology Solutions",
+      "Business Solution Integration",
     ],
     brands: ["HP"],
     formats: ["A3", "A4"],
     industries: [
+      "Indigenous Businesses",
       "Federal Government",
       "State Government",
       "Local Government",
