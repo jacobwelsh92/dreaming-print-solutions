@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
@@ -16,10 +17,15 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link
               href="/"
-              className="inline-block font-display text-xl md:text-2xl mb-4"
+              className="inline-block mb-4"
             >
-              <span className="text-ochre-400">Dreaming</span>
-              <span className="text-white"> Print Solutions</span>
+              <Image
+                src="/images/logo-square.png"
+                alt="Dreaming Print Solutions"
+                width={140}
+                height={140}
+                className="w-28 h-auto"
+              />
             </Link>
             <p className="text-charcoal-300 text-sm leading-relaxed mb-6">
               Australia&apos;s first indigenous-owned enterprise printer and MFD

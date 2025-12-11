@@ -17,6 +17,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
@@ -84,10 +85,16 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-1.5 font-display text-lg md:text-xl text-charcoal-950 transition-colors hover:text-charcoal-700"
+            className="relative flex items-center transition-opacity hover:opacity-90"
           >
-            <span className="text-ochre-600 font-medium">Dreaming</span>
-            <span className="font-medium">Print</span>
+            <Image
+              src="/images/logo-header.png"
+              alt="Dreaming Print Solutions"
+              width={220}
+              height={50}
+              className="h-10 md:h-12 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
