@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { motion } from "framer-motion";
 import { Award, Users, Heart, Target } from "lucide-react";
 import {
   Section,
@@ -10,11 +9,22 @@ import {
 import { Container } from "@/components/ui/container";
 import { Card, CardContent } from "@/components/ui/card";
 import { DotPattern, ConcentricDotPattern } from "@/components/ui/dot-pattern";
+import { AboutPageSchemas } from "@/components/seo/structured-data";
+import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us | Australia's First Indigenous Printer Dealer",
   description:
-    "Learn about Dreaming Print Solutions - Australia's first indigenous-owned enterprise printer dealer. Our story, values, and commitment to excellence.",
+    "Meet Australia's first indigenous-owned enterprise printer dealer. Founded by Zac O'Brien & Ben Long. Supply Nation certified. Serving government since 2024.",
+  alternates: {
+    canonical: `${siteConfig.url}/about`,
+  },
+  openGraph: {
+    title: "About Dreaming Print Solutions | Indigenous-Owned Enterprise",
+    description:
+      "Australia's first indigenous-owned enterprise printer dealer. 100% Indigenous owned. Supply Nation certified. IPP registered.",
+    url: `${siteConfig.url}/about`,
+  },
 };
 
 const values = [
@@ -47,6 +57,9 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      {/* Structured Data */}
+      <AboutPageSchemas />
+
       {/* Hero Section */}
       <Section background="cream" className="relative overflow-hidden">
         <DotPattern variant="ochre" opacity={0.06} />

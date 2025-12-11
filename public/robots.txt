@@ -1,0 +1,52 @@
+# =================================================================
+# ROBOTS.TXT - Dreaming Print Solutions
+# =================================================================
+# This file tells search engine crawlers which pages to index
+# and which to ignore.
+#
+# Learn more: https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
+# Allow all crawlers to access all public content
+User-agent: *
+Allow: /
+
+# Disallow internal/API routes
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Disallow search results pages (when implemented)
+Disallow: /search?
+
+# Crawl delay for politeness (optional - remove if causing issues)
+# Crawl-delay: 1
+
+# =================================================================
+# SITEMAPS
+# =================================================================
+Sitemap: https://dreamingprintsolutions.com.au/sitemap.xml
+
+# =================================================================
+# SPECIFIC BOT RULES
+# =================================================================
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /
+
+# Block AI training bots (optional - business decision)
+# User-agent: GPTBot
+# Disallow: /
+
+# User-agent: ChatGPT-User
+# Disallow: /
+
+# User-agent: CCBot
+# Disallow: /
+
+# User-agent: anthropic-ai
+# Disallow: /

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from "@/components/seo/structured-data";
+import { siteConfig } from "@/data/site-config";
 import "./globals.css";
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -18,30 +20,16 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL ?? "https://dreamingprintsolutions.com.au"
-  ),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Dreaming Print Solutions | Indigenous-Owned Enterprise Printer Dealer",
-    template: "%s | Dreaming Print Solutions",
+    default: siteConfig.seo.defaultTitle,
+    template: siteConfig.seo.titleTemplate,
   },
-  description:
-    "Australia's first indigenous-owned enterprise printer and MFD hardware dealer. HP enterprise solutions for government and corporate clients. Supply Nation certified.",
-  keywords: [
-    "indigenous printer dealer",
-    "aboriginal business",
-    "enterprise printers",
-    "HP MFD",
-    "multifunction printer",
-    "government procurement",
-    "IPP supplier",
-    "Supply Nation",
-    "managed print services",
-    "Australia",
-  ],
-  authors: [{ name: "Dreaming Print Solutions" }],
-  creator: "Dreaming Print Solutions",
-  publisher: "Dreaming Print Solutions",
+  description: siteConfig.seo.defaultDescription,
+  keywords: [...siteConfig.seo.keywords],
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   formatDetection: {
     email: false,
     address: false,
@@ -49,26 +37,24 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_AU",
-    url: "https://dreamingprintsolutions.com.au",
-    siteName: "Dreaming Print Solutions",
-    title: "Dreaming Print Solutions | Indigenous-Owned Enterprise Printer Dealer",
-    description:
-      "Australia's first indigenous-owned enterprise printer and MFD hardware dealer. HP enterprise solutions for government and corporate clients.",
+    locale: siteConfig.seo.openGraph.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.seo.openGraph.siteName,
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.seo.defaultDescription,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Dreaming Print Solutions",
+        alt: siteConfig.name,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dreaming Print Solutions | Indigenous-Owned Enterprise Printer Dealer",
-    description:
-      "Australia's first indigenous-owned enterprise printer and MFD hardware dealer. HP enterprise solutions for government and corporate clients.",
+    title: siteConfig.seo.defaultTitle,
+    description: siteConfig.seo.defaultDescription,
     images: ["/og-image.png"],
   },
   robots: {
@@ -97,6 +83,9 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+  alternates: {
+    canonical: siteConfig.url,
+  },
 };
 
 export const viewport: Viewport = {
@@ -113,6 +102,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-AU" className={`${dmSerifDisplay.variable} ${dmSans.variable}`}>
+      <head>
+        {/* Global Structured Data */}
+        <OrganizationSchema />
+        <WebSiteSchema />
+        <LocalBusinessSchema />
+      </head>
       <body className="min-h-screen bg-cream-50 font-sans text-charcoal-950 antialiased">
         {/* Skip link for accessibility */}
         <a

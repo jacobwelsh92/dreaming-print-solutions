@@ -13,16 +13,30 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { products, formatVolume } from "@/data/products";
+import { ProductsPageSchemas } from "@/components/seo/structured-data";
+import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "Products",
+  title: "HP Enterprise Printers & MFDs | Compare Models",
   description:
-    "HP Enterprise Printer Range - A3 and A4 colour MFDs for government and corporate environments. View specifications and request a quote.",
+    "Compare HP Color LaserJet Enterprise MFDs. A3 & A4 models from 25-50ppm. Volume ranges 1K-100K pages. IPP-registered indigenous supplier. Request pricing today.",
+  alternates: {
+    canonical: `${siteConfig.url}/products`,
+  },
+  openGraph: {
+    title: "HP Enterprise Printers & MFDs | Dreaming Print Solutions",
+    description:
+      "Compare HP Color LaserJet Enterprise MFDs. A3 & A4 models from 25-50ppm. Indigenous-owned, IPP registered supplier.",
+    url: `${siteConfig.url}/products`,
+  },
 };
 
 export default function ProductsPage() {
   return (
     <>
+      {/* Product Structured Data for SEO */}
+      <ProductsPageSchemas products={products} />
+
       {/* Hero */}
       <Section background="cream" className="relative overflow-hidden">
         <DotPattern variant="terracotta" opacity={0.05} />

@@ -3,7 +3,13 @@ import Image from "next/image";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
-import { footerNavItems, contactInfo } from "@/data/navigation";
+import {
+  footerNavItems,
+  legalNavItems,
+  contactInfo,
+  businessInfo,
+} from "@/data/navigation";
+import { siteConfig } from "@/data/site-config";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,10 +21,7 @@ export function Footer() {
         <div className="py-12 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link
-              href="/"
-              className="inline-block mb-4"
-            >
+            <Link href="/" className="inline-block mb-4">
               <Image
                 src="/images/logo-square.png"
                 alt="Dreaming Print Solutions"
@@ -40,7 +43,9 @@ export function Footer() {
               </div>
               <div className="text-xs">
                 <p className="font-medium text-white">Supply Nation</p>
-                <p className="text-charcoal-400">Certification in progress</p>
+                <p className="text-charcoal-400">
+                  {businessInfo.supplyNationStatus}
+                </p>
               </div>
             </div>
           </div>
@@ -76,7 +81,7 @@ export function Footer() {
                 <span className="break-all">{contactInfo.email}</span>
               </a>
               <a
-                href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+                href={`tel:${contactInfo.phoneRaw}`}
                 className="flex items-center gap-3 text-sm text-charcoal-300 hover:text-ochre-400 transition-colors duration-200"
               >
                 <Phone className="h-4 w-4 shrink-0" />
@@ -113,15 +118,35 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-charcoal-800 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-charcoal-400">
-              &copy; {currentYear} Dreaming Print Solutions. All rights reserved.
-            </p>
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+              <p className="text-sm text-charcoal-400">
+                &copy; {currentYear} {businessInfo.name}. All rights reserved.
+              </p>
+              {/* Legal Links */}
+              <nav className="flex items-center gap-3">
+                {legalNavItems.map((item, index) => (
+                  <span key={item.href} className="flex items-center gap-3">
+                    {index > 0 && (
+                      <span className="text-charcoal-700">|</span>
+                    )}
+                    <Link
+                      href={item.href}
+                      className="text-xs text-charcoal-500 hover:text-charcoal-300 transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  </span>
+                ))}
+              </nav>
+            </div>
             <div className="flex items-center gap-4">
               <span className="text-xs text-charcoal-500">
                 Indigenous-Owned Enterprise
               </span>
               <span className="text-charcoal-700">|</span>
-              <span className="text-xs text-charcoal-500">ABN: XX XXX XXX XXX</span>
+              <span className="text-xs text-charcoal-500">
+                ABN: {businessInfo.abn}
+              </span>
             </div>
           </div>
         </div>

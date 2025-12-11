@@ -12,11 +12,22 @@ import { Card, CardContent } from "@/components/ui/card";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { ContactForm } from "@/components/contact";
 import { contactInfo } from "@/data/navigation";
+import { ContactPageSchemas } from "@/components/seo/structured-data";
+import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Get a Quote | Contact Us",
   description:
-    "Get in touch with Dreaming Print Solutions. Request a quote for enterprise printers, managed print services, or general enquiries.",
+    "Request a quote for HP enterprise printers. Fast response within 24 hours. Serving Australian government & corporate. IPP-registered indigenous supplier.",
+  alternates: {
+    canonical: `${siteConfig.url}/contact`,
+  },
+  openGraph: {
+    title: "Get a Quote | Dreaming Print Solutions",
+    description:
+      "Request a quote for HP enterprise printers. Indigenous-owned, IPP registered. Government & corporate specialists.",
+    url: `${siteConfig.url}/contact`,
+  },
 };
 
 function ContactFormWrapper({
@@ -48,6 +59,9 @@ export default async function ContactPage({
 }) {
   return (
     <>
+      {/* Structured Data */}
+      <ContactPageSchemas />
+
       {/* Hero */}
       <Section background="cream" size="md" className="relative overflow-hidden">
         <DotPattern variant="ochre" opacity={0.05} />

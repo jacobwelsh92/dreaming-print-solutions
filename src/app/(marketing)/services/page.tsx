@@ -20,11 +20,22 @@ import { Container } from "@/components/ui/container";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DotPattern } from "@/components/ui/dot-pattern";
+import { ServicesPageSchemas } from "@/components/seo/structured-data";
+import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Managed Print Services & Document Solutions",
   description:
-    "Managed Print Services, Document Management, and Enterprise Solutions from Dreaming Print Solutions. Reduce costs and improve productivity.",
+    "Enterprise managed print services for government & corporate. Hardware sales, supply management, maintenance & support. Indigenous-owned, HP certified.",
+  alternates: {
+    canonical: `${siteConfig.url}/services`,
+  },
+  openGraph: {
+    title: "Managed Print Services | Dreaming Print Solutions",
+    description:
+      "Enterprise managed print services for government & corporate. Reduce costs by up to 30%. Indigenous-owned, HP certified.",
+    url: `${siteConfig.url}/services`,
+  },
 };
 
 const services = [
@@ -90,6 +101,9 @@ const benefits = [
 export default function ServicesPage() {
   return (
     <>
+      {/* Structured Data */}
+      <ServicesPageSchemas />
+
       {/* Hero */}
       <Section background="cream" className="relative overflow-hidden">
         <DotPattern variant="sage" opacity={0.06} />
