@@ -2,7 +2,7 @@
  * DREAMING PRINT SOLUTIONS - Type Definitions
  */
 
-// Product types
+// Product types - Basic listing info
 export interface Product {
   id: string;
   model: string;
@@ -16,6 +16,190 @@ export interface Product {
   description: string;
   features: string[];
   image?: string;
+  hasDetailPage?: boolean; // Whether full specs page exists
+}
+
+// Detailed product specifications for individual product pages
+export interface ProductDetail extends Product {
+  // SEO & Marketing
+  seoTitle: string;
+  seoDescription: string;
+  seoKeywords: string[];
+  shortDescription: string;
+  longDescription: string;
+  tagline: string;
+
+  // Print specifications
+  printSpecs: {
+    speedBlackA4: number;
+    speedColorA4: number;
+    speedBlackA3?: number;
+    speedColorA3?: number;
+    firstPageOutBlack: number; // seconds
+    firstPageOutColor: number;
+    resolution: string;
+    resolutionMax: string;
+    technology: string;
+    duplexPrint: boolean;
+    duplexSpeed?: number;
+    printLanguages: string[];
+  };
+
+  // Scan specifications
+  scanSpecs: {
+    colorScanning: boolean;
+    scanSpeedSimplex: number; // ppm
+    scanSpeedDuplex: number; // ipm
+    scanResolutionOptical: string;
+    scanResolutionMax: string;
+    adfCapacity: number;
+    adfDuplex: boolean;
+    flatbedSize: string;
+    scanFormats: string[];
+    scanDestinations: string[];
+    ocrBuiltIn: boolean;
+  };
+
+  // Copy specifications
+  copySpecs: {
+    copySpeedBlack: number;
+    copySpeedColor: number;
+    firstCopyOutBlack: number;
+    firstCopyOutColor: number;
+    copyResolution: string;
+    maxCopies: number;
+    reduceEnlarge: string;
+  };
+
+  // Fax specifications (optional)
+  faxSpecs?: {
+    faxSpeed: string;
+    faxResolution: string;
+    faxMemory: string;
+    speedDials: number;
+  };
+
+  // Paper handling
+  paperHandling: {
+    inputStandard: number;
+    inputMax: number;
+    outputStandard: number;
+    outputMax?: number;
+    trayConfiguration: string[];
+    mediaTypesSupported: string[];
+    mediaSizesSupported: string[];
+    mediaWeightMin: number; // g/m²
+    mediaWeightMax: number;
+    envelopeCapacity?: number;
+  };
+
+  // Connectivity
+  connectivity: {
+    standardPorts: string[];
+    networkStandard: string;
+    wirelessOptional: boolean;
+    wirelessStandard?: string;
+    mobileprint: string[];
+    nfcTouchToPrint: boolean;
+  };
+
+  // Hardware
+  hardware: {
+    processor: string;
+    processorSpeed: string;
+    memory: string;
+    memoryMax: string;
+    storage: string;
+    storageOptions?: string[];
+    controlPanel: string;
+    controlPanelSize: string;
+  };
+
+  // Security features
+  security: {
+    features: string[];
+    certifications: string[];
+    encryptionStandard: string;
+    secureErase: boolean;
+    pullPrinting: boolean;
+  };
+
+  // Environmental
+  environmental: {
+    powerConsumptionPrinting: number; // watts
+    powerConsumptionReady: number;
+    powerConsumptionSleep: number;
+    certifications: string[];
+    operatingTemp: string;
+    operatingHumidity: string;
+    acousticPrinting: string;
+  };
+
+  // Physical
+  physical: {
+    width: number; // mm
+    depth: number;
+    height: number;
+    weight: number; // kg
+    widthMax?: number;
+    depthMax?: number;
+    heightMax?: number;
+  };
+
+  // Duty cycle
+  dutyCycle: {
+    monthly: number;
+    recommendedMonthly: number;
+  };
+
+  // Supplies
+  supplies: {
+    cartridges: {
+      color: string;
+      partNumber: string;
+      yield: number;
+    }[];
+  };
+
+  // Accessories
+  accessories: {
+    name: string;
+    partNumber: string;
+    description: string;
+    category: "paper-handling" | "finishing" | "security" | "connectivity" | "other";
+  }[];
+
+  // Use cases / ideal for
+  useCases: {
+    title: string;
+    description: string;
+    icon: string;
+  }[];
+
+  // Key selling points
+  keyBenefits: {
+    title: string;
+    description: string;
+    icon: string;
+  }[];
+
+  // Warranty
+  warranty: {
+    standard: string;
+    options: string[];
+  };
+
+  // Product number
+  productNumber: string;
+
+  // Speed license options for upgradeable models
+  speedLicenses?: {
+    baseSpeed: number;
+    upgrades: {
+      targetSpeed: number;
+      licenseNumber: string;
+    }[];
+  };
 }
 
 // Navigation types

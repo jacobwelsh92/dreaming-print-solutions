@@ -110,15 +110,27 @@ export default function ProductsPage() {
                       ))}
                     </div>
 
-                    <Button
-                      variant="outline"
-                      rightIcon={<ArrowRight className="h-4 w-4" />}
-                      asChild
-                    >
-                      <Link href={`/contact?product=${product.model}`}>
-                        Request Quote
-                      </Link>
-                    </Button>
+                    <div className="flex flex-wrap gap-3">
+                      {product.hasDetailPage && (
+                        <Button
+                          rightIcon={<ArrowRight className="h-4 w-4" />}
+                          asChild
+                        >
+                          <Link href={`/products/${product.id}`}>
+                            View Full Specs
+                          </Link>
+                        </Button>
+                      )}
+                      <Button
+                        variant="outline"
+                        rightIcon={<ArrowRight className="h-4 w-4" />}
+                        asChild
+                      >
+                        <Link href={`/contact?product=${product.model}`}>
+                          Request Quote
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </Card>
