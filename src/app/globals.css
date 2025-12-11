@@ -1,26 +1,235 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* =================================================================
+   DREAMING PRINT SOLUTIONS - Design System
+   "Earth Meets Enterprise"
+
+   Indigenous-inspired design honoring Aboriginal dot painting
+   aesthetics while projecting enterprise-level professionalism.
+   ================================================================= */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ---------------------------------------------------------------
+     COLOR PALETTE
+     Earthy tones reflecting Australian indigenous heritage
+     --------------------------------------------------------------- */
+
+  /* Ochre - Primary brand color (CTAs, emphasis) */
+  --color-ochre-50: #fef7f4;
+  --color-ochre-100: #fdeee8;
+  --color-ochre-200: #fad9cc;
+  --color-ochre-300: #f5b99f;
+  --color-ochre-400: #e88a66;
+  --color-ochre-500: #c25e35;
+  --color-ochre-600: #a84a28;
+  --color-ochre-700: #8a3b20;
+  --color-ochre-800: #72331e;
+  --color-ochre-900: #5f2d1c;
+  --color-ochre-950: #35150b;
+
+  /* Terracotta - Secondary accent (hover states) */
+  --color-terracotta-50: #faf6f5;
+  --color-terracotta-100: #f4ebe8;
+  --color-terracotta-200: #ebd8d3;
+  --color-terracotta-300: #dbb9b0;
+  --color-terracotta-400: #c5907f;
+  --color-terracotta-500: #8b4d3b;
+  --color-terracotta-600: #7a4334;
+  --color-terracotta-700: #65372b;
+  --color-terracotta-800: #553027;
+  --color-terracotta-900: #492b24;
+  --color-terracotta-950: #271410;
+
+  /* Sage - Success states, environmental */
+  --color-sage-50: #f5f8f4;
+  --color-sage-100: #e8f0e6;
+  --color-sage-200: #d1e1cd;
+  --color-sage-300: #aec9a7;
+  --color-sage-400: #7d9b76;
+  --color-sage-500: #5f8057;
+  --color-sage-600: #4a6645;
+  --color-sage-700: #3c5238;
+  --color-sage-800: #334330;
+  --color-sage-900: #2b3829;
+  --color-sage-950: #141d14;
+
+  /* Cream - Backgrounds, cards */
+  --color-cream-50: #fdfcfa;
+  --color-cream-100: #f9f7f2;
+  --color-cream-200: #f5f0e6;
+  --color-cream-300: #ece3d3;
+  --color-cream-400: #dfd0b8;
+  --color-cream-500: #cfba9a;
+  --color-cream-600: #bea07c;
+  --color-cream-700: #a98864;
+  --color-cream-800: #8a6f53;
+  --color-cream-900: #725c46;
+  --color-cream-950: #3d3024;
+
+  /* Charcoal - Text, headings */
+  --color-charcoal-50: #f6f6f6;
+  --color-charcoal-100: #e7e7e7;
+  --color-charcoal-200: #d1d1d1;
+  --color-charcoal-300: #b0b0b0;
+  --color-charcoal-400: #888888;
+  --color-charcoal-500: #6d6d6d;
+  --color-charcoal-600: #5d5d5d;
+  --color-charcoal-700: #4f4f4f;
+  --color-charcoal-800: #454545;
+  --color-charcoal-900: #3d3d3d;
+  --color-charcoal-950: #1a1a1a;
+
+  /* ---------------------------------------------------------------
+     TYPOGRAPHY
+     DM Serif Display for headlines, DM Sans for body
+     --------------------------------------------------------------- */
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+
+  /* Font sizes with line heights */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+
+  /* ---------------------------------------------------------------
+     SPACING & SIZING
+     --------------------------------------------------------------- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ---------------------------------------------------------------
+     SHADOWS
+     Subtle, elegant shadows
+     --------------------------------------------------------------- */
+  --shadow-subtle: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-elevated: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+  --shadow-prominent: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+
+  /* ---------------------------------------------------------------
+     ANIMATIONS
+     Smooth, professional transitions
+     --------------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------------------------------------------------------------
+   BASE STYLES
+   --------------------------------------------------------------- */
+
+:root {
+  --background: var(--color-cream-50);
+  --foreground: var(--color-charcoal-950);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headlines use display font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-charcoal-950);
+  letter-spacing: -0.01em;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-ochre-500);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-ochre-200);
+  color: var(--color-charcoal-950);
+}
+
+/* Smooth scrolling with reduced motion respect */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-ochre-500);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ---------------------------------------------------------------
+   UTILITY CLASSES
+   --------------------------------------------------------------- */
+
+/* Container with responsive padding */
+.container-dps {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-dps {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-dps {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Text gradient for special headings */
+.text-gradient-ochre {
+  background: linear-gradient(135deg, var(--color-ochre-500) 0%, var(--color-terracotta-500) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section backgrounds */
+.bg-section-cream {
+  background-color: var(--color-cream-100);
+}
+
+.bg-section-white {
+  background-color: white;
 }
