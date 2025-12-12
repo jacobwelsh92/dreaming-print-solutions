@@ -116,7 +116,7 @@ export function Hero() {
 
           {/* Main headline - the stop-scrolling moment */}
           <motion.h1
-            className="font-display text-charcoal-950 mb-8"
+            className="font-display text-charcoal-950 mb-10 md:mb-12"
             variants={fadeInUp}
           >
             <span className="block text-display-xl md:text-display-2xl leading-[1.05] tracking-tight">
@@ -138,7 +138,7 @@ export function Hero() {
 
           {/* Value proposition - clear and confident */}
           <motion.p
-            className="text-body-lg md:text-body-xl text-charcoal-600 leading-relaxed max-w-2xl mb-10"
+            className="text-body-lg md:text-body-xl text-charcoal-600 leading-relaxed max-w-2xl mb-12 md:mb-14"
             variants={fadeInUp}
           >
             A proudly owned and operated Indigenous company delivering high quality,
