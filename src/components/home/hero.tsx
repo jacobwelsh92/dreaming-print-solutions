@@ -146,26 +146,6 @@ export function Hero() {
             volume and workflow — for Indigenous businesses, government, and corporate.
           </motion.p>
 
-          {/* Indigenous Business highlight - key target market */}
-          <motion.div
-            className="mb-10 space-y-3"
-            variants={fadeInUp}
-          >
-            <div className="p-4 md:p-5 rounded-xl bg-ochre-50/80 border border-ochre-200/50 max-w-lg">
-              <p className="text-sm md:text-base text-ochre-800">
-                <span className="font-semibold">Indigenous Businesses:</span> We believe there
-                is an untapped market for connecting with and supporting other Indigenous-owned
-                businesses across Australia.
-              </p>
-            </div>
-            <div className="p-4 md:p-5 rounded-xl bg-sage-50/80 border border-sage-200/50 max-w-lg">
-              <p className="text-sm md:text-base text-sage-800">
-                <span className="font-semibold">Government Buyers:</span> As an IPP-registered
-                supplier, we can be directly approached for contracts $80K–$200K.
-              </p>
-            </div>
-          </motion.div>
-
           {/* CTAs - primary and secondary with clear hierarchy */}
           <motion.div
             className="flex flex-col sm:flex-row gap-4 mb-16"
