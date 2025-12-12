@@ -97,7 +97,7 @@ export function ServicesOverview() {
                     variant="interactive"
                     className="h-full transition-all duration-300"
                   >
-                    <CardContent className="flex flex-col h-full p-6 lg:p-8">
+                    <CardContent className="flex flex-col items-center text-center h-full p-6 lg:p-8">
                       {/* Icon */}
                       <div
                         className={`h-14 w-14 rounded-2xl ${colors.bg} ${colors.icon} ${colors.hover}
