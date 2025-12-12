@@ -99,7 +99,7 @@ export function WhyChooseUs() {
           <SectionTitle className="text-white">
             Indigenous Excellence Meets Enterprise Capability
           </SectionTitle>
-          <SectionDescription className="text-charcoal-300">
+          <SectionDescription className="text-white/80">
             The strategic advantage of working with Australia&apos;s first
             Indigenous-owned enterprise printer dealer.
           </SectionDescription>
@@ -130,7 +130,7 @@ export function WhyChooseUs() {
                 <h3 className="font-display text-xl text-white mb-3">
                   {advantage.title}
                 </h3>
-                <p className="text-charcoal-300 text-base leading-relaxed mb-6">
+                <p className="text-white/70 text-base leading-relaxed mb-6">
                   {advantage.description}
                 </p>
 
@@ -139,7 +139,7 @@ export function WhyChooseUs() {
                   <span className="text-ochre-400 font-display text-2xl">
                     {advantage.highlight}
                   </span>
-                  <span className="ml-3 text-charcoal-400 text-sm">
+                  <span className="ml-3 text-white/60 text-sm">
                     {advantage.highlightLabel}
                   </span>
                 </div>
@@ -167,7 +167,7 @@ export function WhyChooseUs() {
                   <p className="font-display text-3xl lg:text-4xl text-white mb-2 tabular-nums">
                     {stat.value}
                   </p>
-                  <p className="text-sm text-charcoal-300 leading-snug">
+                  <p className="text-sm text-white/70 leading-snug">
                     {stat.label}
                   </p>
                 </motion.div>
@@ -181,7 +181,7 @@ export function WhyChooseUs() {
           className="mt-12 text-center"
           variants={fadeInUp}
         >
-          <p className="text-charcoal-400 text-sm max-w-2xl mx-auto">
+          <p className="text-white/60 text-sm max-w-2xl mx-auto">
             Whether you&apos;re an Indigenous business, government department meeting
             IPP targets, or a corporate organisation — we deliver high quality,
             affordable printing solutions tailored to your needs.
