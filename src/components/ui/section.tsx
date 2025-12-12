@@ -154,6 +154,9 @@ export interface SectionTitleProps {
 
 const SectionTitle = forwardRef<HTMLHeadingElement, SectionTitleProps>(
   ({ className, children, as: Comp = "h2" }, ref) => {
+    // Check if className contains a text color override
+    const hasColorOverride = className?.includes("text-white") || className?.includes("text-ochre");
+
     return (
       <Comp
         ref={ref}
@@ -161,11 +164,10 @@ const SectionTitle = forwardRef<HTMLHeadingElement, SectionTitleProps>(
           // Use the display typography scale
           "font-display",
           "text-display-lg md:text-display-xl",
-          "text-charcoal-950",
           "leading-[1.1]",
           "tracking-tight",
-          // Dark background override
-          "section-charcoal:text-white",
+          // Only apply default color if no override provided
+          !hasColorOverride && "text-charcoal-950",
           className
         )}
       >
