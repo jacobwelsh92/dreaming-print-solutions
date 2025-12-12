@@ -38,6 +38,11 @@ export const mainNavItems: NavItem[] = [
     description: "HP Enterprise MFD Range",
   },
   {
+    label: "Why Indigenous",
+    href: "/why-indigenous",
+    description: "The advantages of Indigenous procurement",
+  },
+  {
     label: "Contact",
     href: "/contact",
     description: "Get in touch for a quote",
@@ -54,6 +59,9 @@ export const footerNavItems: NavItem[] = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Products", href: "/products" },
+  { label: "Why Indigenous", href: "/why-indigenous" },
+  { label: "Government Procurement", href: "/government-procurement" },
+  { label: "Corporate Procurement", href: "/corporate-procurement" },
   { label: "Blog", href: "/blog" },
   { label: "Resources", href: "/resources" },
   { label: "FAQ", href: "/faq" },
