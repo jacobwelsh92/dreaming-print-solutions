@@ -38,11 +38,6 @@ export const mainNavItems: NavItem[] = [
     description: "HP Enterprise MFD Range",
   },
   {
-    label: "Why Indigenous",
-    href: "/why-indigenous",
-    description: "The advantages of Indigenous procurement",
-  },
-  {
     label: "Contact",
     href: "/contact",
     description: "Get in touch for a quote",
