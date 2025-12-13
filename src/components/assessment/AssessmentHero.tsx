@@ -15,6 +15,7 @@
 
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Sparkles, Clock, FileText, Lock, CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/ui/container";
@@ -57,14 +58,14 @@ export function AssessmentHero() {
       <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-charcoal-950 to-charcoal-950" />
       <div className="absolute inset-0 bg-gradient-to-t from-ochre-900/10 via-transparent to-transparent" />
 
-      {/* Subtle dot pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgb(196 90 50 / 0.3) 1px, transparent 0)`,
-            backgroundSize: '32px 32px',
-          }}
+      {/* Indigenous pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.07]">
+        <Image
+          src="/images/indigenous-pattern.webp"
+          alt=""
+          fill
+          className="object-cover"
+          priority
         />
       </div>
 
