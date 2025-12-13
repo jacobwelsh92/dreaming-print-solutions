@@ -57,13 +57,12 @@ export function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-office.jpg"
+          src="/images/hero-office.webp"
           alt="Professional office environment with multifunction printer"
           fill
           priority
           className="object-cover object-center"
           sizes="100vw"
-          quality={85}
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-950/85 via-charcoal-950/75 to-charcoal-950/60" />
