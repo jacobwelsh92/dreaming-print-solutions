@@ -19,20 +19,55 @@
  * smooth animations.
  */
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Menu, X, Phone, ArrowRight } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  ArrowRight,
+  ChevronDown,
+  BookOpen,
+  Scale,
+  Calculator,
+  Shield,
+  ClipboardList,
+  FileText,
+  Sparkles,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { mainNavItems, contactInfo } from "@/data/navigation";
+import { mainNavItems, contactInfo, resourcesDropdownItems, type ResourceNavItem } from "@/data/navigation";
+
+// Icon mapping for resource items
+const iconMap = {
+  book: BookOpen,
+  scale: Scale,
+  calculator: Calculator,
+  shield: Shield,
+  clipboard: ClipboardList,
+  file: FileText,
+};
+
+// Type badge colors
+const typeBadgeColors = {
+  guide: "bg-sage-100 text-sage-700",
+  comparison: "bg-ochre-100 text-ochre-700",
+  tool: "bg-terracotta-100 text-terracotta-700",
+  checklist: "bg-cream-200 text-charcoal-700",
+};
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
+  const [isMobileResourcesOpen, setIsMobileResourcesOpen] = useState(false);
+  const resourcesRef = useRef<HTMLDivElement>(null);
+  const resourcesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const pathname = usePathname();
   const prefersReducedMotion = useReducedMotion();
 
@@ -49,6 +84,8 @@ export function Header() {
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsResourcesOpen(false);
+    setIsMobileResourcesOpen(false);
   }, [pathname]);
 
   // Lock body scroll when menu is open
@@ -63,15 +100,47 @@ export function Header() {
     };
   }, [isMobileMenuOpen]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (resourcesRef.current && !resourcesRef.current.contains(event.target as Node)) {
+        setIsResourcesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   // Close menu handler
   const closeMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
+    setIsMobileResourcesOpen(false);
   }, []);
 
   // Toggle menu handler
   const toggleMenu = useCallback(() => {
     setIsMobileMenuOpen((prev) => !prev);
   }, []);
+
+  // Resources dropdown handlers with delay for better UX
+  const handleResourcesEnter = useCallback(() => {
+    if (resourcesTimeoutRef.current) {
+      clearTimeout(resourcesTimeoutRef.current);
+    }
+    setIsResourcesOpen(true);
+  }, []);
+
+  const handleResourcesLeave = useCallback(() => {
+    resourcesTimeoutRef.current = setTimeout(() => {
+      setIsResourcesOpen(false);
+    }, 150);
+  }, []);
+
+  // Check if any resource path is active
+  const isResourcesActive = resourcesDropdownItems.some(
+    (item) => pathname === item.href || pathname.startsWith(item.href + "/")
+  );
 
   return (
     <>
@@ -114,7 +183,6 @@ export function Header() {
           <div className="hidden lg:flex items-center justify-center gap-1 absolute left-1/2 -translate-x-1/2">
             {mainNavItems.map((item) => {
               const isActive = pathname === item.href;
-              const isAssessment = item.href === "/print-assessment";
               return (
                 <Link
                   key={item.href}
@@ -122,9 +190,7 @@ export function Header() {
                   className={cn(
                     "relative px-3 xl:px-4 py-2 text-sm font-medium rounded-xl whitespace-nowrap",
                     "transition-all duration-200",
-                    isAssessment
-                      ? "text-ochre-600 hover:text-ochre-700 hover:bg-ochre-50"
-                      : isActive
+                    isActive
                       ? "text-ochre-700 bg-ochre-50"
                       : "text-charcoal-600 hover:text-charcoal-900 hover:bg-cream-100"
                   )}
@@ -133,6 +199,170 @@ export function Header() {
                 </Link>
               );
             })}
+
+            {/* Resources Dropdown */}
+            <div
+              ref={resourcesRef}
+              className="relative"
+              onMouseEnter={handleResourcesEnter}
+              onMouseLeave={handleResourcesLeave}
+            >
+              <button
+                className={cn(
+                  "relative px-3 xl:px-4 py-2 text-sm font-medium rounded-xl whitespace-nowrap",
+                  "transition-all duration-200 flex items-center gap-1.5",
+                  isResourcesActive || isResourcesOpen
+                    ? "text-ochre-700 bg-ochre-50"
+                    : "text-charcoal-600 hover:text-charcoal-900 hover:bg-cream-100"
+                )}
+                onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+                aria-expanded={isResourcesOpen}
+                aria-haspopup="true"
+              >
+                Resources
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 transition-transform duration-200",
+                    isResourcesOpen && "rotate-180"
+                  )}
+                />
+              </button>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {isResourcesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className={cn(
+                      "absolute top-full right-0 mt-2 w-[420px]",
+                      "bg-white rounded-2xl shadow-2xl",
+                      "border border-cream-200",
+                      "overflow-hidden"
+                    )}
+                  >
+                    {/* Decorative top border */}
+                    <div className="h-1 bg-gradient-to-r from-ochre-400 via-terracotta-400 to-ochre-400" />
+
+                    {/* Featured items */}
+                    <div className="p-3 bg-gradient-to-b from-cream-50 to-white border-b border-cream-100">
+                      <div className="grid grid-cols-2 gap-2">
+                        {resourcesDropdownItems
+                          .filter((item) => item.featured)
+                          .map((item) => {
+                            const Icon = iconMap[item.icon];
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className={cn(
+                                  "group flex items-start gap-3 p-3 rounded-xl",
+                                  "bg-white border border-cream-200",
+                                  "hover:border-ochre-200 hover:shadow-md",
+                                  "transition-all duration-200"
+                                )}
+                                onClick={() => setIsResourcesOpen(false)}
+                              >
+                                <div
+                                  className={cn(
+                                    "shrink-0 w-10 h-10 rounded-xl flex items-center justify-center",
+                                    "bg-gradient-to-br from-ochre-100 to-ochre-50",
+                                    "group-hover:from-ochre-200 group-hover:to-ochre-100",
+                                    "transition-colors duration-200"
+                                  )}
+                                >
+                                  <Icon className="h-5 w-5 text-ochre-600" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-semibold text-charcoal-900 text-sm group-hover:text-ochre-700 transition-colors">
+                                      {item.label}
+                                    </span>
+                                    {item.href === "/print-assessment" && (
+                                      <Sparkles className="h-3.5 w-3.5 text-ochre-500" />
+                                    )}
+                                  </div>
+                                  <p className="text-xs text-charcoal-500 mt-0.5 line-clamp-2">
+                                    {item.description}
+                                  </p>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                      </div>
+                    </div>
+
+                    {/* Regular items */}
+                    <div className="p-3">
+                      <p className="text-[11px] uppercase tracking-wider text-charcoal-400 font-semibold px-2 mb-2">
+                        Guides & Resources
+                      </p>
+                      <div className="space-y-1">
+                        {resourcesDropdownItems
+                          .filter((item) => !item.featured)
+                          .map((item) => {
+                            const Icon = iconMap[item.icon];
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className={cn(
+                                  "group flex items-start gap-3 p-2.5 rounded-xl",
+                                  "hover:bg-cream-50",
+                                  "transition-all duration-200"
+                                )}
+                                onClick={() => setIsResourcesOpen(false)}
+                              >
+                                <div
+                                  className={cn(
+                                    "shrink-0 w-8 h-8 rounded-lg flex items-center justify-center",
+                                    "bg-cream-100 group-hover:bg-ochre-100",
+                                    "transition-colors duration-200"
+                                  )}
+                                >
+                                  <Icon className="h-4 w-4 text-charcoal-500 group-hover:text-ochre-600 transition-colors" />
+                                </div>
+                                <div className="flex-1 min-w-0 pt-0.5">
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-medium text-charcoal-800 text-sm group-hover:text-ochre-700 transition-colors">
+                                      {item.label}
+                                    </span>
+                                    <span
+                                      className={cn(
+                                        "text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded",
+                                        typeBadgeColors[item.type]
+                                      )}
+                                    >
+                                      {item.type}
+                                    </span>
+                                  </div>
+                                  <p className="text-xs text-charcoal-500 mt-0.5 line-clamp-1">
+                                    {item.description}
+                                  </p>
+                                </div>
+                                <ArrowRight className="h-4 w-4 text-charcoal-300 group-hover:text-ochre-500 group-hover:translate-x-0.5 transition-all shrink-0 mt-1" />
+                              </Link>
+                            );
+                          })}
+                      </div>
+                    </div>
+
+                    {/* Footer CTA */}
+                    <div className="p-3 bg-charcoal-950 flex items-center justify-between">
+                      <div className="text-white">
+                        <p className="text-sm font-medium">Need expert guidance?</p>
+                        <p className="text-xs text-charcoal-400">Our team is here to help</p>
+                      </div>
+                      <Button asChild size="sm" className="bg-ochre-500 hover:bg-ochre-600">
+                        <Link href="/contact">Get in Touch</Link>
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Desktop CTA - Right */}
@@ -237,7 +467,6 @@ export function Header() {
                 <nav className="flex flex-col gap-1" role="navigation">
                   {mainNavItems.map((item, index) => {
                     const isActive = pathname === item.href;
-                    const isAssessment = item.href === "/print-assessment";
 
                     return (
                       <motion.div
@@ -258,9 +487,7 @@ export function Header() {
                             "min-h-[60px]",
                             "transition-all duration-200",
                             "active:scale-[0.98]",
-                            isAssessment
-                              ? "bg-gradient-to-r from-ochre-50 to-terracotta-50 border border-ochre-200"
-                              : isActive
+                            isActive
                               ? "bg-ochre-50 border border-ochre-100"
                               : "hover:bg-cream-100 border border-transparent"
                           )}
@@ -269,7 +496,6 @@ export function Header() {
                           <div className="flex flex-col">
                             <span className={cn(
                               "text-lg font-medium",
-                              isAssessment ? "text-ochre-700" :
                               isActive ? "text-ochre-700" : "text-charcoal-900"
                             )}>
                               {item.label}
@@ -283,12 +509,122 @@ export function Header() {
                           <ArrowRight className={cn(
                             "w-5 h-5 transition-transform duration-200",
                             "group-hover:translate-x-1",
-                            isAssessment || isActive ? "text-ochre-400" : "text-charcoal-300"
+                            isActive ? "text-ochre-400" : "text-charcoal-300"
                           )} />
                         </Link>
                       </motion.div>
                     );
                   })}
+
+                  {/* Resources Section - Expandable */}
+                  <motion.div
+                    initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      delay: prefersReducedMotion ? 0 : mainNavItems.length * 0.04,
+                      duration: 0.25,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  >
+                    <button
+                      onClick={() => setIsMobileResourcesOpen(!isMobileResourcesOpen)}
+                      className={cn(
+                        "w-full group flex items-center justify-between px-4 py-4 rounded-2xl",
+                        "min-h-[60px]",
+                        "transition-all duration-200",
+                        "active:scale-[0.98]",
+                        isMobileResourcesOpen || isResourcesActive
+                          ? "bg-ochre-50 border border-ochre-100"
+                          : "hover:bg-cream-100 border border-transparent"
+                      )}
+                    >
+                      <div className="flex flex-col text-left">
+                        <span className={cn(
+                          "text-lg font-medium",
+                          isMobileResourcesOpen || isResourcesActive ? "text-ochre-700" : "text-charcoal-900"
+                        )}>
+                          Resources
+                        </span>
+                        <span className="text-sm text-charcoal-500 mt-0.5">
+                          Guides, tools, and insights
+                        </span>
+                      </div>
+                      <ChevronDown className={cn(
+                        "w-5 h-5 transition-transform duration-200",
+                        isMobileResourcesOpen || isResourcesActive ? "text-ochre-400" : "text-charcoal-300",
+                        isMobileResourcesOpen && "rotate-180"
+                      )} />
+                    </button>
+
+                    {/* Expandable Resources List */}
+                    <AnimatePresence>
+                      {isMobileResourcesOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pt-2 pb-3 px-2 space-y-1">
+                            {resourcesDropdownItems.map((item) => {
+                              const Icon = iconMap[item.icon];
+                              const isActive = pathname === item.href;
+                              return (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className={cn(
+                                    "flex items-start gap-3 p-3 rounded-xl",
+                                    "transition-all duration-200",
+                                    isActive
+                                      ? "bg-ochre-100 border border-ochre-200"
+                                      : "bg-cream-50 hover:bg-cream-100 border border-transparent"
+                                  )}
+                                  onClick={closeMenu}
+                                >
+                                  <div
+                                    className={cn(
+                                      "shrink-0 w-9 h-9 rounded-lg flex items-center justify-center",
+                                      isActive
+                                        ? "bg-ochre-200"
+                                        : "bg-white"
+                                    )}
+                                  >
+                                    <Icon className={cn(
+                                      "h-4 w-4",
+                                      isActive ? "text-ochre-700" : "text-charcoal-500"
+                                    )} />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                      <span className={cn(
+                                        "font-medium text-sm",
+                                        isActive ? "text-ochre-700" : "text-charcoal-800"
+                                      )}>
+                                        {item.label}
+                                      </span>
+                                      <span
+                                        className={cn(
+                                          "text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded",
+                                          typeBadgeColors[item.type]
+                                        )}
+                                      >
+                                        {item.type}
+                                      </span>
+                                    </div>
+                                    <p className="text-xs text-charcoal-500 mt-0.5 line-clamp-2">
+                                      {item.description}
+                                    </p>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
                 </nav>
 
                 {/* CTA section */}
