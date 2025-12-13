@@ -77,9 +77,18 @@ export function Header() {
         "transition-all duration-300 ease-out",
         isScrolled
           ? "bg-white/95 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.05),0_4px_12px_rgba(0,0,0,0.04)]"
-          : "bg-transparent"
+          : "bg-white/80 backdrop-blur-sm"
       )}
     >
+      {/* Subtle bottom border - gradient accent line */}
+      <div
+        className={cn(
+          "absolute bottom-0 left-0 right-0 h-[1px]",
+          "bg-gradient-to-r from-transparent via-ochre-300/60 to-transparent",
+          "transition-opacity duration-300",
+          isScrolled ? "opacity-100" : "opacity-60"
+        )}
+      />
       <Container>
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
