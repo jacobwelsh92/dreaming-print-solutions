@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   TrendingUp,
@@ -140,18 +141,30 @@ export default function WhyIndigenousPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section background="cream" size="lg" className="relative overflow-hidden">
-        <DotPattern variant="ochre" opacity={0.06} />
+      <section className="relative bg-charcoal-950 overflow-hidden py-20 md:py-28">
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-charcoal-950 to-charcoal-950" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ochre-900/10 via-transparent to-transparent" />
+        {/* Indigenous pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.07]">
+          <Image
+            src="/images/indigenous-pattern.webp"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
         <Container className="relative z-10">
           <div className="max-w-4xl text-center md:text-left">
-            <SectionEyebrow className="text-ochre-600 mb-4">
+            <span className="inline-block text-ochre-400 font-medium text-sm tracking-wide uppercase mb-4">
               The Indigenous Advantage
-            </SectionEyebrow>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-charcoal-950 mb-6">
+            </span>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               Same Enterprise Quality.{" "}
-              <span className="text-ochre-600">Greater Social Impact.</span>
+              <span className="text-ochre-400">Greater Social Impact.</span>
             </h1>
-            <p className="text-xl text-charcoal-600 mb-8 max-w-3xl mx-auto md:mx-0">
+            <p className="text-xl text-charcoal-300 mb-8 max-w-3xl mx-auto md:mx-0">
               When you purchase from Dreaming Print Solutions, you get the same HP
               enterprise products available from any dealer. The difference? Every
               dollar generates {ippStats.socialReturnMultiplierDisplay} of social
@@ -164,12 +177,12 @@ export default function WhyIndigenousPage() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="border-charcoal-600 text-white hover:bg-charcoal-800">
                 <Link href="/government-procurement">
                   Government Buyers
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="border-charcoal-600 text-white hover:bg-charcoal-800">
                 <Link href="/corporate-procurement">
                   Corporate Buyers
                 </Link>
@@ -177,7 +190,7 @@ export default function WhyIndigenousPage() {
             </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* The $4.41 Multiplier */}
       <Section background="charcoal" className="relative overflow-hidden">

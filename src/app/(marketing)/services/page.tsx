@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Settings,
@@ -126,19 +127,33 @@ export default function ServicesPage() {
       <ServicesPageSchemas />
 
       {/* Hero */}
-      <Section background="cream" className="relative overflow-hidden">
-        <DotPattern variant="sage" opacity={0.06} />
+      <section className="relative bg-charcoal-950 overflow-hidden py-16 md:py-24">
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-charcoal-950 to-charcoal-950" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ochre-900/10 via-transparent to-transparent" />
+        {/* Indigenous pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.07]">
+          <Image
+            src="/images/indigenous-pattern.webp"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
         <Container className="relative z-10">
-          <SectionHeader centered={false} className="max-w-3xl text-center md:text-left">
-            <SectionTitle as="h1">Our Services</SectionTitle>
-            <SectionDescription>
+          <div className="max-w-3xl text-center md:text-left">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Our Services
+            </h1>
+            <p className="text-xl text-charcoal-300">
               Comprehensive managed print services and document management solutions
               for Australian businesses. Reduce costs, improve efficiency, and
               streamline your document workflows.
-            </SectionDescription>
-          </SectionHeader>
+            </p>
+          </div>
         </Container>
-      </Section>
+      </section>
 
       {/* Managed Print Services */}
       <Section background="white" id="managed-print-services">

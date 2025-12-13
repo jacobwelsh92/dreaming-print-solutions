@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Calendar, Clock, ArrowLeft, Tag, ChevronRight } from "lucide-react";
 import { Section } from "@/components/ui/section";
@@ -23,15 +24,6 @@ import {
 } from "@/data/blog";
 import { siteConfig } from "@/data/site-config";
 import { BreadcrumbSchema } from "@/components/seo/structured-data";
-
-// Category-specific gradient backgrounds
-const categoryGradients: Record<string, string> = {
-  "industry-insights": "from-sage-500/20 via-sage-400/10 to-cream-100",
-  "government-procurement": "from-ochre-500/20 via-ochre-400/10 to-cream-100",
-  "product-guides": "from-terracotta-500/20 via-terracotta-400/10 to-cream-100",
-  "sustainability": "from-sage-600/20 via-sage-500/10 to-cream-100",
-  "company-news": "from-charcoal-500/20 via-charcoal-400/10 to-cream-100",
-};
 
 const categoryIcons: Record<string, string> = {
   "industry-insights": "📊",
@@ -158,7 +150,6 @@ export default async function BlogPostPage({
   });
 
   const processedContent = processContent(post.content);
-  const gradient = categoryGradients[post.category] || categoryGradients["industry-insights"];
   const icon = categoryIcons[post.category] || "📄";
 
   // Get related posts (same category, excluding current)
@@ -193,33 +184,32 @@ export default async function BlogPostPage({
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        {/* Background gradient based on category */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`} />
-
-        {/* Pattern overlay */}
-        <div className="absolute inset-0 opacity-30">
-          <svg className="w-full h-full" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <pattern id="hero-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <circle cx="20" cy="20" r="1.5" fill="currentColor" className="text-charcoal-400" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#hero-pattern)" />
-          </svg>
+      <section className="relative bg-charcoal-950 overflow-hidden py-16 md:py-24">
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-charcoal-950 to-charcoal-950" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ochre-900/10 via-transparent to-transparent" />
+        {/* Indigenous pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.07]">
+          <Image
+            src="/images/indigenous-pattern.webp"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
 
-        <Container className="relative z-10 py-16 md:py-24">
+        <Container className="relative z-10">
           {/* Breadcrumb */}
-          <nav className="flex items-center justify-center md:justify-start gap-2 text-sm text-charcoal-600 mb-8">
-            <Link href="/" className="hover:text-ochre-600 transition-colors">
+          <nav className="flex items-center justify-center md:justify-start gap-2 text-sm text-charcoal-300 mb-8">
+            <Link href="/" className="hover:text-ochre-400 transition-colors">
               Home
             </Link>
-            <ChevronRight className="h-4 w-4 text-charcoal-400" />
-            <Link href="/blog" className="hover:text-ochre-600 transition-colors">
+            <ChevronRight className="h-4 w-4 text-charcoal-500" />
+            <Link href="/blog" className="hover:text-ochre-400 transition-colors">
               Blog
             </Link>
-            <ChevronRight className="h-4 w-4 text-charcoal-400" />
+            <ChevronRight className="h-4 w-4 text-charcoal-500" />
             <span className="text-charcoal-400 truncate max-w-[200px]">
               {post.title}
             </span>
@@ -232,12 +222,12 @@ export default async function BlogPostPage({
             </Badge>
 
             {/* Title */}
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-charcoal-950 mb-6 leading-tight">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
               {post.title}
             </h1>
 
             {/* Excerpt */}
-            <p className="text-xl text-charcoal-600 mb-8 leading-relaxed max-w-3xl mx-auto md:mx-0">
+            <p className="text-xl text-charcoal-300 mb-8 leading-relaxed max-w-3xl mx-auto md:mx-0">
               {post.excerpt}
             </p>
 
@@ -245,20 +235,20 @@ export default async function BlogPostPage({
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
               {/* Author */}
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-full bg-white shadow-sm flex items-center justify-center">
+                <div className="h-12 w-12 rounded-full bg-charcoal-800 flex items-center justify-center">
                   <span className="text-2xl">{icon}</span>
                 </div>
                 <div className="text-left">
-                  <p className="font-medium text-charcoal-900">{post.author.name}</p>
-                  <p className="text-sm text-charcoal-500">{post.author.role}</p>
+                  <p className="font-medium text-white">{post.author.name}</p>
+                  <p className="text-sm text-charcoal-400">{post.author.role}</p>
                 </div>
               </div>
 
               {/* Divider */}
-              <div className="h-10 w-px bg-charcoal-200 hidden sm:block" />
+              <div className="h-10 w-px bg-charcoal-700 hidden sm:block" />
 
               {/* Date & Reading time */}
-              <div className="flex items-center gap-4 text-sm text-charcoal-600">
+              <div className="flex items-center gap-4 text-sm text-charcoal-300">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="h-4 w-4" />
                   {formattedDate}

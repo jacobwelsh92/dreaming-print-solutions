@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, BookOpen, Newspaper } from "lucide-react";
 import {
   Section,
@@ -63,24 +64,21 @@ export default function BlogPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-charcoal-950 via-charcoal-900 to-charcoal-950">
-        {/* Pattern overlay */}
-        <div className="absolute inset-0 opacity-20">
-          <svg className="w-full h-full" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <pattern id="blog-hero-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <circle cx="20" cy="20" r="1" fill="currentColor" className="text-ochre-400" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#blog-hero-pattern)" />
-          </svg>
+      <section className="relative bg-charcoal-950 overflow-hidden py-16 md:py-24">
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-charcoal-950 to-charcoal-950" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ochre-900/10 via-transparent to-transparent" />
+        {/* Indigenous pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.07]">
+          <Image
+            src="/images/indigenous-pattern.webp"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
-
-        {/* Gradient orbs */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-ochre-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-sage-500/10 rounded-full blur-[100px]" />
-
-        <Container className="relative z-10 py-20 md:py-28">
+        <Container className="relative z-10">
           <div className="max-w-4xl text-center md:text-left">
             {/* Eyebrow */}
             <div className="flex items-center justify-center md:justify-start gap-2 mb-6">

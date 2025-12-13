@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Building2,
@@ -102,38 +103,50 @@ export default function CorporateProcurementPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section background="ochre" size="lg" className="relative overflow-hidden">
-        <ConcentricDotPattern variant="terracotta" opacity={0.1} />
+      <section className="relative bg-charcoal-950 overflow-hidden py-20 md:py-28">
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-charcoal-950 to-charcoal-950" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ochre-900/10 via-transparent to-transparent" />
+        {/* Indigenous pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.07]">
+          <Image
+            src="/images/indigenous-pattern.webp"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
         <Container className="relative z-10">
           <div className="max-w-4xl text-center md:text-left">
             <div className="flex justify-center md:justify-start mb-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 rounded-full">
-                <Building2 className="h-4 w-4 text-white" />
-                <span className="text-white/90 text-sm font-medium">For Corporate Buyers</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-ochre-500/20 rounded-full">
+                <Building2 className="h-4 w-4 text-ochre-400" />
+                <span className="text-ochre-300 text-sm font-medium">For Corporate Buyers</span>
               </div>
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               Meet Your RAP Targets with{" "}
-              <span className="text-ochre-100">Indigenous Print Solutions</span>
+              <span className="text-ochre-400">Indigenous Print Solutions</span>
             </h1>
-            <p className="text-xl text-ochre-100 mb-8 max-w-3xl mx-auto md:mx-0">
+            <p className="text-xl text-charcoal-300 mb-8 max-w-3xl mx-auto md:mx-0">
               Turn your print procurement into measurable social impact. Same HP
               enterprise quality. Tangible progress on your Reconciliation Action Plan.
             </p>
             <div className="flex flex-wrap justify-center md:justify-start gap-4">
-              <Button asChild size="lg" className="bg-charcoal-900 hover:bg-charcoal-800 text-white">
+              <Button asChild size="lg" className="bg-ochre-500 hover:bg-ochre-600 text-white">
                 <Link href="/contact" className="inline-flex items-center gap-2">
                   Get Started
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+              <Button asChild variant="outline" size="lg" className="border-charcoal-600 text-white hover:bg-charcoal-800">
                 <Link href="/products">View Products</Link>
               </Button>
             </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* The Social Value Multiplier */}
       <Section background="white">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Landmark,
@@ -108,8 +109,20 @@ export default function GovernmentProcurementPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section background="charcoal" size="lg" className="relative overflow-hidden">
-        <ConcentricDotPattern variant="ochre" opacity={0.05} />
+      <section className="relative bg-charcoal-950 overflow-hidden py-20 md:py-28">
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-charcoal-950 to-charcoal-950" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ochre-900/10 via-transparent to-transparent" />
+        {/* Indigenous pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.07]">
+          <Image
+            src="/images/indigenous-pattern.webp"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
         <Container className="relative z-10">
           <div className="max-w-4xl text-center md:text-left">
             <div className="flex justify-center md:justify-start mb-6">
@@ -140,7 +153,7 @@ export default function GovernmentProcurementPage() {
             </div>
           </div>
         </Container>
-      </Section>
+      </section>
 
       {/* Key Thresholds */}
       <Section background="white">
