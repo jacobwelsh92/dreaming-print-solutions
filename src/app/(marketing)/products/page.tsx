@@ -42,7 +42,7 @@ export default function ProductsPage() {
       <Section background="cream" className="relative overflow-hidden">
         <DotPattern variant="terracotta" opacity={0.05} />
         <Container className="relative z-10">
-          <SectionHeader centered={false} className="max-w-3xl">
+          <SectionHeader centered={false} className="max-w-3xl text-center md:text-left">
             <SectionTitle as="h1">HP Enterprise Printer Range</SectionTitle>
             <SectionDescription>
               Industry-leading multifunction printers designed for reliability,
@@ -76,8 +76,8 @@ export default function ProductsPage() {
                   </div>
 
                   {/* Product Info */}
-                  <div className="lg:col-span-2">
-                    <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <div className="lg:col-span-2 text-center md:text-left">
+                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-3">
                       <Badge variant="ochre">{product.format}</Badge>
                       <Badge variant="sage">Colour</Badge>
                       <Badge variant="outline">{product.idealFor}</Badge>
@@ -90,7 +90,7 @@ export default function ProductsPage() {
                     <p className="text-charcoal-600 mb-4">{product.description}</p>
 
                     {/* Specs */}
-                    <div className="flex flex-wrap gap-6 mb-6 text-sm">
+                    <div className="flex flex-wrap justify-center md:justify-start gap-6 mb-6 text-sm">
                       <div className="flex items-center gap-2">
                         <Zap className="h-4 w-4 text-ochre-500" />
                         <span className="text-charcoal-700">
@@ -121,7 +121,7 @@ export default function ProductsPage() {
                       ))}
                     </div>
 
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap justify-center md:justify-start gap-3">
                       {product.hasDetailPage && (
                         <Button
                           rightIcon={<ArrowRight className="h-4 w-4" />}

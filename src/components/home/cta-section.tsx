@@ -79,6 +79,7 @@ export function CTASection() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
+            className="text-center md:text-left"
           >
             {/* Headline */}
             <motion.h2
@@ -98,7 +99,7 @@ export function CTASection() {
             </motion.p>
 
             {/* Contact options */}
-            <motion.div className="space-y-4 mb-8" variants={fadeInUp}>
+            <motion.div className="space-y-4 mb-8 flex flex-col items-center md:items-start" variants={fadeInUp}>
               <a
                 href={`tel:${contactInfo.phoneRaw}`}
                 className="flex items-center gap-3 text-charcoal-700 hover:text-charcoal-900 transition-colors group"
@@ -106,7 +107,7 @@ export function CTASection() {
                 <div className="w-10 h-10 rounded-lg bg-ochre-200 flex items-center justify-center group-hover:bg-ochre-300 transition-colors">
                   <Phone className="h-5 w-5 text-ochre-700" />
                 </div>
-                <div>
+                <div className="text-left">
                   <p className="font-semibold">{contactInfo.phone}</p>
                   <p className="text-sm text-charcoal-500">Mon-Fri 8:30am - 5:00pm</p>
                 </div>
@@ -118,7 +119,7 @@ export function CTASection() {
                 <div className="w-10 h-10 rounded-lg bg-ochre-200 flex items-center justify-center group-hover:bg-ochre-300 transition-colors">
                   <Mail className="h-5 w-5 text-ochre-700" />
                 </div>
-                <div>
+                <div className="text-left">
                   <p className="font-semibold">{contactInfo.email}</p>
                   <p className="text-sm text-charcoal-500">We respond within 24 hours</p>
                 </div>
@@ -130,7 +131,7 @@ export function CTASection() {
               className="pt-8 border-t border-ochre-200"
               variants={fadeInUp}
             >
-              <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-charcoal-600">
+              <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-sm text-charcoal-600">
                 <span className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-ochre-600" />
                   100% Indigenous Owned

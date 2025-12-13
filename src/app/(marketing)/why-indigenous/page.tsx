@@ -143,7 +143,7 @@ export default function WhyIndigenousPage() {
       <Section background="cream" size="lg" className="relative overflow-hidden">
         <DotPattern variant="ochre" opacity={0.06} />
         <Container className="relative z-10">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl text-center md:text-left">
             <SectionEyebrow className="text-ochre-600 mb-4">
               The Indigenous Advantage
             </SectionEyebrow>
@@ -151,13 +151,13 @@ export default function WhyIndigenousPage() {
               Same Enterprise Quality.{" "}
               <span className="text-ochre-600">Greater Social Impact.</span>
             </h1>
-            <p className="text-xl text-charcoal-600 mb-8 max-w-3xl">
+            <p className="text-xl text-charcoal-600 mb-8 max-w-3xl mx-auto md:mx-0">
               When you purchase from Dreaming Print Solutions, you get the same HP
               enterprise products available from any dealer. The difference? Every
               dollar generates {ippStats.socialReturnMultiplierDisplay} of social
               value for Indigenous communities.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
               <Button asChild size="lg" className="bg-ochre-500 hover:bg-ochre-600">
                 <Link href="/contact" className="inline-flex items-center gap-2">
                   Get a Quote
@@ -363,14 +363,14 @@ export default function WhyIndigenousPage() {
       <Section background="white">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="text-center md:text-left">
               <SectionEyebrow className="text-ochre-600 mb-4">
                 Addressing the Cost Question
               </SectionEyebrow>
               <h2 className="font-display text-3xl md:text-4xl text-charcoal-950 mb-6">
                 &ldquo;Value for Money&rdquo; Isn&apos;t Just About Price
               </h2>
-              <div className="prose prose-lg text-charcoal-600">
+              <div className="prose prose-lg text-charcoal-600 text-left">
                 <p>
                   A common misconception is that government procurement must always
                   choose the cheapest option. This isn&apos;t true.

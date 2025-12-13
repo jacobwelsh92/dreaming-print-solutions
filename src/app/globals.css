@@ -637,6 +637,45 @@ h6, .h6 {
 }
 
 /* =================================================================
+   MOBILE CENTERING UTILITIES
+
+   Center text on mobile, left-align on desktop (md breakpoint).
+   Used throughout the site for consistent mobile typography.
+   ================================================================= */
+
+/* Center on mobile, left on desktop */
+.mobile-center {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .mobile-center {
+    text-align: left;
+  }
+}
+
+/* Center on mobile, left on desktop - with flex alignment */
+.mobile-center-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .mobile-center-flex {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* Always left-aligned (for lists, prose that should never center) */
+.always-left {
+  text-align: left !important;
+}
+
+/* =================================================================
    REDUCED MOTION
 
    Respect user preferences. Motion can cause discomfort or

@@ -66,7 +66,7 @@ export default async function ContactPage({
       <Section background="cream" size="md" className="relative overflow-hidden">
         <DotPattern variant="ochre" opacity={0.05} />
         <Container className="relative z-10">
-          <SectionHeader centered={false} className="max-w-2xl">
+          <SectionHeader centered={false} className="max-w-2xl text-center md:text-left">
             <SectionTitle as="h1">Get in Touch</SectionTitle>
             <SectionDescription>
               Ready to discuss your print requirements? Our team is here to help

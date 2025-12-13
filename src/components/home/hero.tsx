@@ -73,14 +73,14 @@ export function Hero() {
       {/* Main content */}
       <Container className="relative z-10 flex-1 flex items-center pt-24 pb-16 md:pt-32 md:pb-24">
         <motion.div
-          className="w-full max-w-4xl"
+          className="w-full max-w-4xl text-center md:text-left"
           initial="hidden"
           animate="visible"
           variants={staggerContainerSlow}
         >
           {/* Heritage marker - small but meaningful */}
           <motion.div
-            className="mb-8"
+            className="mb-8 flex justify-center md:justify-start"
             variants={fadeIn}
           >
             <span className="inline-flex items-center gap-3 text-sm tracking-wide">
@@ -119,7 +119,7 @@ export function Hero() {
 
           {/* Value proposition - clear and confident */}
           <motion.p
-            className="text-body-lg md:text-body-xl text-white/80 leading-relaxed max-w-2xl mb-10 md:mb-12"
+            className="text-body-lg md:text-body-xl text-white/80 leading-relaxed max-w-2xl mx-auto md:mx-0 mb-10 md:mb-12"
             variants={fadeInUp}
           >
             A proudly owned and operated Indigenous company delivering high quality,
@@ -129,10 +129,10 @@ export function Hero() {
 
           {/* Free Print Assessment - Lead Magnet */}
           <motion.div
-            className="mb-10 md:mb-12"
+            className="mb-10 md:mb-12 flex justify-center md:justify-start"
             variants={fadeInUp}
           >
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-ochre-500/20 border border-ochre-400/30 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-ochre-500/20 border border-ochre-400/30 backdrop-blur-sm text-left">
               <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-ochre-500">
                 <Gift className="w-5 h-5 text-white" />
               </div>
@@ -149,7 +149,7 @@ export function Hero() {
 
           {/* CTAs - primary and secondary with clear hierarchy */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-4 items-center md:items-start justify-center md:justify-start"
             variants={fadeInUp}
           >
             <Button
@@ -181,7 +181,7 @@ export function Hero() {
             viewport={viewportOnce}
             variants={staggerContainer}
           >
-            <div className="flex flex-wrap justify-start md:justify-center gap-x-10 gap-y-4">
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
               {trustIndicators.map((indicator) => (
                 <motion.div
                   key={indicator.label}

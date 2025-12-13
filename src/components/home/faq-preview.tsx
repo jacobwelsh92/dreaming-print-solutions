@@ -23,19 +23,21 @@ export function FAQPreview() {
       <Container className="relative z-10">
         <div className="grid lg:grid-cols-5 gap-12 items-start">
           {/* Left column - Header */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 text-center md:text-left">
             <SectionHeader centered={false} className="sticky top-24">
               <SectionTitle>Common Questions</SectionTitle>
               <SectionDescription>
                 Quick answers to help you understand enterprise printing, IPP
                 procurement, and working with an indigenous-owned supplier.
               </SectionDescription>
-              <Button asChild variant="outline" className="mt-6 group">
-                <Link href="/faq" className="inline-flex items-center gap-2">
-                  View All FAQs
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
+              <div className="flex justify-center md:justify-start">
+                <Button asChild variant="outline" className="mt-6 group">
+                  <Link href="/faq" className="inline-flex items-center gap-2">
+                    View All FAQs
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </div>
             </SectionHeader>
           </div>
 

@@ -106,7 +106,7 @@ export default function ResourcesPage() {
       <Section background="cream" size="sm" className="relative overflow-hidden">
         <DotPattern variant="sage" opacity={0.05} />
         <Container className="relative z-10">
-          <SectionHeader centered={false} className="max-w-3xl">
+          <SectionHeader centered={false} className="max-w-3xl text-center md:text-left">
             <SectionTitle as="h1">Resources & Guides</SectionTitle>
             <SectionDescription>
               Free guides and tools to help you navigate enterprise print
@@ -121,7 +121,7 @@ export default function ResourcesPage() {
       {featuredResources.length > 0 && (
         <Section background="white" size="sm">
           <Container>
-            <h2 className="font-display text-2xl text-charcoal-950 mb-6">
+            <h2 className="font-display text-2xl text-charcoal-950 mb-6 text-center md:text-left">
               Featured Resources
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -141,7 +141,7 @@ export default function ResourcesPage() {
           size="sm"
         >
           <Container>
-            <h2 className="font-display text-xl text-charcoal-950 mb-6">
+            <h2 className="font-display text-xl text-charcoal-950 mb-6 text-center md:text-left">
               {categoryLabels[category]}
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

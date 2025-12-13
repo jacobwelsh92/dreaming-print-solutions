@@ -51,7 +51,7 @@ export default function FAQPage() {
       <Section background="cream" size="sm" className="relative overflow-hidden">
         <DotPattern variant="ochre" opacity={0.04} />
         <Container className="relative z-10">
-          <SectionHeader centered={false} className="max-w-3xl">
+          <SectionHeader centered={false} className="max-w-3xl text-center md:text-left">
             <SectionTitle as="h1">Frequently Asked Questions</SectionTitle>
             <SectionDescription>
               Everything you need to know about enterprise printing, government
@@ -74,7 +74,7 @@ export default function FAQPage() {
           >
             <Container>
               <div className="max-w-3xl mx-auto">
-                <h2 className="font-display text-2xl text-charcoal-950 mb-6">
+                <h2 className="font-display text-2xl text-charcoal-950 mb-6 text-center md:text-left">
                   {categoryLabels[category]}
                 </h2>
                 <FAQAccordion items={categoryFAQs} />

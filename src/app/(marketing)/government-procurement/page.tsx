@@ -111,21 +111,23 @@ export default function GovernmentProcurementPage() {
       <Section background="charcoal" size="lg" className="relative overflow-hidden">
         <ConcentricDotPattern variant="ochre" opacity={0.05} />
         <Container className="relative z-10">
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-ochre-500/20 rounded-full mb-6">
-              <Landmark className="h-4 w-4 text-ochre-400" />
-              <span className="text-ochre-300 text-sm font-medium">For Government Buyers</span>
+          <div className="max-w-4xl text-center md:text-left">
+            <div className="flex justify-center md:justify-start mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-ochre-500/20 rounded-full">
+                <Landmark className="h-4 w-4 text-ochre-400" />
+                <span className="text-ochre-300 text-sm font-medium">For Government Buyers</span>
+              </div>
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               Simplify IPP Compliance with{" "}
               <span className="text-ochre-400">Enterprise Print Solutions</span>
             </h1>
-            <p className="text-xl text-charcoal-300 mb-8 max-w-3xl">
+            <p className="text-xl text-charcoal-300 mb-8 max-w-3xl mx-auto md:mx-0">
               As an IPP-registered, Supply Nation certified Indigenous business, we make
               it easy for government buyers to meet procurement targets while getting
               enterprise-grade HP printers and MFDs.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
               <Button asChild size="lg" className="bg-ochre-500 hover:bg-ochre-600">
                 <Link href="/contact" className="inline-flex items-center gap-2">
                   Request a Quote
@@ -221,14 +223,14 @@ export default function GovernmentProcurementPage() {
       <Section background="white">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
+            <div className="text-center md:text-left">
               <SectionEyebrow className="text-ochre-600 mb-4">
                 {ippThresholds.msaRange} Contracts
               </SectionEyebrow>
               <h2 className="font-display text-3xl md:text-4xl text-charcoal-950 mb-6">
                 Mandatory Set Aside (MSA)
               </h2>
-              <div className="prose prose-lg text-charcoal-600">
+              <div className="prose prose-lg text-charcoal-600 text-left">
                 <p>{policyMechanisms.mandatorySetAside.fullDescription}</p>
               </div>
               <div className="mt-8 p-4 bg-ochre-50 border-l-4 border-ochre-500 rounded-r-lg">
@@ -389,8 +391,8 @@ export default function GovernmentProcurementPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {governmentBuyerBenefits.map((benefit) => (
               <Card key={benefit.title}>
-                <CardContent className="p-6">
-                  <div className="h-12 w-12 rounded-xl bg-ochre-100 text-ochre-600 flex items-center justify-center mb-4">
+                <CardContent className="p-6 text-center md:text-left">
+                  <div className="h-12 w-12 rounded-xl bg-ochre-100 text-ochre-600 flex items-center justify-center mb-4 mx-auto md:mx-0">
                     <CheckCircle2 className="h-6 w-6" />
                   </div>
                   <h3 className="font-display text-lg text-charcoal-950 mb-2">

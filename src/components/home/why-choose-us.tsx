@@ -115,9 +115,9 @@ export function WhyChooseUs() {
               variants={fadeInUp}
             >
               {/* Card with subtle border */}
-              <div className="relative p-6 lg:p-8 rounded-2xl bg-charcoal-900/50 border border-charcoal-800 hover:border-charcoal-700 transition-colors duration-300">
+              <div className="relative p-6 lg:p-8 rounded-2xl bg-charcoal-900/50 border border-charcoal-800 hover:border-charcoal-700 transition-colors duration-300 text-center md:text-left">
                 {/* Icon */}
-                <div className="h-14 w-14 rounded-2xl bg-ochre-500/15 flex items-center justify-center mb-6 group-hover:bg-ochre-500/20 transition-colors duration-300">
+                <div className="h-14 w-14 rounded-2xl bg-ochre-500/15 flex items-center justify-center mb-6 group-hover:bg-ochre-500/20 transition-colors duration-300 mx-auto md:mx-0">
                   <advantage.icon
                     className="h-7 w-7 text-ochre-400"
                     strokeWidth={1.5}
@@ -159,7 +159,7 @@ export function WhyChooseUs() {
               {stats.map((stat) => (
                 <motion.div
                   key={stat.label}
-                  className="text-center lg:text-left"
+                  className="text-center"
                   variants={fadeInUp}
                 >
                   <p className="font-display text-3xl lg:text-4xl text-white mb-2 tabular-nums">

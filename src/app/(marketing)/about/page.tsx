@@ -98,7 +98,7 @@ export default function AboutPage() {
       <Section background="cream" className="relative overflow-hidden">
         <DotPattern variant="ochre" opacity={0.06} />
         <Container className="relative z-10">
-          <SectionHeader centered={false} className="max-w-3xl">
+          <SectionHeader centered={false} className="max-w-3xl text-center md:text-left">
             <SectionTitle as="h1">
               Proudly Indigenous Owned & Operated
             </SectionTitle>
@@ -113,11 +113,11 @@ export default function AboutPage() {
       <Section background="white">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
+            <div className="text-center md:text-left">
               <h2 className="font-display text-3xl md:text-4xl text-charcoal-950 mb-6">
                 About Us
               </h2>
-              <div className="prose prose-lg text-charcoal-600">
+              <div className="prose prose-lg text-charcoal-600 text-left">
                 <p>
                   Here at Dreaming Print Solutions, we are a <strong>proudly owned and
                   operated indigenous company</strong> delivering high quality, Copiers,
@@ -151,8 +151,8 @@ export default function AboutPage() {
       <Section background="charcoal" className="relative overflow-hidden">
         <ConcentricDotPattern variant="ochre" opacity={0.05} />
         <Container className="relative z-10">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="max-w-4xl mx-auto text-center md:text-left">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-3 mb-6">
               <div className="h-12 w-12 rounded-xl bg-ochre-500/20 flex items-center justify-center">
                 <Building2 className="h-6 w-6 text-ochre-400" />
               </div>
@@ -172,7 +172,7 @@ export default function AboutPage() {
               printing equipment — you&apos;re supporting Indigenous economic empowerment
               and business growth.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center md:justify-start gap-4">
               <Button asChild className="bg-ochre-500 hover:bg-ochre-600">
                 <Link href="/contact" className="inline-flex items-center gap-2">
                   Get in Touch
@@ -244,11 +244,11 @@ export default function AboutPage() {
       <Section background="cream">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="text-center md:text-left">
               <h2 className="font-display text-3xl md:text-4xl text-charcoal-950 mb-6">
                 Indigenous Procurement Policy
               </h2>
-              <div className="prose prose-lg text-charcoal-600">
+              <div className="prose prose-lg text-charcoal-600 text-left">
                 <p>
                   Under the IPP, Commonwealth government buyers are required to
                   approach Indigenous businesses first for contracts valued between

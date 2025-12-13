@@ -211,7 +211,7 @@ export default async function BlogPostPage({
 
         <Container className="relative z-10 py-16 md:py-24">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-charcoal-600 mb-8">
+          <nav className="flex items-center justify-center md:justify-start gap-2 text-sm text-charcoal-600 mb-8">
             <Link href="/" className="hover:text-ochre-600 transition-colors">
               Home
             </Link>
@@ -225,7 +225,7 @@ export default async function BlogPostPage({
             </span>
           </nav>
 
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto md:mx-0 text-center md:text-left">
             {/* Category badge */}
             <Badge variant="ochre" className="mb-6 shadow-sm">
               {categoryLabels[post.category]}
@@ -237,18 +237,18 @@ export default async function BlogPostPage({
             </h1>
 
             {/* Excerpt */}
-            <p className="text-xl text-charcoal-600 mb-8 leading-relaxed max-w-3xl">
+            <p className="text-xl text-charcoal-600 mb-8 leading-relaxed max-w-3xl mx-auto md:mx-0">
               {post.excerpt}
             </p>
 
             {/* Meta row */}
-            <div className="flex flex-wrap items-center gap-6">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
               {/* Author */}
               <div className="flex items-center gap-3">
                 <div className="h-12 w-12 rounded-full bg-white shadow-sm flex items-center justify-center">
                   <span className="text-2xl">{icon}</span>
                 </div>
-                <div>
+                <div className="text-left">
                   <p className="font-medium text-charcoal-900">{post.author.name}</p>
                   <p className="text-sm text-charcoal-500">{post.author.role}</p>
                 </div>
@@ -343,7 +343,7 @@ export default async function BlogPostPage({
               <AuthorBio author={post.author} className="mt-12" />
 
               {/* CTA Box */}
-              <div className="mt-12 relative overflow-hidden bg-gradient-to-br from-ochre-500 to-ochre-600 rounded-2xl p-8 md:p-10 text-white">
+              <div className="mt-12 relative overflow-hidden bg-gradient-to-br from-ochre-500 to-ochre-600 rounded-2xl p-8 md:p-10 text-white text-center md:text-left">
                 <div className="absolute inset-0 opacity-10">
                   <svg className="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
                     <defs>
@@ -359,12 +359,12 @@ export default async function BlogPostPage({
                   <h3 className="font-display text-2xl md:text-3xl mb-3">
                     Need Help With Your Print Environment?
                   </h3>
-                  <p className="text-ochre-100 mb-6 max-w-2xl">
+                  <p className="text-ochre-100 mb-6 max-w-2xl mx-auto md:mx-0">
                     Whether you&apos;re looking for new equipment, managed services, or
                     guidance on IPP procurement, our team is here to help government
                     and corporate clients find the right solution.
                   </p>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap justify-center md:justify-start gap-3">
                     <Button asChild variant="secondary" className="bg-white text-ochre-600 hover:bg-cream-100">
                       <Link href="/contact">Get in Touch</Link>
                     </Button>
@@ -383,7 +383,7 @@ export default async function BlogPostPage({
       {suggestedPosts.length > 0 && (
         <Section background="cream" size="md">
           <Container>
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 mb-8 text-center md:text-left">
               <h2 className="font-display text-2xl md:text-3xl text-charcoal-950">
                 Continue Reading
               </h2>

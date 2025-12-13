@@ -129,7 +129,7 @@ export default function ServicesPage() {
       <Section background="cream" className="relative overflow-hidden">
         <DotPattern variant="sage" opacity={0.06} />
         <Container className="relative z-10">
-          <SectionHeader centered={false} className="max-w-3xl">
+          <SectionHeader centered={false} className="max-w-3xl text-center md:text-left">
             <SectionTitle as="h1">Our Services</SectionTitle>
             <SectionDescription>
               Comprehensive managed print services and document management solutions
@@ -144,8 +144,8 @@ export default function ServicesPage() {
       <Section background="white" id="managed-print-services">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
+            <div className="text-center md:text-left">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-3 mb-4">
                 <div className="h-12 w-12 rounded-xl bg-ochre-100 text-ochre-600 flex items-center justify-center">
                   <Settings className="h-6 w-6" />
                 </div>
@@ -164,18 +164,22 @@ export default function ServicesPage() {
                 automatic supply replenishment, and expert support, you&apos;ll experience
                 fewer interruptions and lower overall costs.
               </p>
+              <div className="flex justify-center md:justify-start">
               <Button asChild>
                 <Link href="/contact" className="inline-flex items-center gap-2">
                   Request a Free Assessment
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
+              </div>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {mpsFeatures.map((feature) => (
                 <Card key={feature.title} className="h-full">
-                  <CardContent className="p-5">
-                    <feature.icon className="h-6 w-6 text-ochre-500 mb-3" />
+                  <CardContent className="p-5 text-center md:text-left">
+                    <div className="flex justify-center md:justify-start">
+                      <feature.icon className="h-6 w-6 text-ochre-500 mb-3" />
+                    </div>
                     <h3 className="font-medium text-charcoal-950 mb-1">
                       {feature.title}
                     </h3>
@@ -210,8 +214,8 @@ export default function ServicesPage() {
       <Section background="cream" id="document-management">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="lg:order-2">
-              <div className="flex items-center gap-3 mb-4">
+            <div className="lg:order-2 text-center md:text-left">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-3 mb-4">
                 <div className="h-12 w-12 rounded-xl bg-sage-100 text-sage-600 flex items-center justify-center">
                   <FileText className="h-6 w-6" />
                 </div>
@@ -230,18 +234,22 @@ export default function ServicesPage() {
                 designed to represent your document workflow and promote finding and
                 sharing information easily.
               </p>
-              <Button asChild variant="outline">
-                <Link href="/contact" className="inline-flex items-center gap-2">
-                  Learn More
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
+              <div className="flex justify-center md:justify-start">
+                <Button asChild variant="outline">
+                  <Link href="/contact" className="inline-flex items-center gap-2">
+                    Learn More
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
             <div className="lg:order-1 grid sm:grid-cols-2 gap-4">
               {docFeatures.map((feature) => (
                 <Card key={feature.title} className="h-full">
-                  <CardContent className="p-5">
-                    <feature.icon className="h-6 w-6 text-sage-500 mb-3" />
+                  <CardContent className="p-5 text-center md:text-left">
+                    <div className="flex justify-center md:justify-start">
+                      <feature.icon className="h-6 w-6 text-sage-500 mb-3" />
+                    </div>
                     <h3 className="font-medium text-charcoal-950 mb-1">
                       {feature.title}
                     </h3>

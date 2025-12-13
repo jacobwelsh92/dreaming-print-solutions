@@ -81,9 +81,9 @@ export default function BlogPage() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-sage-500/10 rounded-full blur-[100px]" />
 
         <Container className="relative z-10 py-20 md:py-28">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl text-center md:text-left">
             {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
               <div className="h-8 w-8 rounded-lg bg-ochre-500/20 flex items-center justify-center">
                 <Newspaper className="h-4 w-4 text-ochre-400" />
               </div>
@@ -99,13 +99,13 @@ export default function BlogPage() {
             </h1>
 
             {/* Description */}
-            <p className="text-xl text-charcoal-300 mb-10 leading-relaxed max-w-2xl">
+            <p className="text-xl text-charcoal-300 mb-10 leading-relaxed max-w-2xl mx-auto md:mx-0">
               In-depth articles on HP enterprise printers, government procurement
               under IPP, managed print services, and optimising your print environment.
             </p>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-8 mb-10">
+            <div className="flex flex-wrap justify-center md:justify-start gap-8 mb-10">
               <div>
                 <p className="text-3xl font-display text-white">{totalArticles}</p>
                 <p className="text-sm text-charcoal-400">Articles</p>
@@ -148,7 +148,7 @@ export default function BlogPage() {
       {featuredPosts.length > 0 && (
         <Section background="white" size="lg">
           <Container>
-            <div className="flex items-center justify-between mb-10">
+            <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between mb-10 text-center md:text-left">
               <div>
                 <h2 className="font-display text-2xl md:text-3xl text-charcoal-950 mb-2">
                   Featured Articles
@@ -170,7 +170,7 @@ export default function BlogPage() {
       {/* All Posts Grid */}
       <Section background="cream" size="lg">
         <Container>
-          <div className="flex items-center justify-between mb-10">
+          <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between mb-10 text-center md:text-left">
             <div>
               <h2 className="font-display text-2xl md:text-3xl text-charcoal-950 mb-2">
                 All Articles

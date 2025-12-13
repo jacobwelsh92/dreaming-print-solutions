@@ -37,7 +37,7 @@ export function ProductsPreview() {
             <motion.div key={product.id} variants={fadeInUp} custom={index}>
               <Link href={`/products/${product.id}`}>
                 <Card hoverable className="h-full group">
-                  <CardContent className="flex flex-col h-full">
+                  <CardContent className="flex flex-col h-full text-center md:text-left">
                     {/* Product Image */}
                     <div className="aspect-[4/3] rounded-lg bg-white flex items-center justify-center mb-4 overflow-hidden border border-cream-200">
                       {product.image ? (
@@ -55,7 +55,7 @@ export function ProductsPreview() {
                       )}
                     </div>
 
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
                       <Badge variant="ochre">{product.format}</Badge>
                       <Badge variant="sage">Colour</Badge>
                     </div>
@@ -68,7 +68,7 @@ export function ProductsPreview() {
                       {product.idealFor}
                     </p>
 
-                    <div className="flex items-center justify-between pt-4 mt-auto border-t border-cream-200">
+                    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-2 pt-4 mt-auto border-t border-cream-200">
                       <div className="flex items-center gap-1.5 text-sm text-charcoal-600">
                         <Zap className="h-4 w-4 text-ochre-500" />
                         <span>{product.speed} ppm</span>
