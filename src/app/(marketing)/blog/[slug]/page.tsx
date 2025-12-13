@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Calendar, Clock, ArrowLeft, Tag, ChevronRight } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Tag, ChevronRight, BookOpen, Share2 } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +14,6 @@ import {
   TableOfContents,
   AuthorBio,
 } from "@/components/blog";
-import { DotPattern } from "@/components/ui/dot-pattern";
 import {
   blogPosts,
   getBlogPostBySlug,
@@ -55,8 +54,13 @@ export async function generateMetadata({
     };
   }
 
+  const publishedTime = new Date(post.publishedAt).toISOString();
+  const modifiedTime = post.updatedAt
+    ? new Date(post.updatedAt).toISOString()
+    : publishedTime;
+
   return {
-    title: post.title,
+    title: `${post.title} | Dreaming Print Solutions`,
     description: post.excerpt,
     alternates: {
       canonical: `${siteConfig.url}/blog/${post.slug}`,
@@ -65,63 +69,165 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       url: `${siteConfig.url}/blog/${post.slug}`,
+      siteName: siteConfig.name,
       type: "article",
-      publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt || post.publishedAt,
+      publishedTime,
+      modifiedTime,
       authors: [post.author.name],
+      section: categoryLabels[post.category],
       tags: post.tags,
+      images: [
+        {
+          url: `${siteConfig.url}${post.featuredImage.url}`,
+          width: 1200,
+          height: 630,
+          alt: post.featuredImage.alt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
+      images: [`${siteConfig.url}${post.featuredImage.url}`],
+    },
+    other: {
+      "article:published_time": publishedTime,
+      "article:modified_time": modifiedTime,
+      "article:author": post.author.name,
+      "article:section": categoryLabels[post.category],
+      "article:tag": post.tags.join(", "),
     },
   };
 }
 
-// Article structured data
+// Comprehensive Article structured data
 function ArticleSchema({ post }: { post: BlogPost }) {
+  const wordCount = post.content.replace(/<[^>]*>/g, "").split(/\s+/).length;
+  const publishedDate = new Date(post.publishedAt).toISOString();
+  const modifiedDate = post.updatedAt
+    ? new Date(post.updatedAt).toISOString()
+    : publishedDate;
+
   const schema = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": "Article",
+    "@id": `${siteConfig.url}/blog/${post.slug}#article`,
+    isPartOf: {
+      "@id": `${siteConfig.url}/blog/${post.slug}#webpage`,
+    },
     headline: post.title,
     description: post.excerpt,
-    image: `${siteConfig.url}${post.featuredImage.url}`,
-    datePublished: post.publishedAt,
-    dateModified: post.updatedAt || post.publishedAt,
+    image: {
+      "@type": "ImageObject",
+      url: `${siteConfig.url}${post.featuredImage.url}`,
+      width: 1200,
+      height: 630,
+    },
+    datePublished: publishedDate,
+    dateModified: modifiedDate,
     author: {
       "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
       name: post.author.name,
       url: siteConfig.url,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
         url: `${siteConfig.url}/images/logo-square.png`,
       },
     },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/images/logo-square.png`,
+        width: 512,
+        height: 512,
+      },
+    },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `${siteConfig.url}/blog/${post.slug}`,
+      "@id": `${siteConfig.url}/blog/${post.slug}#webpage`,
     },
     keywords: post.tags.join(", "),
     articleSection: categoryLabels[post.category],
-    wordCount: post.content.split(/\s+/).length,
+    wordCount: wordCount,
+    timeRequired: `PT${post.readingTime}M`,
+    inLanguage: "en-AU",
+    copyrightYear: new Date(post.publishedAt).getFullYear(),
+    copyrightHolder: {
+      "@type": "Organization",
+      name: siteConfig.name,
+    },
+    isAccessibleForFree: true,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["article h1", "article .lead", "article h2"],
+    },
+  };
+
+  // WebPage schema
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${siteConfig.url}/blog/${post.slug}#webpage`,
+    url: `${siteConfig.url}/blog/${post.slug}`,
+    name: post.title,
+    description: post.excerpt,
+    isPartOf: {
+      "@id": `${siteConfig.url}/#website`,
+    },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: `${siteConfig.url}${post.featuredImage.url}`,
+    },
+    datePublished: publishedDate,
+    dateModified: modifiedDate,
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteConfig.url,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${siteConfig.url}/blog`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: post.title,
+          item: `${siteConfig.url}/blog/${post.slug}`,
+        },
+      ],
+    },
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
+    </>
   );
 }
 
 // Process content to add IDs to headings for TOC
 function processContent(content: string): string {
-  return content.replace(/<h([23])>(.*?)<\/h\1>/g, (match, level, text) => {
+  return content.replace(/<h([234])>(.*?)<\/h\1>/g, (match, level, text) => {
     const id = text
       .toLowerCase()
       .replace(/<[^>]*>/g, "") // Remove any HTML tags
@@ -148,6 +254,14 @@ export default async function BlogPostPage({
     month: "long",
     year: "numeric",
   });
+
+  const updatedDate = post.updatedAt
+    ? new Date(post.updatedAt).toLocaleDateString("en-AU", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
+    : null;
 
   const processedContent = processContent(post.content);
   const icon = categoryIcons[post.category] || "📄";
@@ -183,13 +297,14 @@ export default async function BlogPostPage({
         ]}
       />
 
-      {/* Hero Section */}
-      <section className="relative bg-charcoal-950 overflow-hidden py-16 md:py-24">
+      {/* Hero Section - Premium Design */}
+      <section className="relative bg-charcoal-950 overflow-hidden">
         {/* Gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-charcoal-950 to-charcoal-950" />
         <div className="absolute inset-0 bg-gradient-to-t from-ochre-900/10 via-transparent to-transparent" />
+
         {/* Indigenous pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.07]">
+        <div className="absolute inset-0 opacity-[0.05]">
           <Image
             src="/images/indigenous-pattern.webp"
             alt=""
@@ -199,116 +314,172 @@ export default async function BlogPostPage({
           />
         </div>
 
-        <Container className="relative z-10">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-ochre-500/5 to-transparent" />
+
+        <Container className="relative z-10 py-16 md:py-20 lg:py-24">
           {/* Breadcrumb */}
-          <nav className="flex items-center justify-center md:justify-start gap-2 text-sm text-charcoal-300 mb-8">
+          <nav
+            className="flex items-center gap-2 text-sm text-charcoal-400 mb-8"
+            aria-label="Breadcrumb"
+          >
             <Link href="/" className="hover:text-ochre-400 transition-colors">
               Home
             </Link>
-            <ChevronRight className="h-4 w-4 text-charcoal-500" />
+            <ChevronRight className="h-4 w-4 text-charcoal-600" />
             <Link href="/blog" className="hover:text-ochre-400 transition-colors">
               Blog
             </Link>
-            <ChevronRight className="h-4 w-4 text-charcoal-500" />
-            <span className="text-charcoal-400 truncate max-w-[200px]">
+            <ChevronRight className="h-4 w-4 text-charcoal-600" />
+            <span className="text-charcoal-500 truncate max-w-[200px] md:max-w-[300px]">
               {post.title}
             </span>
           </nav>
 
-          <div className="max-w-4xl mx-auto md:mx-0 text-center md:text-left">
-            {/* Category badge */}
-            <Badge variant="ochre" className="mb-6 shadow-sm">
-              {categoryLabels[post.category]}
-            </Badge>
+          <div className="max-w-4xl">
+            {/* Category & Reading time row */}
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <Badge
+                variant="ochre"
+                className="shadow-lg shadow-ochre-500/20"
+              >
+                <span className="mr-1.5">{icon}</span>
+                {categoryLabels[post.category]}
+              </Badge>
+              <span className="flex items-center gap-1.5 text-sm text-charcoal-400">
+                <Clock className="h-4 w-4" />
+                {post.readingTime} min read
+              </span>
+            </div>
 
             {/* Title */}
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-white mb-6 leading-[1.1] text-balance">
               {post.title}
             </h1>
 
             {/* Excerpt */}
-            <p className="text-xl text-charcoal-300 mb-8 leading-relaxed max-w-3xl mx-auto md:mx-0">
+            <p className="text-lg md:text-xl text-charcoal-300 mb-8 leading-relaxed max-w-3xl text-pretty">
               {post.excerpt}
             </p>
 
-            {/* Meta row */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
+            {/* Author & Date meta */}
+            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-charcoal-800">
               {/* Author */}
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-full bg-charcoal-800 flex items-center justify-center">
-                  <span className="text-2xl">{icon}</span>
+                <div className="h-11 w-11 rounded-full bg-gradient-to-br from-ochre-400 to-ochre-600 flex items-center justify-center shadow-lg shadow-ochre-500/20">
+                  <span className="text-xl">{icon}</span>
                 </div>
-                <div className="text-left">
-                  <p className="font-medium text-white">{post.author.name}</p>
-                  <p className="text-sm text-charcoal-400">{post.author.role}</p>
+                <div>
+                  <p className="font-medium text-white text-sm">{post.author.name}</p>
+                  <p className="text-xs text-charcoal-400">{post.author.role}</p>
                 </div>
               </div>
 
               {/* Divider */}
-              <div className="h-10 w-px bg-charcoal-700 hidden sm:block" />
+              <div className="h-8 w-px bg-charcoal-700 hidden sm:block" />
 
-              {/* Date & Reading time */}
-              <div className="flex items-center gap-4 text-sm text-charcoal-300">
-                <span className="flex items-center gap-1.5">
+              {/* Date info */}
+              <div className="flex flex-col gap-0.5 text-sm">
+                <span className="flex items-center gap-1.5 text-charcoal-300">
                   <Calendar className="h-4 w-4" />
-                  {formattedDate}
+                  Published {formattedDate}
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <Clock className="h-4 w-4" />
-                  {post.readingTime} min read
-                </span>
+                {updatedDate && updatedDate !== formattedDate && (
+                  <span className="text-charcoal-500 text-xs">
+                    Updated {updatedDate}
+                  </span>
+                )}
               </div>
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Article Content */}
-      <Section background="white" size="lg">
+      {/* Main Article Content */}
+      <Section background="white" className="py-12 md:py-16 lg:py-20">
         <Container>
-          <div className="grid lg:grid-cols-12 gap-12">
-            {/* Sidebar - TOC & Share */}
-            <aside className="lg:col-span-3 lg:order-2">
-              <div className="lg:sticky lg:top-24 space-y-6">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            {/* Sidebar - Left on desktop */}
+            <aside className="hidden lg:block lg:col-span-3 lg:order-1">
+              <div className="sticky top-24 space-y-6">
                 {/* Table of Contents */}
                 <TableOfContents content={post.content} />
 
-                {/* Social Share - Desktop */}
-                <div className="hidden lg:block">
+                {/* Social Share */}
+                <div className="p-5 bg-cream-50 rounded-2xl border border-cream-200">
                   <SocialShare
                     url={articleUrl}
                     title={post.title}
                     description={post.excerpt}
                     variant="vertical"
-                    className="p-4 bg-cream-50 rounded-xl border border-cream-200"
                   />
+                </div>
+
+                {/* Quick Stats */}
+                <div className="p-5 bg-cream-50 rounded-2xl border border-cream-200">
+                  <h4 className="text-xs uppercase tracking-wider text-charcoal-500 font-medium mb-3">
+                    Article Info
+                  </h4>
+                  <dl className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <dt className="text-charcoal-500">Reading time</dt>
+                      <dd className="font-medium text-charcoal-900">{post.readingTime} min</dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-charcoal-500">Category</dt>
+                      <dd className="font-medium text-charcoal-900">{categoryLabels[post.category]}</dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-charcoal-500">Published</dt>
+                      <dd className="font-medium text-charcoal-900">
+                        {new Date(post.publishedAt).toLocaleDateString("en-AU", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })}
+                      </dd>
+                    </div>
+                  </dl>
                 </div>
               </div>
             </aside>
 
             {/* Main Content */}
-            <div className="lg:col-span-9 lg:order-1">
-              {/* Article body */}
+            <div className="lg:col-span-9 lg:order-2">
+              {/* Mobile TOC - Collapsible */}
+              <div className="lg:hidden mb-8">
+                <TableOfContents content={post.content} />
+              </div>
+
+              {/* Article body with premium prose styling */}
               <article
-                className="prose prose-lg prose-charcoal max-w-none
-                  prose-headings:font-display prose-headings:text-charcoal-950 prose-headings:scroll-mt-24
-                  prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pb-3 prose-h2:border-b prose-h2:border-cream-200
-                  prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                  prose-p:text-charcoal-700 prose-p:leading-relaxed
-                  prose-li:text-charcoal-700 prose-li:leading-relaxed
-                  prose-a:text-ochre-600 prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-                  prose-strong:text-charcoal-900 prose-strong:font-semibold
-                  prose-ul:my-6 prose-ol:my-6
-                  prose-table:my-8 prose-table:overflow-hidden prose-table:rounded-xl prose-table:border prose-table:border-cream-200
-                  prose-th:bg-cream-50 prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-medium prose-th:text-charcoal-900
-                  prose-td:px-4 prose-td:py-3 prose-td:border-t prose-td:border-cream-100
-                  prose-blockquote:border-l-4 prose-blockquote:border-ochre-400 prose-blockquote:bg-ochre-50/50 prose-blockquote:py-1 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:not-italic
-                  prose-code:bg-cream-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-ochre-700 prose-code:before:content-none prose-code:after:content-none"
+                className="article-prose"
                 dangerouslySetInnerHTML={{ __html: processedContent }}
               />
 
-              {/* Social Share - Mobile */}
-              <div className="mt-12 pt-8 border-t border-cream-200 lg:hidden">
+              {/* Tags Section */}
+              <div className="mt-12 pt-8 border-t border-cream-200">
+                <div className="flex items-start gap-3 flex-wrap">
+                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-charcoal-600 mt-1">
+                    <Tag className="h-4 w-4" />
+                    Tags:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        variant="outline"
+                        className="text-xs hover:bg-ochre-50 hover:border-ochre-200 transition-colors"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Social Share */}
+              <div className="mt-8 pt-8 border-t border-cream-200 lg:hidden">
                 <SocialShare
                   url={articleUrl}
                   title={post.title}
@@ -316,49 +487,43 @@ export default async function BlogPostPage({
                 />
               </div>
 
-              {/* Tags */}
-              <div className="mt-12 pt-8 border-t border-cream-200">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Tag className="h-4 w-4 text-charcoal-400" />
-                  <span className="text-sm font-medium text-charcoal-600 mr-2">Tags:</span>
-                  {post.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-
               {/* Author Bio */}
               <AuthorBio author={post.author} className="mt-12" />
 
               {/* CTA Box */}
-              <div className="mt-12 relative overflow-hidden bg-gradient-to-br from-ochre-500 to-ochre-600 rounded-2xl p-8 md:p-10 text-white text-center md:text-left">
+              <div className="mt-12 relative overflow-hidden bg-gradient-to-br from-ochre-500 via-ochre-600 to-terracotta-600 rounded-2xl p-8 md:p-10 text-white">
+                {/* Pattern overlay */}
                 <div className="absolute inset-0 opacity-10">
                   <svg className="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
                     <defs>
-                      <pattern id="cta-pattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-                        <circle cx="15" cy="15" r="2" fill="currentColor" />
+                      <pattern id="cta-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                        <circle cx="12" cy="12" r="1.5" fill="currentColor" />
                       </pattern>
                     </defs>
-                    <rect width="100%" height="100%" fill="url(#cta-pattern)" />
+                    <rect width="100%" height="100%" fill="url(#cta-dots)" />
                   </svg>
                 </div>
 
                 <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-4">
+                    <BookOpen className="h-5 w-5 text-ochre-200" />
+                    <span className="text-sm font-medium text-ochre-200 uppercase tracking-wide">
+                      Get Expert Help
+                    </span>
+                  </div>
                   <h3 className="font-display text-2xl md:text-3xl mb-3">
                     Need Help With Your Print Environment?
                   </h3>
-                  <p className="text-ochre-100 mb-6 max-w-2xl mx-auto md:mx-0">
+                  <p className="text-ochre-100 mb-6 max-w-2xl leading-relaxed">
                     Whether you&apos;re looking for new equipment, managed services, or
                     guidance on IPP procurement, our team is here to help government
                     and corporate clients find the right solution.
                   </p>
-                  <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                    <Button asChild variant="secondary" className="bg-white text-ochre-600 hover:bg-cream-100">
+                  <div className="flex flex-wrap gap-3">
+                    <Button asChild size="lg" className="bg-white text-ochre-600 hover:bg-cream-100 shadow-lg shadow-ochre-900/20">
                       <Link href="/contact">Get in Touch</Link>
                     </Button>
-                    <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                    <Button asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm">
                       <Link href="/products">View Products</Link>
                     </Button>
                   </div>
@@ -373,15 +538,20 @@ export default async function BlogPostPage({
       {suggestedPosts.length > 0 && (
         <Section background="cream" size="md">
           <Container>
-            <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4 mb-8 text-center md:text-left">
-              <h2 className="font-display text-2xl md:text-3xl text-charcoal-950">
-                Continue Reading
-              </h2>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
+              <div>
+                <h2 className="font-display text-2xl md:text-3xl text-charcoal-950 mb-2">
+                  Continue Reading
+                </h2>
+                <p className="text-charcoal-600">
+                  More insights on enterprise printing and procurement
+                </p>
+              </div>
               <Button asChild variant="outline" className="hidden sm:inline-flex">
                 <Link href="/blog">View All Articles</Link>
               </Button>
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
               {suggestedPosts.map((relatedPost) => (
                 <BlogCard key={relatedPost.id} post={relatedPost} />
               ))}
