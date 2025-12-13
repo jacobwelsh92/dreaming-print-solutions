@@ -397,10 +397,10 @@ export default async function BlogPostPage({
 
       {/* Main Article Content */}
       <Section background="white" className="py-12 md:py-16 lg:py-20">
-        <Container>
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+        <Container className="max-w-7xl">
+          <div className="flex flex-col lg:flex-row lg:gap-16 xl:gap-20">
             {/* Sidebar - Left on desktop */}
-            <aside className="hidden lg:block lg:col-span-3 lg:order-1">
+            <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0">
               <div className="sticky top-24 space-y-6">
                 {/* Table of Contents */}
                 <TableOfContents content={post.content} />
@@ -445,7 +445,7 @@ export default async function BlogPostPage({
             </aside>
 
             {/* Main Content */}
-            <div className="lg:col-span-9 lg:order-2">
+            <div className="flex-1 min-w-0 lg:max-w-3xl">
               {/* Mobile TOC - Collapsible */}
               <div className="lg:hidden mb-8">
                 <TableOfContents content={post.content} />
