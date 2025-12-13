@@ -36,12 +36,11 @@ import {
   Shield,
   ClipboardList,
   FileText,
-  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { mainNavItems, contactInfo, resourcesDropdownItems, type ResourceNavItem } from "@/data/navigation";
+import { mainNavItems, contactNavItem, contactInfo, resourcesDropdownItems, type ResourceNavItem } from "@/data/navigation";
 
 // Icon mapping for resource items
 const iconMap = {
@@ -51,14 +50,6 @@ const iconMap = {
   shield: Shield,
   clipboard: ClipboardList,
   file: FileText,
-};
-
-// Type badge colors
-const typeBadgeColors = {
-  guide: "bg-sage-100 text-sage-700",
-  comparison: "bg-ochre-100 text-ochre-700",
-  tool: "bg-terracotta-100 text-terracotta-700",
-  checklist: "bg-cream-200 text-charcoal-700",
 };
 
 export function Header() {
@@ -222,147 +213,112 @@ export function Header() {
                 Resources
                 <ChevronDown
                   className={cn(
-                    "h-4 w-4 transition-transform duration-200",
+                    "h-3.5 w-3.5 transition-transform duration-200",
                     isResourcesOpen && "rotate-180"
                   )}
                 />
               </button>
 
-              {/* Dropdown Menu */}
+              {/* Dropdown Menu - Refined & Sophisticated */}
               <AnimatePresence>
                 {isResourcesOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 4 }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
                     className={cn(
-                      "absolute top-full right-0 mt-2 w-[420px]",
-                      "bg-white rounded-2xl shadow-2xl",
-                      "border border-cream-200",
+                      "absolute top-full right-0 mt-2 w-80",
+                      "bg-white rounded-xl shadow-xl",
+                      "border border-charcoal-100",
                       "overflow-hidden"
                     )}
                   >
-                    {/* Decorative top border */}
-                    <div className="h-1 bg-gradient-to-r from-ochre-400 via-terracotta-400 to-ochre-400" />
-
-                    {/* Featured items */}
-                    <div className="p-3 bg-gradient-to-b from-cream-50 to-white border-b border-cream-100">
-                      <div className="grid grid-cols-2 gap-2">
-                        {resourcesDropdownItems
-                          .filter((item) => item.featured)
-                          .map((item) => {
-                            const Icon = iconMap[item.icon];
-                            return (
-                              <Link
-                                key={item.href}
-                                href={item.href}
+                    {/* Featured Section */}
+                    <div className="p-2 border-b border-charcoal-100">
+                      {resourcesDropdownItems
+                        .filter((item) => item.featured)
+                        .map((item) => {
+                          const Icon = iconMap[item.icon];
+                          return (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className={cn(
+                                "group flex items-center gap-3 px-3 py-2.5 rounded-lg",
+                                "hover:bg-cream-50",
+                                "transition-colors duration-150"
+                              )}
+                              onClick={() => setIsResourcesOpen(false)}
+                            >
+                              <div
                                 className={cn(
-                                  "group flex items-start gap-3 p-3 rounded-xl",
-                                  "bg-white border border-cream-200",
-                                  "hover:border-ochre-200 hover:shadow-md",
-                                  "transition-all duration-200"
+                                  "shrink-0 w-9 h-9 rounded-lg flex items-center justify-center",
+                                  "bg-ochre-50 group-hover:bg-ochre-100",
+                                  "transition-colors duration-150"
                                 )}
-                                onClick={() => setIsResourcesOpen(false)}
                               >
-                                <div
-                                  className={cn(
-                                    "shrink-0 w-10 h-10 rounded-xl flex items-center justify-center",
-                                    "bg-gradient-to-br from-ochre-100 to-ochre-50",
-                                    "group-hover:from-ochre-200 group-hover:to-ochre-100",
-                                    "transition-colors duration-200"
-                                  )}
-                                >
-                                  <Icon className="h-5 w-5 text-ochre-600" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="flex items-center gap-2">
-                                    <span className="font-semibold text-charcoal-900 text-sm group-hover:text-ochre-700 transition-colors">
-                                      {item.label}
-                                    </span>
-                                    {item.href === "/print-assessment" && (
-                                      <Sparkles className="h-3.5 w-3.5 text-ochre-500" />
-                                    )}
-                                  </div>
-                                  <p className="text-xs text-charcoal-500 mt-0.5 line-clamp-2">
-                                    {item.description}
-                                  </p>
-                                </div>
-                              </Link>
-                            );
-                          })}
-                      </div>
+                                <Icon className="h-4 w-4 text-ochre-600" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <span className="block font-medium text-sm text-charcoal-900 group-hover:text-ochre-700 transition-colors">
+                                  {item.label}
+                                </span>
+                                <span className="block text-xs text-charcoal-500 truncate">
+                                  {item.description}
+                                </span>
+                              </div>
+                            </Link>
+                          );
+                        })}
                     </div>
 
-                    {/* Regular items */}
-                    <div className="p-3">
-                      <p className="text-[11px] uppercase tracking-wider text-charcoal-400 font-semibold px-2 mb-2">
-                        Guides & Resources
+                    {/* Guides Section */}
+                    <div className="p-2">
+                      <p className="px-3 py-1.5 text-[10px] uppercase tracking-wider text-charcoal-400 font-semibold">
+                        Guides
                       </p>
-                      <div className="space-y-1">
-                        {resourcesDropdownItems
-                          .filter((item) => !item.featured)
-                          .map((item) => {
-                            const Icon = iconMap[item.icon];
-                            return (
-                              <Link
-                                key={item.href}
-                                href={item.href}
-                                className={cn(
-                                  "group flex items-start gap-3 p-2.5 rounded-xl",
-                                  "hover:bg-cream-50",
-                                  "transition-all duration-200"
-                                )}
-                                onClick={() => setIsResourcesOpen(false)}
-                              >
-                                <div
-                                  className={cn(
-                                    "shrink-0 w-8 h-8 rounded-lg flex items-center justify-center",
-                                    "bg-cream-100 group-hover:bg-ochre-100",
-                                    "transition-colors duration-200"
-                                  )}
-                                >
-                                  <Icon className="h-4 w-4 text-charcoal-500 group-hover:text-ochre-600 transition-colors" />
-                                </div>
-                                <div className="flex-1 min-w-0 pt-0.5">
-                                  <div className="flex items-center gap-2">
-                                    <span className="font-medium text-charcoal-800 text-sm group-hover:text-ochre-700 transition-colors">
-                                      {item.label}
-                                    </span>
-                                    <span
-                                      className={cn(
-                                        "text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded",
-                                        typeBadgeColors[item.type]
-                                      )}
-                                    >
-                                      {item.type}
-                                    </span>
-                                  </div>
-                                  <p className="text-xs text-charcoal-500 mt-0.5 line-clamp-1">
-                                    {item.description}
-                                  </p>
-                                </div>
-                                <ArrowRight className="h-4 w-4 text-charcoal-300 group-hover:text-ochre-500 group-hover:translate-x-0.5 transition-all shrink-0 mt-1" />
-                              </Link>
-                            );
-                          })}
-                      </div>
-                    </div>
-
-                    {/* Footer CTA */}
-                    <div className="p-3 bg-charcoal-950 flex items-center justify-between">
-                      <div className="text-white">
-                        <p className="text-sm font-medium">Need expert guidance?</p>
-                        <p className="text-xs text-charcoal-400">Our team is here to help</p>
-                      </div>
-                      <Button asChild size="sm" className="bg-ochre-500 hover:bg-ochre-600">
-                        <Link href="/contact">Get in Touch</Link>
-                      </Button>
+                      {resourcesDropdownItems
+                        .filter((item) => !item.featured)
+                        .map((item) => {
+                          const Icon = iconMap[item.icon];
+                          return (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              className={cn(
+                                "group flex items-center gap-3 px-3 py-2 rounded-lg",
+                                "hover:bg-cream-50",
+                                "transition-colors duration-150"
+                              )}
+                              onClick={() => setIsResourcesOpen(false)}
+                            >
+                              <Icon className="h-4 w-4 text-charcoal-400 group-hover:text-ochre-600 transition-colors shrink-0" />
+                              <span className="text-sm text-charcoal-700 group-hover:text-charcoal-900 transition-colors truncate">
+                                {item.label}
+                              </span>
+                            </Link>
+                          );
+                        })}
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Contact - After Resources */}
+            <Link
+              href={contactNavItem.href}
+              className={cn(
+                "relative px-3 xl:px-4 py-2 text-sm font-medium rounded-xl whitespace-nowrap",
+                "transition-all duration-200",
+                pathname === contactNavItem.href
+                  ? "text-ochre-700 bg-ochre-50"
+                  : "text-charcoal-600 hover:text-charcoal-900 hover:bg-cream-100"
+              )}
+            >
+              {contactNavItem.label}
+            </Link>
           </div>
 
           {/* Desktop CTA - Right */}
@@ -575,48 +531,24 @@ export function Header() {
                                   key={item.href}
                                   href={item.href}
                                   className={cn(
-                                    "flex items-start gap-3 p-3 rounded-xl",
+                                    "flex items-center gap-3 p-3 rounded-xl",
                                     "transition-all duration-200",
                                     isActive
-                                      ? "bg-ochre-100 border border-ochre-200"
-                                      : "bg-cream-50 hover:bg-cream-100 border border-transparent"
+                                      ? "bg-ochre-100"
+                                      : "bg-cream-50 hover:bg-cream-100"
                                   )}
                                   onClick={closeMenu}
                                 >
-                                  <div
-                                    className={cn(
-                                      "shrink-0 w-9 h-9 rounded-lg flex items-center justify-center",
-                                      isActive
-                                        ? "bg-ochre-200"
-                                        : "bg-white"
-                                    )}
-                                  >
-                                    <Icon className={cn(
-                                      "h-4 w-4",
-                                      isActive ? "text-ochre-700" : "text-charcoal-500"
-                                    )} />
-                                  </div>
-                                  <div className="flex-1 min-w-0">
-                                    <div className="flex items-center gap-2 flex-wrap">
-                                      <span className={cn(
-                                        "font-medium text-sm",
-                                        isActive ? "text-ochre-700" : "text-charcoal-800"
-                                      )}>
-                                        {item.label}
-                                      </span>
-                                      <span
-                                        className={cn(
-                                          "text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded",
-                                          typeBadgeColors[item.type]
-                                        )}
-                                      >
-                                        {item.type}
-                                      </span>
-                                    </div>
-                                    <p className="text-xs text-charcoal-500 mt-0.5 line-clamp-2">
-                                      {item.description}
-                                    </p>
-                                  </div>
+                                  <Icon className={cn(
+                                    "h-4 w-4 shrink-0",
+                                    isActive ? "text-ochre-700" : "text-charcoal-500"
+                                  )} />
+                                  <span className={cn(
+                                    "font-medium text-sm",
+                                    isActive ? "text-ochre-700" : "text-charcoal-800"
+                                  )}>
+                                    {item.label}
+                                  </span>
                                 </Link>
                               );
                             })}
@@ -624,6 +556,50 @@ export function Header() {
                         </motion.div>
                       )}
                     </AnimatePresence>
+                  </motion.div>
+
+                  {/* Contact - After Resources */}
+                  <motion.div
+                    initial={{ opacity: 0, x: prefersReducedMotion ? 0 : -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      delay: prefersReducedMotion ? 0 : (mainNavItems.length + 1) * 0.04,
+                      duration: 0.25,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  >
+                    <Link
+                      href={contactNavItem.href}
+                      className={cn(
+                        "group flex items-center justify-between px-4 py-4 rounded-2xl",
+                        "min-h-[60px]",
+                        "transition-all duration-200",
+                        "active:scale-[0.98]",
+                        pathname === contactNavItem.href
+                          ? "bg-ochre-50 border border-ochre-100"
+                          : "hover:bg-cream-100 border border-transparent"
+                      )}
+                      onClick={closeMenu}
+                    >
+                      <div className="flex flex-col">
+                        <span className={cn(
+                          "text-lg font-medium",
+                          pathname === contactNavItem.href ? "text-ochre-700" : "text-charcoal-900"
+                        )}>
+                          {contactNavItem.label}
+                        </span>
+                        {contactNavItem.description && (
+                          <span className="text-sm text-charcoal-500 mt-0.5">
+                            {contactNavItem.description}
+                          </span>
+                        )}
+                      </div>
+                      <ArrowRight className={cn(
+                        "w-5 h-5 transition-transform duration-200",
+                        "group-hover:translate-x-1",
+                        pathname === contactNavItem.href ? "text-ochre-400" : "text-charcoal-300"
+                      )} />
+                    </Link>
                   </motion.div>
                 </nav>
 

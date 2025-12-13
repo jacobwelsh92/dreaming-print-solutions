@@ -98,12 +98,14 @@ export const mainNavItems: NavItem[] = [
     href: "/products",
     description: "HP Enterprise MFD Range",
   },
-  {
-    label: "Contact",
-    href: "/contact",
-    description: "Get in touch for a quote",
-  },
 ];
+
+// Contact is rendered separately in the header (after Resources dropdown)
+export const contactNavItem: NavItem = {
+  label: "Contact",
+  href: "/contact",
+  description: "Get in touch for a quote",
+};
 
 // =================================================================
 // FOOTER NAVIGATION
