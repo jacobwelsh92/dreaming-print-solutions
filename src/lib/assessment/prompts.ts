@@ -175,7 +175,7 @@ You MUST recommend from these 5 products. Here is each product with exact specif
    - No A3 needed + low volume = E47528f is best value
    - Any A3 need = Must use E786 or E877 series
 
-3. **Factor in organization size:**
+3. **Factor in organisation size:**
    - Small (1-20): E47528f or E78625dn
    - Medium (21-100): E78625dn or E78630dn
    - Large (101-500): E78630dn or E78635dn
@@ -265,7 +265,7 @@ export function buildAssessmentPrompt(
 
 ## BUSINESS PROFILE
 - **Industry:** ${formatIndustry(businessProfile.industry)}
-- **Organization Size:** ${formatOrgSize(businessProfile.orgSize)}
+- **Organisation Size:** ${formatOrgSize(businessProfile.orgSize)}
 - **Employee Count:** ${businessProfile.employeeCount}
 - **Location:** ${businessProfile.location}
 

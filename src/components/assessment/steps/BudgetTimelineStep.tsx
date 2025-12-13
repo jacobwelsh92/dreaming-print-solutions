@@ -129,7 +129,7 @@ export function BudgetTimelineStep() {
         <label className="block text-sm font-medium text-charcoal-800 mb-3">
           <span className="flex items-center gap-2">
             <Building className="w-4 h-4 text-ochre-500" />
-            Type of organization
+            Type of organisation
           </span>
         </label>
         <Controller

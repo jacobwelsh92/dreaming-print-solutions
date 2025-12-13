@@ -44,9 +44,9 @@ const benefits = [
 ];
 
 const trustPoints = [
-  "Personalized product recommendations",
+  "Personalised product recommendations",
   "Detailed cost & savings analysis",
-  "Workflow optimization insights",
+  "Workflow optimisation insights",
   "Delivered straight to your inbox",
 ];
 
@@ -98,8 +98,8 @@ export function AssessmentHero() {
             variants={fadeInUp}
             className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-12"
           >
-            Answer a few questions about your print environment. Our AI analyzes your
-            needs and delivers personalized recommendations, cost projections, and a
+            Answer a few questions about your print environment. Our AI analyses your
+            needs and delivers personalised recommendations, cost projections, and a
             professional report.
           </motion.p>
 

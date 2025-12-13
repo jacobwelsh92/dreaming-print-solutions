@@ -39,7 +39,7 @@ export function BusinessProfileStep() {
           <Building2 className="w-7 h-7" />
         </div>
         <h2 className="text-2xl font-display font-semibold text-charcoal-900">
-          Tell us about your organization
+          Tell us about your organisation
         </h2>
         <p className="mt-2 text-charcoal-600">
           This helps us understand your environment and requirements.
@@ -81,10 +81,10 @@ export function BusinessProfileStep() {
         )}
       </motion.div>
 
-      {/* Organization size */}
+      {/* Organisation size */}
       <motion.div variants={fadeInUp}>
         <label className="block text-sm font-medium text-charcoal-800 mb-3">
-          Organization size
+          Organisation size
         </label>
         <Controller
           name="businessProfile.orgSize"

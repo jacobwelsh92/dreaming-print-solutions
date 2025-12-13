@@ -35,7 +35,7 @@ export const businessProfileSchema = z.object({
     error: "Please select your industry",
   }),
   orgSize: z.enum(["small", "medium", "large", "enterprise"], {
-    error: "Please select your organization size",
+    error: "Please select your organisation size",
   }),
   employeeCount: z
     .number({

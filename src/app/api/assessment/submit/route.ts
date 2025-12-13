@@ -135,7 +135,7 @@ function buildBusinessNotificationEmail(
             <h3>🏢 Business Profile</h3>
             <table>
               <tr><td>Industry</td><td>${businessProfile.industry}</td></tr>
-              <tr><td>Organization Size</td><td>${businessProfile.orgSize}</td></tr>
+              <tr><td>Organisation Size</td><td>${businessProfile.orgSize}</td></tr>
               <tr><td>Employees</td><td>${businessProfile.employeeCount}</td></tr>
               <tr><td>Location</td><td>${businessProfile.location}</td></tr>
             </table>
@@ -231,7 +231,7 @@ function buildCustomerEmail(
         <div class="content">
           <p>Hi ${firstName},</p>
 
-          <p>Thank you for completing your print assessment! We've analyzed your requirements and have some exciting insights to share.</p>
+          <p>Thank you for completing your print assessment! We've analysed your requirements and have some exciting insights to share.</p>
 
           <h2 style="color: #c45a32;">Executive Summary</h2>
           <p>${analysis.executiveSummary}</p>

@@ -272,7 +272,7 @@ export const STEP_CONFIGS: StepConfig[] = [
   {
     number: 1,
     title: "Business Profile",
-    description: "Tell us about your organization",
+    description: "Tell us about your organisation",
     icon: "Building2",
   },
   {

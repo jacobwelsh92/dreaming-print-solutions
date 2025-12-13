@@ -58,9 +58,9 @@ export const ippStats = {
   certifiedBusinesses: "5,000+",
   certifiedBusinessesRaw: 5000,
 
-  /** Number of organizations with RAPs */
-  organizationsWithRAPs: "2,500+",
-  organizationsWithRAPsRaw: 2500,
+  /** Number of organisations with RAPs */
+  organisationsWithRAPs: "2,500+",
+  organisationsWithRAPsRaw: 2500,
 } as const;
 
 // =================================================================
@@ -391,7 +391,7 @@ export const complianceCheckerOptions = {
     { label: "Regional Australia", value: "regional", remoteBonus: false },
     { label: "Remote Australia", value: "remote", remoteBonus: true },
   ],
-  organizationTypes: [
+  organisationTypes: [
     { label: "Commonwealth Government", value: "commonwealth" },
     { label: "State Government", value: "state" },
     { label: "Local Government", value: "local" },

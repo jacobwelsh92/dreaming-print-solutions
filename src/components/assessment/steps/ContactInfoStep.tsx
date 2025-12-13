@@ -46,7 +46,7 @@ export function ContactInfoStep() {
           Almost done!
         </h2>
         <p className="mt-2 text-charcoal-600">
-          We&apos;ll send your personalized assessment report to this email.
+          We&apos;ll send your personalised assessment report to this email.
         </p>
       </motion.div>
 
@@ -172,7 +172,7 @@ export function ContactInfoStep() {
           <a href="/privacy-policy" className="text-ochre-600 hover:underline">
             Privacy Policy
           </a>
-          . We&apos;ll use your information to prepare your personalized assessment
+          . We&apos;ll use your information to prepare your personalised assessment
           and may contact you about our services.
         </p>
       </motion.div>

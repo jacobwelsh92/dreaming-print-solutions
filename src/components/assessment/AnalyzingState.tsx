@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 import { Sparkles, BarChart3, FileSearch, Lightbulb } from "lucide-react";
 
 const steps = [
-  { icon: FileSearch, label: "Analyzing your requirements", delay: 0 },
+  { icon: FileSearch, label: "Analysing your requirements", delay: 0 },
   { icon: BarChart3, label: "Calculating cost projections", delay: 1.5 },
   { icon: Lightbulb, label: "Generating recommendations", delay: 3 },
   { icon: Sparkles, label: "Preparing your report", delay: 4.5 },
@@ -113,7 +113,7 @@ export function AnalyzingState() {
             animate={{ opacity: 1, y: 0 }}
             className="font-display text-2xl md:text-3xl text-charcoal-900 mb-3"
           >
-            Analyzing Your Assessment
+            Analysing Your Assessment
           </motion.h2>
 
           <motion.p
@@ -122,7 +122,7 @@ export function AnalyzingState() {
             transition={{ delay: 0.1 }}
             className="text-charcoal-600 mb-10"
           >
-            Our AI is reviewing your requirements and preparing personalized recommendations.
+            Our AI is reviewing your requirements and preparing personalised recommendations.
           </motion.p>
 
           {/* Progress steps */}

@@ -28,7 +28,7 @@ export function formatNumber(num: number): string {
 }
 
 /**
- * Debounce function for performance optimization.
+ * Debounce function for performance optimisation.
  */
 export function debounce<T extends (...args: Parameters<T>) => void>(
   fn: T,

@@ -3,7 +3,7 @@
  * PRINT ASSESSMENT PAGE
  * =================================================================
  *
- * AI-powered free print assessment tool that provides personalized
+ * AI-powered free print assessment tool that provides personalised
  * recommendations based on business needs.
  *
  * Design principles:
@@ -21,7 +21,7 @@ import { AssessmentHero } from "@/components/assessment/AssessmentHero";
 export const metadata: Metadata = {
   title: "Free Print Assessment | AI-Powered Analysis",
   description:
-    "Get a free, AI-powered print assessment for your organization. Receive personalized recommendations, cost analysis, and a professional PDF report. Takes only 5 minutes.",
+    "Get a free, AI-powered print assessment for your organisation. Receive personalised recommendations, cost analysis, and a professional PDF report. Takes only 5 minutes.",
   keywords: [
     "print assessment",
     "printer cost analysis",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Free Print Assessment | Dreaming Print Solutions",
     description:
-      "Get a free, AI-powered print assessment. Personalized recommendations, cost analysis, and professional PDF report in 5 minutes.",
+      "Get a free, AI-powered print assessment. Personalised recommendations, cost analysis, and professional PDF report in 5 minutes.",
     url: `${siteConfig.url}/print-assessment`,
   },
 };
@@ -49,7 +49,7 @@ const structuredData = {
   "@type": "WebApplication",
   name: "Dreaming Print Solutions - Free Print Assessment",
   description:
-    "AI-powered print assessment tool providing personalized printer recommendations and cost analysis",
+    "AI-powered print assessment tool providing personalised printer recommendations and cost analysis",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   offers: {

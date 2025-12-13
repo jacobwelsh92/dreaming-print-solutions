@@ -369,9 +369,9 @@ function generatePDFHTML(
         <tr><td>Company</td><td>${contactInfo.company}</td></tr>
         <tr><td>Contact</td><td>${contactInfo.firstName} ${contactInfo.lastName}</td></tr>
         <tr><td>Industry</td><td>${businessProfile.industry}</td></tr>
-        <tr><td>Organization Size</td><td>${businessProfile.orgSize} (${businessProfile.employeeCount} employees)</td></tr>
+        <tr><td>Organisation Size</td><td>${businessProfile.orgSize} (${businessProfile.employeeCount} employees)</td></tr>
         <tr><td>Monthly Print Volume</td><td>${totalVolume.toLocaleString()} pages</td></tr>
-        <tr><td>Color Ratio</td><td>${printVolume.colorPercentage}% color</td></tr>
+        <tr><td>Colour Ratio</td><td>${printVolume.colorPercentage}% colour</td></tr>
       </table>
     </div>
   </div>
