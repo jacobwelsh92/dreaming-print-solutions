@@ -15,6 +15,7 @@
  * - Values alignment matters to modern procurement
  */
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { CheckCircle2, Shield, Users, Landmark, Building2, Award } from "lucide-react";
 import {
@@ -25,7 +26,6 @@ import {
   SectionEyebrow,
 } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
-import { ScatterPattern, FlowPattern } from "@/components/ui/dot-pattern";
 import { fadeInUp, staggerContainer, staggerContainerFast } from "@/lib/animations";
 
 const advantages = [
@@ -73,22 +73,21 @@ const stats = [
 export function WhyChooseUs() {
   return (
     <Section background="charcoal" size="xl" className="relative overflow-hidden">
-      {/* Background patterns - subtle, not distracting */}
-      <ScatterPattern
-        variant="ochre"
-        opacity={0.03}
-        density={3}
-        seed={99}
-        animated={false}
-      />
-      <div className="absolute inset-y-0 left-0 w-1/2">
-        <FlowPattern
-          variant="terracotta"
-          opacity={0.02}
-          direction="diagonal"
-          density="sparse"
-          animated={false}
+      {/* Indigenous dot art background - subtle and cultural */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/indigenous-pattern.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+          quality={75}
+          aria-hidden="true"
         />
+        {/* Dark overlay to keep it subtle */}
+        <div className="absolute inset-0 bg-charcoal-950/90" />
+        {/* Gradient fade for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/50 via-transparent to-charcoal-950/70" />
       </div>
 
       <Container className="relative z-10">
