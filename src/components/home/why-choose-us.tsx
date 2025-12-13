@@ -76,12 +76,11 @@ export function WhyChooseUs() {
       {/* Indigenous dot art background - subtle and cultural */}
       <div className="absolute inset-0">
         <Image
-          src="/images/indigenous-pattern.jpg"
+          src="/images/indigenous-pattern.webp"
           alt=""
           fill
           className="object-cover"
           sizes="100vw"
-          quality={75}
           aria-hidden="true"
         />
         {/* Dark overlay to keep it subtle */}
