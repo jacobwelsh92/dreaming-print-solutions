@@ -93,112 +93,111 @@ export function Header() {
             isScrolled ? "opacity-100" : "opacity-60"
           )}
         />
-        <Container>
-          <nav className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="relative flex items-center transition-opacity hover:opacity-90"
+        {/* Full-width nav container */}
+        <nav className="flex items-center justify-between h-16 md:h-20 px-4 md:px-8 lg:px-12">
+          {/* Logo - Left */}
+          <Link
+            href="/"
+            className="relative flex items-center transition-opacity hover:opacity-90 shrink-0"
+          >
+            <Image
+              src="/images/logo-header.png"
+              alt="Dreaming Print Solutions"
+              width={220}
+              height={50}
+              className="h-10 md:h-11 w-auto"
+              priority
+            />
+          </Link>
+
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex items-center justify-center gap-1 absolute left-1/2 -translate-x-1/2">
+            {mainNavItems.map((item) => {
+              const isActive = pathname === item.href;
+              const isAssessment = item.href === "/print-assessment";
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "relative px-3 xl:px-4 py-2 text-sm font-medium rounded-xl whitespace-nowrap",
+                    "transition-all duration-200",
+                    isAssessment
+                      ? "text-ochre-600 hover:text-ochre-700 hover:bg-ochre-50"
+                      : isActive
+                      ? "text-ochre-700 bg-ochre-50"
+                      : "text-charcoal-600 hover:text-charcoal-900 hover:bg-cream-100"
+                  )}
+                >
+                  {isAssessment && (
+                    <Sparkles className="inline w-3.5 h-3.5 mr-1 -mt-0.5" />
+                  )}
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Desktop CTA - Right */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <a
+              href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
+              className="text-sm text-charcoal-600 hover:text-ochre-600 transition-colors hidden xl:flex items-center gap-2"
             >
-              <Image
-                src="/images/logo-header.png"
-                alt="Dreaming Print Solutions"
-                width={220}
-                height={50}
-                className="h-10 md:h-12 w-auto"
-                priority
-              />
-            </Link>
+              <Phone className="h-4 w-4" />
+              <span className="font-medium">{contactInfo.phone}</span>
+            </a>
+            <Button asChild size="sm">
+              <Link href="/contact">Get a Quote</Link>
+            </Button>
+          </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
-              {mainNavItems.map((item) => {
-                const isActive = pathname === item.href;
-                const isAssessment = item.href === "/print-assessment";
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      "relative px-4 py-2 text-sm font-medium rounded-xl",
-                      "transition-all duration-200",
-                      isAssessment
-                        ? "text-ochre-600 hover:text-ochre-700 hover:bg-ochre-50"
-                        : isActive
-                        ? "text-ochre-700 bg-ochre-50"
-                        : "text-charcoal-600 hover:text-charcoal-900 hover:bg-cream-100"
-                    )}
-                  >
-                    {isAssessment && (
-                      <Sparkles className="inline w-3.5 h-3.5 mr-1.5 -mt-0.5" />
-                    )}
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* Desktop CTA */}
-            <div className="hidden md:flex items-center gap-4">
-              <a
-                href={`tel:${contactInfo.phone.replace(/\s/g, "")}`}
-                className="text-sm text-charcoal-600 hover:text-ochre-600 transition-colors hidden lg:flex items-center gap-2"
-              >
-                <Phone className="h-4 w-4" />
-                <span className="font-medium">{contactInfo.phone}</span>
-              </a>
-              <Button asChild>
-                <Link href="/contact">Get a Quote</Link>
-              </Button>
-            </div>
-
-            {/* Mobile Menu Button - proper touch target */}
-            <button
-              type="button"
-              className={cn(
-                "md:hidden relative z-[60]",
-                "flex items-center justify-center",
-                "w-11 h-11 -mr-2", // 44px touch target
-                "rounded-xl",
-                "text-charcoal-700",
-                "transition-colors duration-200",
-                "hover:bg-cream-100 active:bg-cream-200",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ochre-500 focus-visible:ring-offset-2"
+          {/* Mobile/Tablet Menu Button - proper touch target */}
+          <button
+            type="button"
+            className={cn(
+              "lg:hidden relative z-[60]",
+              "flex items-center justify-center",
+              "w-11 h-11", // 44px touch target
+              "rounded-xl",
+              "text-charcoal-700",
+              "transition-colors duration-200",
+              "hover:bg-cream-100 active:bg-cream-200",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ochre-500 focus-visible:ring-offset-2"
+            )}
+            onClick={toggleMenu}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            <span className="sr-only">
+              {isMobileMenuOpen ? "Close menu" : "Open menu"}
+            </span>
+            <AnimatePresence mode="wait" initial={false}>
+              {isMobileMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <X className="h-6 w-6" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <Menu className="h-6 w-6" />
+                </motion.div>
               )}
-              onClick={toggleMenu}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              <span className="sr-only">
-                {isMobileMenuOpen ? "Close menu" : "Open menu"}
-              </span>
-              <AnimatePresence mode="wait" initial={false}>
-                {isMobileMenuOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
-                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                    exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <X className="h-6 w-6" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ opacity: 0, rotate: 90, scale: 0.8 }}
-                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                    exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    <Menu className="h-6 w-6" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </button>
-          </nav>
-        </Container>
+            </AnimatePresence>
+          </button>
+        </nav>
       </header>
 
       {/* Mobile Menu - Rendered outside header for proper stacking */}
@@ -207,7 +206,7 @@ export function Header() {
           <>
             {/* Backdrop - Full screen overlay */}
             <motion.div
-              className="fixed inset-0 z-40 bg-charcoal-950/40 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-charcoal-950/40 backdrop-blur-sm lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -221,7 +220,7 @@ export function Header() {
               id="mobile-menu"
               className={cn(
                 "fixed inset-x-0 top-16 bottom-0 z-50",
-                "bg-white md:hidden",
+                "bg-white lg:hidden",
                 "overflow-y-auto overscroll-contain",
                 "shadow-2xl"
               )}
