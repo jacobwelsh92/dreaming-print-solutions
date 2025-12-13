@@ -24,7 +24,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Menu, X, Phone, ArrowRight, Sparkles } from "lucide-react";
+import { Menu, X, Phone, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -129,9 +129,6 @@ export function Header() {
                       : "text-charcoal-600 hover:text-charcoal-900 hover:bg-cream-100"
                   )}
                 >
-                  {isAssessment && (
-                    <Sparkles className="inline w-3.5 h-3.5 mr-1 -mt-0.5" />
-                  )}
                   {item.label}
                 </Link>
               );
@@ -271,13 +268,10 @@ export function Header() {
                         >
                           <div className="flex flex-col">
                             <span className={cn(
-                              "text-lg font-medium flex items-center gap-2",
+                              "text-lg font-medium",
                               isAssessment ? "text-ochre-700" :
                               isActive ? "text-ochre-700" : "text-charcoal-900"
                             )}>
-                              {isAssessment && (
-                                <Sparkles className="w-4 h-4 text-ochre-500" />
-                              )}
                               {item.label}
                             </span>
                             {item.description && (

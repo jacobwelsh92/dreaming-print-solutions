@@ -19,7 +19,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Gift } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import {
@@ -83,13 +83,13 @@ export function Hero() {
             className="mb-8 flex justify-center md:justify-start"
             variants={fadeIn}
           >
-            <span className="inline-flex items-center gap-3 text-sm tracking-wide">
-              <span className="flex gap-1">
+            <span className="inline-flex flex-col md:flex-row items-center gap-2 md:gap-3 text-sm tracking-wide">
+              <span className="flex flex-col md:flex-row gap-1">
                 <span className="w-2 h-2 rounded-full bg-ochre-400" />
                 <span className="w-2 h-2 rounded-full bg-terracotta-400" />
                 <span className="w-2 h-2 rounded-full bg-sage-400" />
               </span>
-              <span className="text-white/80 font-medium">
+              <span className="text-white/80 font-medium text-center md:text-left">
                 Australia&apos;s First Indigenous-Owned Enterprise Printer Dealer
               </span>
             </span>
@@ -126,26 +126,6 @@ export function Hero() {
             affordable printing solutions Australia wide. HP machines suited to your
             volume and workflow — for Indigenous businesses, government, and corporate.
           </motion.p>
-
-          {/* Free Print Assessment - Lead Magnet */}
-          <motion.div
-            className="mb-10 md:mb-12 flex justify-center md:justify-start"
-            variants={fadeInUp}
-          >
-            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-ochre-500/20 border border-ochre-400/30 backdrop-blur-sm text-left">
-              <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-ochre-500">
-                <Gift className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <p className="text-white font-semibold text-sm md:text-base">
-                  Free Print Assessment
-                </p>
-                <p className="text-white/70 text-xs md:text-sm">
-                  Valued at $500 — Discover how much you could save
-                </p>
-              </div>
-            </div>
-          </motion.div>
 
           {/* CTAs - primary and secondary with clear hierarchy */}
           <motion.div

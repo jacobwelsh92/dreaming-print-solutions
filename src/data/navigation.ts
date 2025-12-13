@@ -38,7 +38,7 @@ export const mainNavItems: NavItem[] = [
     description: "HP Enterprise MFD Range",
   },
   {
-    label: "Free Assessment",
+    label: "Assessment",
     href: "/print-assessment",
     description: "Get AI-powered print recommendations",
   },
@@ -59,7 +59,7 @@ export const footerNavItems: NavItem[] = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Products", href: "/products" },
-  { label: "Free Assessment", href: "/print-assessment" },
+  { label: "Assessment", href: "/print-assessment" },
   { label: "Why Indigenous", href: "/why-indigenous" },
   { label: "Government Procurement", href: "/government-procurement" },
   { label: "Corporate Procurement", href: "/corporate-procurement" },
