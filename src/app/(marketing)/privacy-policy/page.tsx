@@ -136,7 +136,6 @@ export default function PrivacyPolicyPage() {
             <ul>
               <li>Email: {siteConfig.contact.email}</li>
               <li>Phone: {siteConfig.contact.phoneDisplay}</li>
-              <li>Address: {siteConfig.contact.address.full}</li>
             </ul>
           </div>
         </Container>

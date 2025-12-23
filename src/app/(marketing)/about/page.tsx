@@ -18,17 +18,10 @@ import { siteConfig } from "@/data/site-config";
 // Team member data - photos go in /public/images/team/
 const teamMembers = [
   {
-    name: "Zac O'Brien",
-    role: "Co-Founder & Director",
-    image: "/images/team/zac-obrien.jpg",
-    bio: "With extensive experience in enterprise sales and a passion for Indigenous business development, Zac leads client relationships and strategic growth initiatives.",
-    linkedin: "#",
-  },
-  {
     name: "Ben Long",
-    role: "Co-Founder & Director",
-    image: "/images/team/ben-long.jpg",
-    bio: "Ben brings deep technical expertise in print infrastructure and managed services, ensuring clients receive best-in-class solutions and ongoing support.",
+    role: "Founder & Director",
+    image: "/images/team/ben-long.png",
+    bio: "Ben is a proud Anmatyerre man who has bloodlines through Ti Tree, Darwin, and the Tiwi Islands. He is currently playing for the Gold Coast Suns and is one of the Indigenous leaders at the club. He has started this business as a way he can help Indigenous businesses and the community, and any businesses, now and after his football career.",
     linkedin: "#",
   },
 ];
@@ -299,30 +292,74 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Team Section */}
+      {/* Supply Nation Certificate Section */}
       <Section background="white">
         <Container>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="font-display text-3xl md:text-4xl text-charcoal-950 mb-4">
+                Supply Nation Registered
+              </h2>
+              <p className="text-lg text-charcoal-600 max-w-2xl mx-auto">
+                Dreaming Print Solutions is officially registered with Supply Nation,
+                Australia&apos;s leading directory of verified Indigenous businesses.
+                View our certificate below.
+              </p>
+            </div>
+
+            {/* Certificate Viewer */}
+            <div className="bg-cream-50 rounded-2xl p-4 md:p-6 border border-cream-200">
+              <div className="aspect-[4/3] md:aspect-[3/2] w-full rounded-xl overflow-hidden bg-white shadow-sm">
+                <iframe
+                  src="/documents/supply-nation-certificate.pdf"
+                  className="w-full h-full"
+                  title="Supply Nation Registration Certificate"
+                />
+              </div>
+
+              {/* Download Button */}
+              <div className="mt-6 text-center">
+                <a
+                  href="/documents/supply-nation-certificate.pdf"
+                  download="Dreaming-Print-Solutions-Supply-Nation-Certificate.pdf"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-ochre-500 text-white font-medium rounded-xl hover:bg-ochre-600 transition-colors"
+                >
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Download Certificate
+                </a>
+                <p className="mt-3 text-sm text-charcoal-500">
+                  ABN: 46 691 772 853 | Registered: 17 December 2025
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Team Section */}
+      <Section background="cream">
+        <Container>
           <SectionHeader>
-            <SectionTitle>Our Team</SectionTitle>
+            <SectionTitle>Our Founder</SectionTitle>
             <SectionDescription>
-              Meet the founders behind Dreaming Print Solutions.
+              Meet the founder behind Dreaming Print Solutions.
             </SectionDescription>
           </SectionHeader>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+          <div className="max-w-md mx-auto">
             {teamMembers.map((member) => (
               <Card key={member.name} className="overflow-hidden">
                 <CardContent className="p-0">
                   {/* Photo Container */}
-                  <div className="relative aspect-[4/3] bg-gradient-to-br from-cream-100 to-cream-200">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="h-20 w-20 mx-auto rounded-full bg-white/80 flex items-center justify-center mb-3">
-                          <Users className="h-10 w-10 text-charcoal-400" />
-                        </div>
-                        <p className="text-sm text-charcoal-500">Photo coming soon</p>
-                      </div>
-                    </div>
+                  <div className="relative aspect-[3/4] bg-gradient-to-br from-cream-100 to-cream-200">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top"
+                    />
                   </div>
 
                   {/* Info */}

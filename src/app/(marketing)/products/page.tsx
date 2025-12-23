@@ -161,6 +161,15 @@ export default function ProductsPage() {
               </Card>
             ))}
           </div>
+
+          {/* Additional Range Message */}
+          <div className="mt-12 text-center">
+            <p className="text-lg text-charcoal-600 max-w-3xl mx-auto">
+              Plus many more in our wide range to suit any business requirements such as
+              mono only in A4 &amp; A3, stand alone printers in mono and colour in A4 &amp; A3,
+              and so much more to suit 1 user all the way up to 1000+ users.
+            </p>
+          </div>
         </Container>
       </Section>
 

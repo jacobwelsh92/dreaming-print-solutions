@@ -38,22 +38,11 @@ export const siteConfig = {
   // ⚠️ UPDATE BEFORE LAUNCH - These are real business details
   contact: {
     email: "benlong@dreamingprintsolutions.com.au",
-    phone: "+61 7 3186 8299", // UPDATE: Real phone number
-    phoneDisplay: "07 3186 8299", // Display format
-    address: {
-      street: "123 Enterprise Street", // UPDATE: Real street address
-      city: "Brisbane",
-      state: "QLD",
-      postcode: "4000", // UPDATE: Real postcode
-      country: "Australia",
-      full: "123 Enterprise Street, Brisbane QLD 4000", // UPDATE: Full address
-      coordinates: {
-        lat: -27.4698, // UPDATE: Real coordinates
-        lng: 153.0251,
-      },
-    },
+    phone: "+61459088771",
+    phoneDisplay: "0459 088 771",
+    // Address removed per client request
     hours: {
-      weekdays: "8:30 AM - 5:00 PM",
+      weekdays: "8:30am - 5:00pm",
       weekends: "Closed",
       timezone: "AEST",
     },
@@ -65,11 +54,11 @@ export const siteConfig = {
   // =================================================================
   // ⚠️ UPDATE BEFORE LAUNCH
   business: {
-    abn: "12 345 678 901", // UPDATE: Real ABN
-    acn: "123 456 789", // UPDATE: Real ACN if applicable
+    abn: "46 691 772 853",
+    acn: "", // Not applicable
     founded: "2024",
-    supplyNationNumber: "SN12345", // UPDATE: Real Supply Nation number
-    supplyNationStatus: "Certified", // or "Certification in progress"
+    supplyNationNumber: "", // Registration number if applicable
+    supplyNationStatus: "Registered", // Registered Supplier
   },
 
   // =================================================================
@@ -96,18 +85,11 @@ export const siteConfig = {
   team: {
     founders: [
       {
-        name: "Zac O'Brien",
-        role: "Co-Founder & Director",
-        bio: "With extensive experience in enterprise print solutions and a passion for supporting indigenous business growth, Zac leads our sales and client relationships.",
-        linkedin: "https://www.linkedin.com/in/zac-obrien", // UPDATE
-        image: "/images/team/zac-obrien.jpg", // UPDATE when photo available
-      },
-      {
         name: "Ben Long",
-        role: "Co-Founder & Director",
-        bio: "Ben brings deep technical expertise in print infrastructure and managed services, ensuring our clients receive best-in-class solutions and support.",
-        linkedin: "https://www.linkedin.com/in/ben-long", // UPDATE
-        image: "/images/team/ben-long.jpg", // UPDATE when photo available
+        role: "Founder & Director",
+        bio: "Ben is a proud Anmatyerre man who has bloodlines through Ti Tree, Darwin, and the Tiwi Islands. He is currently playing for the Gold Coast Suns and is one of the Indigenous leaders at the club. He has started this business as a way he can help Indigenous businesses and the community, and any businesses, now and after his football career.",
+        linkedin: "#",
+        image: "/images/team/ben-long.png",
       },
     ],
   },

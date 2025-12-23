@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Suspense } from "react";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, Clock } from "lucide-react";
 import {
   Section,
   SectionHeader,
@@ -126,15 +126,10 @@ export default async function ContactPage({
                     </a>
 
                     <div className="flex items-start gap-3 text-charcoal-600">
-                      <MapPin className="h-5 w-5 mt-0.5 shrink-0" />
-                      <span>{contactInfo.address}</span>
-                    </div>
-
-                    <div className="flex items-start gap-3 text-charcoal-600">
                       <Clock className="h-5 w-5 mt-0.5 shrink-0" />
                       <div>
                         <p>Monday - Friday</p>
-                        <p className="text-sm text-charcoal-500">9:00 AM - 5:00 PM AEST</p>
+                        <p className="text-sm text-charcoal-500">8:30am - 5:00pm AEST</p>
                       </div>
                     </div>
                   </div>

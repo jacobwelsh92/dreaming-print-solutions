@@ -46,23 +46,10 @@ export function OrganizationSchema() {
     founders: [
       {
         "@type": "Person",
-        name: "Zac O'Brien",
-        jobTitle: "Co-Founder & Director",
-      },
-      {
-        "@type": "Person",
         name: "Ben Long",
-        jobTitle: "Co-Founder & Director",
+        jobTitle: "Founder & Director",
       },
     ],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.contact.address.street,
-      addressLocality: siteConfig.contact.address.city,
-      addressRegion: siteConfig.contact.address.state,
-      postalCode: siteConfig.contact.address.postcode,
-      addressCountry: "AU",
-    },
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -134,19 +121,6 @@ export function LocalBusinessSchema() {
     telephone: siteConfig.contact.phone,
     email: siteConfig.contact.email,
     priceRange: "$$$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.contact.address.street,
-      addressLocality: siteConfig.contact.address.city,
-      addressRegion: siteConfig.contact.address.state,
-      postalCode: siteConfig.contact.address.postcode,
-      addressCountry: "AU",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: siteConfig.contact.address.coordinates.lat,
-      longitude: siteConfig.contact.address.coordinates.lng,
-    },
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",

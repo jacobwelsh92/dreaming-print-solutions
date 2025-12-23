@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
 import {
@@ -87,10 +87,6 @@ export function Footer() {
                 <Phone className="h-4 w-4 shrink-0" />
                 <span>{contactInfo.phone}</span>
               </a>
-              <div className="flex items-start gap-3 text-sm text-charcoal-300">
-                <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
-                <span className="text-left">{contactInfo.address}</span>
-              </div>
             </div>
           </div>
 

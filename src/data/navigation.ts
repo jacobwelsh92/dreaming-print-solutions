@@ -147,7 +147,6 @@ export const contactInfo = {
   email: siteConfig.contact.email,
   phone: siteConfig.contact.phoneDisplay,
   phoneRaw: siteConfig.contact.phone, // For tel: links
-  address: siteConfig.contact.address.full,
   hours: siteConfig.contact.hours.weekdays,
   responseTime: siteConfig.contact.responseTime,
 };

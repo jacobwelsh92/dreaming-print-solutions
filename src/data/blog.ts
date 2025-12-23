@@ -914,11 +914,9 @@ export const blogPosts: BlogPost[] = [
       <h3>Cost-Per-Page (CPP) Model</h3>
       <p>The most common structure charges a fixed rate per printed page:</p>
       <ul>
-        <li><strong>Mono CPP:</strong> Typically $0.008-$0.015 per page</li>
-        <li><strong>Colour CPP:</strong> Typically $0.05-$0.10 per page</li>
         <li><strong>Inclusive of:</strong> Hardware (often), consumables, maintenance, support</li>
         <li><strong>Advantages:</strong> Simple, predictable, aligns provider incentive with efficiency</li>
-        <li><strong>Considerations:</strong> Volume minimums may apply; low-volume organisations may not benefit</li>
+        <li><strong>Considerations:</strong> Volume minimums may apply</li>
       </ul>
 
       <h3>Flat Monthly Fee Model</h3>

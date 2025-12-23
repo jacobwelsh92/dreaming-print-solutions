@@ -49,7 +49,7 @@ export const products: Product[] = [
     speed: 25,
     volumeMin: 3000,
     volumeMax: 20000,
-    idealFor: "Medium to large offices",
+    idealFor: "Corporate workgroups (1-30 users)",
     description:
       "Enterprise A3 colour MFP with HP Wolf Security, 10.1\" touchscreen, and upgradeable speed options up to 35ppm. Perfect for government and corporate workgroups.",
     features: [
