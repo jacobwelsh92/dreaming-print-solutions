@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Award, Users, Heart, Target, Linkedin, ArrowRight, Building2, Handshake } from "lucide-react";
+import { Award, Heart, Target, Linkedin, ArrowRight, Building2, Handshake } from "lucide-react";
 import {
   Section,
   SectionHeader,
@@ -307,18 +307,49 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Certificate Viewer */}
-            <div className="bg-cream-50 rounded-2xl p-4 md:p-6 border border-cream-200">
-              <div className="aspect-[4/3] md:aspect-[3/2] w-full rounded-xl overflow-hidden bg-white shadow-sm">
-                <iframe
-                  src="/documents/supply-nation-certificate.pdf"
-                  className="w-full h-full"
-                  title="Supply Nation Registration Certificate"
-                />
+            {/* Certificate Card */}
+            <div className="bg-cream-50 rounded-2xl p-6 md:p-8 border border-cream-200">
+              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+                {/* Certificate Icon/Badge */}
+                <div className="shrink-0 w-32 h-32 md:w-40 md:h-40 bg-white rounded-2xl shadow-sm flex items-center justify-center border border-cream-200">
+                  <div className="text-center">
+                    <div className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-2 bg-ochre-100 rounded-full flex items-center justify-center">
+                      <svg className="w-8 h-8 md:w-10 md:h-10 text-ochre-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                    </div>
+                    <p className="text-xs font-medium text-charcoal-600">Verified</p>
+                  </div>
+                </div>
+
+                {/* Certificate Details */}
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="font-display text-xl md:text-2xl text-charcoal-950 mb-2">
+                    Confirmation of Registration
+                  </h3>
+                  <p className="text-charcoal-600 mb-4">
+                    Dreaming Print Solutions Pty Ltd is registered on Supply Nation&apos;s
+                    Indigenous Business Direct as a verified Indigenous-owned business.
+                  </p>
+                  <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-charcoal-500">
+                    <span className="flex items-center gap-1">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                      ABN: 46 691 772 853
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      Registered: 17 December 2025
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Download Button */}
-              <div className="mt-6 text-center">
+              <div className="mt-6 pt-6 border-t border-cream-200 text-center">
                 <a
                   href="/documents/supply-nation-certificate.pdf"
                   download="Dreaming-Print-Solutions-Supply-Nation-Certificate.pdf"
@@ -327,11 +358,8 @@ export default function AboutPage() {
                   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
-                  Download Certificate
+                  Download Certificate (PDF)
                 </a>
-                <p className="mt-3 text-sm text-charcoal-500">
-                  ABN: 46 691 772 853 | Registered: 17 December 2025
-                </p>
               </div>
             </div>
           </div>
@@ -353,13 +381,16 @@ export default function AboutPage() {
               <Card key={member.name} className="overflow-hidden">
                 <CardContent className="p-0">
                   {/* Photo Container */}
-                  <div className="relative aspect-[3/4] bg-gradient-to-br from-cream-100 to-cream-200">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover object-top"
-                    />
+                  <div className="relative aspect-[3/4] bg-gradient-to-br from-ochre-100 to-ochre-200 flex items-center justify-center">
+                    <div className="text-center p-6">
+                      <div className="w-24 h-24 mx-auto mb-4 bg-white/80 rounded-full flex items-center justify-center">
+                        <svg className="w-12 h-12 text-ochre-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                      </div>
+                      <p className="text-ochre-700 font-medium">Gold Coast Suns</p>
+                      <p className="text-ochre-600 text-sm">AFL Player</p>
+                    </div>
                   </div>
 
                   {/* Info */}
