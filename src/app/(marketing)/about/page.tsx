@@ -381,16 +381,13 @@ export default function AboutPage() {
               <Card key={member.name} className="overflow-hidden">
                 <CardContent className="p-0">
                   {/* Photo Container */}
-                  <div className="relative aspect-[3/4] bg-gradient-to-br from-ochre-100 to-ochre-200 flex items-center justify-center">
-                    <div className="text-center p-6">
-                      <div className="w-24 h-24 mx-auto mb-4 bg-white/80 rounded-full flex items-center justify-center">
-                        <svg className="w-12 h-12 text-ochre-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                      </div>
-                      <p className="text-ochre-700 font-medium">Gold Coast Suns</p>
-                      <p className="text-ochre-600 text-sm">AFL Player</p>
-                    </div>
+                  <div className="relative aspect-square bg-gradient-to-br from-cream-100 to-cream-200">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top"
+                    />
                   </div>
 
                   {/* Info */}
