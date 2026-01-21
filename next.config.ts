@@ -103,18 +103,9 @@ const nextConfig: NextConfig = {
   // =================================================================
   async redirects() {
     return [
-      // Redirect www to non-www (canonical URL)
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "host",
-            value: "www.dreamingprintsolutions.com.au",
-          },
-        ],
-        destination: "https://dreamingprintsolutions.com.au/:path*",
-        permanent: true,
-      },
+      // NOTE: www/non-www redirect is handled by Vercel domain settings
+      // Do NOT add host-based redirects here as it conflicts with Vercel's 307
+
       // Common typos/alternatives
       {
         source: "/home",
